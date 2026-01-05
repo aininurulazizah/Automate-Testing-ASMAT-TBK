@@ -11,17 +11,47 @@ function getTanggal() {
 export const testData = {
 
     Btm: {
+        Cred: {
+            Username: "qcshugi",
+            Password: "Cekbisa654!"
+        },
         TanggalBerangkat: getTanggal(),
         Keberangkatan: "BUAH BATU",
         Tujuan: "BTM CILEGON",
         JumlahPenumpang: 2
     },
 
-    Baraya: {
+    Baraya: {        
+        Cred: {
+            Username: "qcshugi",
+            Password: "Cekbisa654!"
+        },
         TanggalBerangkat: getTanggal(),
         Keberangkatan: "CALL CENTER BANDUNG",
         Tujuan: "CIMAREME",
-        JumlahPenumpang: 1
+        JumlahPenumpang: 2
+    },
+
+    Aragon: {
+        Cred: {
+            Username: "qcshugi",
+            Password: "Cekbisa654"
+        },
+        TanggalBerangkat: getTanggal(),
+        Keberangkatan: "BANDUNG",
+        Tujuan: "Alfamart Banjar Atas",
+        JumlahPenumpang: 2
+    },
+
+    Jackal: {
+        Cred: {
+            Username: "qcshugi",
+            Password: "Cekbisa654!"
+        },
+        TanggalBerangkat: getTanggal(),
+        Keberangkatan: "DIPATIUKUR 89 SEBRANG UNI",
+        Tujuan: "CHARTER",
+        JumlahPenumpang: 2
     },
 
     Pemesan: {

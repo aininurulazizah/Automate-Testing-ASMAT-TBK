@@ -1,16 +1,16 @@
 import { test, expect } from "@playwright/test"
 // import { Daytrans } from "../pages/daytrans";
 import { Baraya } from "../pages/baraya";
-// import { Aragon } from "../pages/aragon";
-// import { Jackal } from "../pages/jackal";
+import { Aragon } from "../pages/aragon";
+import { Jackal } from "../pages/jackal";
 import { Btm } from "../pages/btm";
 import { testData } from "../test-data/reservasi_data";
 
 const sites = [
     // {tag: '@daytrans', url: ''},
     {tag: '@baraya', url: 'https://dev.baraya.asmat.app', locator: Baraya, data: testData.Baraya},
-    // {tag: '@aragon', url: ''},
-    // {tag: '@jackal', url: ''},
+    {tag: '@aragon', url: 'https://dev.aragon.asmat.app', locator: Aragon, data: testData.Aragon},
+    {tag: '@jackal', url: 'https://dev.jackalx.asmat.app', locator: Jackal, data: testData.Jackal},
     {tag: '@btm', url: 'https://dev.btm.asmat.app', locator: Btm, data: testData.Btm}
 ]
 
@@ -28,8 +28,8 @@ for (const site of sites) {
         context = await browser.newContext();  
         const page = await context.newPage();  
         await page.goto(site.url);  // Step Login
-        await page.fill('#username', 'qcshugi');
-        await page.fill('#password', 'Cekbisa654!');
+        await page.fill('#username', `${site.data.Cred.Username}`);
+        await page.fill('#password', `${site.data.Cred.Password}`);
         await page.click('#loginbutton');
         await page.waitForURL('**/menu.operasional');
     });

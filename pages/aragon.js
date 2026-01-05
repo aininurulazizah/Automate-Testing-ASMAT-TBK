@@ -1,4 +1,4 @@
-export class Baraya {
+export class Aragon {
 
     constructor(page) {
 
@@ -11,11 +11,11 @@ export class Baraya {
         this.field_outlet_keberangkatan = page.locator('span#seloutletasal');
         this.field_outlet_tujuan = page.locator('span#seloutlettujuan');
         this.list_jam_keberangkatan = page.locator('div.resvlistpilihan');
-        this.list_kursi_tersedia = page.locator('div.renderkursikosong');
+        this.list_kursi_tersedia = page.locator('div.renderlabelkursikosong');
         this.field_notelp_pemesan = page.locator('input#telppemesan');
         this.field_nama_pemesan = page.locator('input#namapemesan');
         this.button_action_goshow = page.locator('span#btngoshow');
-        
+
     }
 
     getBulan(value) {
@@ -66,7 +66,7 @@ export class Baraya {
     }
 
     async pilihKursi(value) {
-        for(let i = 0; i < value; i++) {
+        for(let i = 0; i < value; i++){
             await this.list_kursi_tersedia.nth(i).click();
         }
     }
@@ -82,7 +82,7 @@ export class Baraya {
     }
 
     async cetakTiket() {
-        await this.button_action_goshow.click()
+        await this.button_action_goshow.click();
     }
 
 }
