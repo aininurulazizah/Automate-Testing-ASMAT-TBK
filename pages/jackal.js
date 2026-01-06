@@ -94,7 +94,7 @@ export class Jackal {
 
     async pilihKeberangkatanPulang(value) {
         await this.field_outletplg_keberangkatan.click();
-        await this.getOutletKeberangkatanPulang.(value).click();
+        await this.getOutletKeberangkatanPulang(value).click();
     }
 
     async pilihTujuanPulang(value) {
