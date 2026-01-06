@@ -38,31 +38,71 @@ for (const site of sites) {
         await context.close();
     });
   
-      test(`${site.tag} - Test Case 1 - Reservasi`, async() => {
+    test(`${site.tag} - Test Case 1 - Reservasi One Way Trip`, async() => {
   
-        const page = await context.newPage();
+      const page = await context.newPage();
       
-        const web = new site.locator(page);
+      const web = new site.locator(page);
           
-        await page.goto(`${site.url}/asmat/reservasi`);
+      await page.goto(`${site.url}/asmat/reservasi`);
       
-        await web.pilihTanggalBerangkat(site.data.TanggalBerangkat); // Isi tanggal keberangkatan
+      await web.pilihTanggalBerangkat(site.data.TanggalBerangkat); // Isi tanggal keberangkatan
   
-        await web.pilihKeberangkatan(site.data.Keberangkatan); // Isi outlet keberangkatan
+      await web.pilihKeberangkatan(site.data.Keberangkatan); // Isi outlet keberangkatan
   
-        await web.pilihTujuan(site.data.Tujuan); // Isi outlet tujuan
+      await web.pilihTujuan(site.data.Tujuan); // Isi outlet tujuan
   
-        await web.pilihJamKeberangkatan();
+      await web.pilihJamKeberangkatan();
   
-        await web.pilihKursi(site.data.JumlahPenumpang);
+      await web.pilihKursi(site.data.JumlahPenumpang);
   
-        await web.isiDataPemesan(data_Pemesan);
+      await web.isiDataPemesan(data_Pemesan);
   
-        await web.pilihMetodeBayar("TUNAI");
+      await web.pilihMetodeBayar("TUNAI");
   
-        await web.cetakTiket();
+      await web.cetakTiket();
   
-        await page.pause();
+      await page.pause();
+              
+    })
+
+    test(`${site.tag} - Test Case 2 - Reservasi Round Trip`, async() => {
+  
+      const page = await context.newPage();
+      
+      const web = new site.locator(page);
+          
+      await page.goto(`${site.url}/asmat/reservasi`);
+      
+      await web.pilihTanggalBerangkat(site.data.TanggalBerangkat); // Isi tanggal keberangkatan
+  
+      await web.pilihKeberangkatan(site.data.Keberangkatan); // Isi outlet keberangkatan
+  
+      await web.pilihTujuan(site.data.Tujuan); // Isi outlet tujuan
+
+      await web.klikPPToggle();
+
+      await web.pilihTanggalPulang(site.data.TanggalPulang);
+
+      await web.pilihKeberangkatanPulang(site.data.Tujuan);
+
+      await web.pilihTujuanPulang(site.data.TujuanPulang);
+  
+      await web.pilihJamKeberangkatan();
+
+      await web.pilihKursi(site.data.JumlahPenumpang);
+
+      await web.pilihJamKeberangkatanPulang();
+
+      await web.pilihKursi(site.data.JumlahPenumpang);
+  
+      await web.isiDataPemesan(data_Pemesan);
+  
+      await web.pilihMetodeBayar("TUNAI");
+  
+      await web.cetakTiket();
+  
+      await page.pause();
               
     })
   

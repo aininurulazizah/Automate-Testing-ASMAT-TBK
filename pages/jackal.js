@@ -10,7 +10,12 @@ export class Jackal {
         this.field_current_year = page.locator('span.kaltahun');
         this.field_outlet_keberangkatan = page.locator('span#seloutletasal');
         this.field_outlet_tujuan = page.locator('span#seloutlettujuan');
+        this.field_outletplg_keberangkatan = page.locator();
+        this.field_outletplg_tujuan = page.locator();
         this.list_jam_keberangkatan = page.locator('div.resvlistpilihan');
+        this.list_jam_keberangkatanplg = page.locator();
+        this.toggle_pp = page.locator();
+        this.field_tangga;_pulang = page.locator();
         this.list_kursi_tersedia = page.locator('div.renderlabelkursikosong');
         this.field_notelp_pemesan = page.locator('input#telppemesan');
         this.field_nama_pemesan = page.locator('input#namapemesan');
@@ -38,6 +43,14 @@ export class Jackal {
         return this.page.locator(`div[onclick*="seloutlettujuan"]:has-text("${value}")`);
     }
 
+    getOutletKeberangkatanPulang(value) {
+
+    }
+
+    getOutletTujuanPulang(value) {
+
+    }
+
     getMetodePembayaran(value) {
         return this.page.locator(`div.btnjp:has-text("${value}")`);
     }
@@ -61,8 +74,40 @@ export class Jackal {
         await this.getOutletTujuan(value).first().click();
     }
 
+    async klikPPToggle() {
+        await this.toggle_pp.click();
+    }
+
+    async pilihTanggalPulang(value) {
+        const [tanggal, bulanText, tahun] = value.split(' ');
+        const bulanMap = { Jan: '1', Feb: '2', Mar: '3', Apr: '4', Mei: '5', Jun: '6', Jul: '7', Agu: '8', Sep: '9', Okt: '10', Nov: '11', Des: '12'};
+        const bulan = bulanMap[bulanText];
+        const posisi_bulan = await this.field_tanggal_pulang.boundingBox(); //Mendapatkan koordinat posisi bulan pada field kalender tanggal pulang
+        const posisi_tanggal = {x: posisi_bulan.x + 10, y: posisi_bulan.y}; //Mendapatkan koordinat posisi tanggal pada field kalender tanggal pulang
+        await this.page.mouse.click(posisi_bulan.x, posisi_bulan.y); //Klik bagian bulan
+        await this.page.keyboard.type(bulan); //Isi bulan
+        await this.page.mouse.click(posisi_tanggal.x, posisi_tanggal.y); //Klik bagian tanggal
+        await this.page.keyboard.type(tanggal); //Isi tanggal
+        await this.field_tanggal_pulang.click(); //Klik field yang mengarah ke bagian tahun
+        await this.field_tanggal_pulang.type(tahun); //Isi tahun  
+    }
+
+    async pilihKeberangkatanPulang(value) {
+        await this.field_outletplg_keberangkatan.click();
+        await this.getOutletKeberangkatanPulang.(value).click();
+    }
+
+    async pilihTujuanPulang(value) {
+        await this.field_outletplg_tujuan.click();
+        await this.getOutletTujuanPulang(value).click();
+    }
+
     async pilihJamKeberangkatan() {
         await this.list_jam_keberangkatan.first().click();
+    }
+
+    async pilihJamKeberangkatanPulang() {
+        await this.list_jam_keberangkatanplg.first().click();
     }
 
     async pilihKursi(value) {
