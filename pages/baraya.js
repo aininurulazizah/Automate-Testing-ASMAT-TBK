@@ -114,7 +114,6 @@ export class Baraya {
         await this.page.waitForTimeout(2000);
         for(let i = 0; i < value; i++) {
             await this.list_kursi_tersedia.nth(i).click();
-            console.log(`kursi ke : ${i}`);
         }
     }
 

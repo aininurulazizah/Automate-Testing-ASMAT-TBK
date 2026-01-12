@@ -18,7 +18,34 @@ export const testData = {
         TanggalBerangkat: getTanggal(2), //Ambil tanggal dua bulan dari sekarang
         Keberangkatan: "BUAH BATU",
         Tujuan: "BTM CILEGON",
-        JumlahPenumpang: 2
+        JumlahPenumpang: 2,
+        ConnectingReservation: {
+            Keberangkatan: "Bayah",
+            Tujuan: "SUCI (HOTEL NINDYA BIODISTRICT )"
+        },
+        MetodeBayar: "TUNAI"
+    },
+
+    Daytrans: {
+        Cred: {
+            Username: "Qcshugi",
+            Password: "Cekbisa654!"
+        },
+        TanggalBerangkat: getTanggal(2),
+        TanggalPulang: getTanggal(3),
+        Keberangkatan: "DIPATIUKUR",
+        Tujuan: "ALFAMART RAYA PAJAJARAN BOGOR",
+        KeberangkatanPulang: "ALFAMART RAYA PAJAJARAN BOGOR",
+        TujuanPulang: "DIPATIUKUR",
+        JumlahPenumpang: 2,
+        ConnectingReservation: {
+            Keberangkatan: "ALFAMART PRAMBANAN",
+            Tujuan: "DIPATIUKUR"
+        },
+        MetodeBayar: {
+            Metode: "TUNAI",
+            Kategori: "TIKET KARYAWAN"
+        }
     },
 
     Baraya: {        
@@ -30,8 +57,10 @@ export const testData = {
         TanggalPulang: '10 Apr 2026', //Ambil tanggal tiga bulan dari sekarang
         Keberangkatan: "CALL CENTER BANDUNG",
         Tujuan: "CIMAREME",
+        KeberangkatanPulang: "CIMAREME",
         TujuanPulang: "SOREANG2",
-        JumlahPenumpang: 2
+        JumlahPenumpang: 2,
+        MetodeBayar: "TUNAI"
     },
 
     Aragon: {
@@ -42,24 +71,30 @@ export const testData = {
         TanggalBerangkat: getTanggal(2), //Ambil tanggal dua bulan dari sekarang
         Keberangkatan: "BANDUNG",
         Tujuan: "Alfamart Banjar Atas",
-        JumlahPenumpang: 2
+        JumlahPenumpang: 2,
+        MetodeBayar: "TUNAI"
     },
 
     Jackal: {
         Cred: {
-            Username: "qcshugi",
+            Username: "Qcshugi",
             Password: "Cekbisa654!"
         },
         TanggalBerangkat: getTanggal(2), //Ambil tanggal dua bulan dari sekarang
         TanggalPulang: getTanggal(3), //Ambil tanggal tiga bulan dari sekarang
         Keberangkatan: "DIPATIUKUR 89 SEBRANG UNI",
         Tujuan: "CHARTER",
-        JumlahPenumpang: 2
+        KeberangkatanPulang: "CHARTER",
+        TujuanPulang: "DIPATIUKUR 89 SEBRANG UNI",
+        JumlahPenumpang: 2,
+        MetodeBayar: "TUNAI"
     },
 
     Pemesan: {
         NamaPemesan: "Pemesan",
-        NoHP: "080000000000"
+        NoHP: "080000000000",
+        // Tambahan data untuk Daytrans :
+        Keterangan: "Ini adalah keterangan"
     },
 
     Penumpang: {

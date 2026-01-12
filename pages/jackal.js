@@ -10,12 +10,12 @@ export class Jackal {
         this.field_current_year = page.locator('span.kaltahun');
         this.field_outlet_keberangkatan = page.locator('span#seloutletasal');
         this.field_outlet_tujuan = page.locator('span#seloutlettujuan');
-        this.field_outletplg_keberangkatan = page.locator();
-        this.field_outletplg_tujuan = page.locator();
+        this.field_outletplg_keberangkatan = page.locator('span#seloutletasalpulang');
+        this.field_outletplg_tujuan = page.locator('seloutlettujuanpulang');
         this.list_jam_keberangkatan = page.locator('div.resvlistpilihan');
-        this.list_jam_keberangkatanplg = page.locator();
-        this.toggle_pp = page.locator();
-        this.field_tangga;_pulang = page.locator();
+        this.list_jam_keberangkatanplg = page.locator('#resvshowjadwalpulang .resvlistpilihan');
+        this.toggle_pp = page.locator('label:has(input#is_pp_switch2)');
+        this.field_tanggal_pulang = page.locator('input#tglpulang');
         this.list_kursi_tersedia = page.locator('div.renderlabelkursikosong');
         this.field_notelp_pemesan = page.locator('input#telppemesan');
         this.field_nama_pemesan = page.locator('input#namapemesan');
@@ -44,11 +44,11 @@ export class Jackal {
     }
 
     getOutletKeberangkatanPulang(value) {
-
+        return this.page.locator(`div[onclick*="seloutletasalpulang"]:has-text("${value}")`);
     }
 
     getOutletTujuanPulang(value) {
-
+        return this.page.locator(`div[onclick*="seloutlettujuanpulang"]:has-text("${value}")`);
     }
 
     getMetodePembayaran(value) {
@@ -93,13 +93,11 @@ export class Jackal {
     }
 
     async pilihKeberangkatanPulang(value) {
-        await this.field_outletplg_keberangkatan.click();
-        await this.getOutletKeberangkatanPulang(value).click();
+        // lokasi keberangkatan pulang auto dipilih di sistem
     }
 
     async pilihTujuanPulang(value) {
-        await this.field_outletplg_tujuan.click();
-        await this.getOutletTujuanPulang(value).click();
+        // tujuan pulang auto dipilih di sistem
     }
 
     async pilihJamKeberangkatan() {
@@ -111,6 +109,7 @@ export class Jackal {
     }
 
     async pilihKursi(value) {
+        await this.page.waitForTimeout(2000);
         for(let i = 0; i < value; i++) {
             await this.list_kursi_tersedia.nth(i).click();
         }

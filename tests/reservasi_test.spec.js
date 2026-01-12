@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test"
-// import { Daytrans } from "../pages/daytrans";
+import { Daytrans } from "../pages/daytrans";
 import { Baraya } from "../pages/baraya";
 import { Aragon } from "../pages/aragon";
 import { Jackal } from "../pages/jackal";
@@ -7,11 +7,11 @@ import { Btm } from "../pages/btm";
 import { testData } from "../test-data/reservasi_data";
 
 const sites = [
-    // {tag: '@daytrans', url: ''},
-    {tag: '@baraya', url: 'https://dev.baraya.asmat.app', locator: Baraya, data: testData.Baraya},
-    {tag: '@aragon', url: 'https://dev.aragon.asmat.app', locator: Aragon, data: testData.Aragon},
-    {tag: '@jackal', url: 'https://dev.jackalx.asmat.app', locator: Jackal, data: testData.Jackal},
-    {tag: '@btm', url: 'https://dev.btm.asmat.app', locator: Btm, data: testData.Btm}
+    {tag: '@daytrans', url: 'https://dev.daytrans.asmat.app', locator: Daytrans, data: testData.Daytrans, roundTrip: true, connectingRes: true},
+    {tag: '@baraya', url: 'https://dev.baraya.asmat.app', locator: Baraya, data: testData.Baraya, roundTrip: true, connectingRes: false},
+    {tag: '@aragon', url: 'https://dev.aragon.asmat.app', locator: Aragon, data: testData.Aragon, roundTrip: false, connectingRes: false},
+    {tag: '@jackal', url: 'https://dev.jackalx.asmat.app', locator: Jackal, data: testData.Jackal, roundTrip: true, connectingRes: false},
+    {tag: '@btm', url: 'https://dev.btm.asmat.app', locator: Btm, data: testData.Btm, roundTrip: false, connectingRes: true},
 ]
 
 const data_Pemesan = testData.Pemesan;
@@ -58,7 +58,7 @@ for (const site of sites) {
   
       await web.isiDataPemesan(data_Pemesan);
   
-      await web.pilihMetodeBayar("TUNAI");
+      await web.pilihMetodeBayar(site.data.MetodeBayar);
   
       await web.cetakTiket();
   
@@ -66,45 +66,85 @@ for (const site of sites) {
               
     })
 
-    test(`${site.tag} - Test Case 2 - Reservasi Round Trip`, async() => {
+    if(site.roundTrip) {
+      test(`${site.tag} - Test Case 2 - Reservasi Round Trip`, async() => {
   
-      const page = await context.newPage();
-      
-      const web = new site.locator(page);
-          
-      await page.goto(`${site.url}/asmat/reservasi`);
-      
-      await web.pilihTanggalBerangkat(site.data.TanggalBerangkat); // Isi tanggal keberangkatan
+        const page = await context.newPage();
+        
+        const web = new site.locator(page);
+            
+        await page.goto(`${site.url}/asmat/reservasi`);
+        
+        await web.pilihTanggalBerangkat(site.data.TanggalBerangkat); // Isi tanggal keberangkatan
+    
+        await web.pilihKeberangkatan(site.data.Keberangkatan); // Isi outlet keberangkatan
+    
+        await web.pilihTujuan(site.data.Tujuan); // Isi outlet tujuan
   
-      await web.pilihKeberangkatan(site.data.Keberangkatan); // Isi outlet keberangkatan
+        await web.klikPPToggle();
   
-      await web.pilihTujuan(site.data.Tujuan); // Isi outlet tujuan
+        await web.pilihTanggalPulang(site.data.TanggalPulang);
+  
+        await web.pilihKeberangkatanPulang(site.data.KeberangkatanPulang);
+  
+        await web.pilihTujuanPulang(site.data.TujuanPulang);
+    
+        await web.pilihJamKeberangkatan();
+  
+        await web.pilihKursi(site.data.JumlahPenumpang);
 
-      await web.klikPPToggle();
+        await web.pilihJamKeberangkatanPulang();
 
-      await web.pilihTanggalPulang(site.data.TanggalPulang);
+        await web.pilihKursi(site.data.JumlahPenumpang);
 
-      await web.pilihKeberangkatanPulang(site.data.Tujuan);
+        await web.isiDataPemesan(data_Pemesan);
+    
+        await web.pilihMetodeBayar(site.data.MetodeBayar);
+    
+        await web.cetakTiket();
+    
+        await page.pause();
+                
+      })
+    }
 
-      await web.pilihTujuanPulang(site.data.TujuanPulang);
-  
-      await web.pilihJamKeberangkatan();
+    if (site.connectingRes) {
 
-      await web.pilihKursi(site.data.JumlahPenumpang);
+      test(`${site.tag} - Test Case 3 - Connecting Reservation`, async() => {
 
-      await web.pilihJamKeberangkatanPulang();
+        const page = await context.newPage();
 
-      await web.pilihKursi(site.data.JumlahPenumpang);
-  
-      await web.isiDataPemesan(data_Pemesan);
-  
-      await web.pilihMetodeBayar("TUNAI");
-  
-      await web.cetakTiket();
-  
-      await page.pause();
-              
-    })
+        const web = new site.locator(page);
+
+        await page.goto(`${site.url}/asmat/reservasi`);
+
+        await web.pilihTanggalBerangkat(site.data.TanggalBerangkat);
+
+        await web.pilihKeberangkatan(site.data.ConnectingReservation.Keberangkatan);
+
+        await web.pilihTujuan(site.data.ConnectingReservation.Tujuan);
+
+        await web.pilihRute();
+
+        await web.pilihJamKeberangkatan();
+
+        await web.pilihKursi(site.data.JumlahPenumpang);
+
+        await web.pilihNextJamKeberangkatan();
+
+        await web.pilihKursi(site.data.JumlahPenumpang);
+
+        await web.isiDataPemesan(data_Pemesan);
+
+        await web.pilihMetodeBayar(site.data.MetodeBayar);
+
+        await web.cetakTiket();
+
+        await page.pause();
+
+      })
+
+    }
   
   });
 
