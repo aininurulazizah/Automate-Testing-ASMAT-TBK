@@ -12,7 +12,8 @@ Proyek automasi testing untuk proses pemesanan tiket pada layanan Asmat : Daytra
   
 ### Cara Menjalankan
 1. Install dependensi yang dibutuhkan
-2. Menjalankan test semua website :
+2. Isi credential login sistem Asmat pada file `.env.example` lalu ubah nama file menjad `.env`
+3. Menjalankan test semua website :
     ```
     npx playwright test ./reservasi_test.spec.js --project=chromium --headed --workers=1
     ```
