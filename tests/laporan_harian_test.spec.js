@@ -1,24 +1,25 @@
-import { test, expect } from "@playwright/test"
-import { Daytrans } from "../pages/daytrans";
+import { test, expect } from "@playwright/test";
+import { Credential } from "../test-data/credential";
+// import { Daytrans } from "../pages/daytrans";
 import { Baraya } from "../pages/baraya";
 import { Aragon } from "../pages/aragon";
 import { Jackal } from "../pages/jackal";
 import { Btm } from "../pages/btm";
-import { testData } from "../test-data/reservasi_data";
+import { testData } from "../test-data/laporan_harian_data";
 import { exportToExcel } from "../utils/excelHelper";
 
 
 const sites = [
-    {tag: '@daytrans', url: 'https://dev.daytrans.asmat.app', locator: Daytrans, data: testData.Daytrans},
-    {tag: '@baraya', url: 'https://dev.baraya.asmat.app', locator: Baraya, data: testData.Baraya},
-    {tag: '@aragon', url: 'https://dev.aragon.asmat.app', locator: Aragon, data: testData.Aragon},
-    {tag: '@jackal', url: 'https://dev.jackalx.asmat.app', locator: Jackal, data: testData.Jackal},
-    {tag: '@btm', url: 'https://dev.btm.asmat.app', locator: Btm, data: testData.Btm},
+  // {tag: '@daytrans', url: 'https://dev.daytrans.asmat.app', locator: Daytrans, data: testData.Daytrans, cred:Credential.Daytrans},
+  {tag: '@baraya', url: 'https://dev.baraya.asmat.app', locator: Baraya, data: testData.Baraya, cred:Credential.Baraya},
+  {tag: '@aragon', url: 'https://dev.aragon.asmat.app', locator: Aragon, data: testData.Aragon, cred:Credential.Aragon},
+  {tag: '@jackal', url: 'https://dev.jackalx.asmat.app', locator: Jackal, data: testData.Jackal, cred:Credential.Jackal},
+  {tag: '@btm', url: 'https://dev.btm.asmat.app', locator: Btm, data: testData.Btm, cred:Credential.Btm}
 ]
 
 for (const site of sites) {
 
-    test.describe('Reservasi', () => {
+    test.describe('Laporan Harian', () => {
   
       test.setTimeout(60000);
     
@@ -28,8 +29,8 @@ for (const site of sites) {
           context = await browser.newContext();  
           const page = await context.newPage();  
           await page.goto(site.url);  // Step Login
-          await page.fill('#username', `${site.data.Cred.Username}`);
-          await page.fill('#password', `${site.data.Cred.Password}`);
+          await page.fill('#username', `${site.cred.Username}`);
+          await page.fill('#password', `${site.cred.Password}`);
           await page.click('#loginbutton');
           await page.waitForURL('**/menu.operasional');
       });
@@ -46,13 +47,15 @@ for (const site of sites) {
 
         await page.goto(`${site.url}/asmat/laporan.harian`);
 
-        await web.pilihTahun('2025');
+        await web.pilihTahun(site.data.PeriodeTahun);
 
-        await web.pilihBulan('Januari');
+        await web.pilihBulan(site.data.PeriodeBulan);
 
         const laporan = await web.ambilDataAll();
 
-        exportToExcel(laporan, `output/Laporan_Harian_${site.tag}_Jan2025.xlsx`, 'Januari 2025');
+        exportToExcel(laporan, 
+          `output/Laporan_Harian_${site.tag}_${site.data.PeriodeBulan}_${site.data.PeriodeTahun}.xlsx`, //Nama File
+          `${site.data.PeriodeBulan}_${site.data.PeriodeTahun}`); //Nama Sheet
 
       });
     
@@ -64,9 +67,9 @@ for (const site of sites) {
             
         await page.goto(`${site.url}/asmat/laporan.harian`);
 
-        await web.pilihTahun('2025');
+        await web.pilihTahun(site.data.PeriodeTahun);
 
-        await web.pilihBulan('Januari');
+        await web.pilihBulan(site.data.PeriodeBulan);
 
         const laporan = await web.ambilData();
 
@@ -92,9 +95,9 @@ for (const site of sites) {
             
         await page.goto(`${site.url}/asmat/laporan.harian`);
 
-        await web.pilihTahun('2025');
+        await web.pilihTahun(site.data.PeriodeTahun);
 
-        await web.pilihBulan('Januari');
+        await web.pilihBulan(site.data.PeriodeBulan);
 
         const laporan = await web.ambilData(); // Data harian tanpa total
 

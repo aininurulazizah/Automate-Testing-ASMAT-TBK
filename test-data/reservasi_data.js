@@ -8,15 +8,9 @@ function getTanggal(value) {
     return today.toLocaleDateString('id-ID', {day: 'numeric', month: 'short', year: 'numeric'}); //Mengembalikan nilai tanggal tujuan
 }
 
-import { requiredEnv } from "../utils/env";
-
 export const testData = {
 
     Btm: {
-        Cred: {
-            Username: requiredEnv('BTM_USERNAME'),
-            Password: requiredEnv('BTM_PASSWORD')
-        },
         TanggalBerangkat: getTanggal(2), //Ambil tanggal dua bulan dari sekarang
         Keberangkatan: "BUAH BATU",
         Tujuan: "BTM CILEGON",
@@ -29,10 +23,6 @@ export const testData = {
     },
 
     Daytrans: {
-        Cred: {
-            Username: requiredEnv('DAYTRANS_USERNAME'),
-            Password: requiredEnv('DAYTRANS_PASSWORD')
-        },
         TanggalBerangkat: getTanggal(2),
         TanggalPulang: getTanggal(3),
         Keberangkatan: "DIPATIUKUR",
@@ -51,10 +41,6 @@ export const testData = {
     },
 
     Baraya: {        
-        Cred: {
-            Username: requiredEnv('BARAYA_USERNAME'),
-            Password: requiredEnv('BARAYA_PASSWORD')
-        },
         TanggalBerangkat: getTanggal(2), //Ambil tanggal dua bulan dari sekarang
         TanggalPulang: '10 Apr 2026', //Ambil tanggal tiga bulan dari sekarang
         Keberangkatan: "CALL CENTER BANDUNG",
@@ -66,10 +52,6 @@ export const testData = {
     },
 
     Aragon: {
-        Cred: {
-            Username: requiredEnv('ARAGON_USERNAME'),
-            Password: requiredEnv('ARAGON_PASSWORD')
-        },
         TanggalBerangkat: getTanggal(2), //Ambil tanggal dua bulan dari sekarang
         Keberangkatan: "BANDUNG",
         Tujuan: "Alfamart Banjar Atas",
@@ -78,10 +60,6 @@ export const testData = {
     },
 
     Jackal: {
-        Cred: {
-            Username: requiredEnv('JACKAL_USERNAME'),
-            Password: requiredEnv('JACKAL_PASSWORD')
-        },
         TanggalBerangkat: getTanggal(2), //Ambil tanggal dua bulan dari sekarang
         TanggalPulang: getTanggal(3), //Ambil tanggal tiga bulan dari sekarang
         Keberangkatan: "DIPATIUKUR 89 SEBRANG UNI",
