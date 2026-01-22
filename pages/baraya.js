@@ -25,7 +25,11 @@ export class Baraya {
 
         // Laporan
         this.field_tahun = page.locator('input#tahun');
-        this.button_enter_tahun = page.locator('a:text-is("GO!")');
+        this.button_enter_periode = page.locator('a:text-is("GO!")');
+        this.fieldFilter = page.locator('select#filter');
+        this.fieldOutlet = page.locator('select#selfilteroutlet');
+        this.field_periode_awal = page.locator('input#tgl_mulai'); //Laporan Kota
+        this.field_periode_akhir = page.locator('input#tgl_akhir'); //Laporan Kota
         
     }
 
@@ -163,11 +167,22 @@ export class Baraya {
 
     async pilihTahun(value) {
         await this.field_tahun.fill(value);
-        await this.button_enter_tahun.click();
     }
 
     async pilihBulan(value) {
         await this.getOpsiBulanLaporan(value).click();
+    }
+
+    async pilihFilter(label) {
+        await this.fieldFilter.selectOption({ label });
+    }
+
+    async pilihOutlet(label) {
+        await this.fieldOutlet.selectOption({ label });
+    }
+
+    async enter() {
+        await this.button_enter_periode.click();
     }
 
     async ambilData() {
@@ -370,5 +385,15 @@ export class Baraya {
 
         }
     }
+
+
+    // ==================================== //
+    // =========== LAPORAN KOTA =========== //
+    // ==================================== //
+
+    async pilihPeriodeAwal(value_tahun) {
+        
+    }
+
 
 }

@@ -26,6 +26,8 @@ export class Btm{
         // Laporan
         this.field_tahun = page.locator('input#tahun');
         this.button_enter_periode = page.locator('a:text-is("GO!")');
+        this.fieldFilter = page.locator('select#filter');
+        this.fieldOutlet = page.locator('select#selfilteroutlet');
         this.field_periode_awal = page.locator('input#tgl_mulai'); //Laporan Kota
         this.field_periode_akhir = page.locator('input#tgl_akhir'); //Laporan Kota
         
@@ -143,11 +145,22 @@ export class Btm{
 
     async pilihTahun(value) {
         await this.field_tahun.fill(value);
-        await this.button_enter_periode.click();
     }
 
     async pilihBulan(value) {
         await this.getOpsiBulanLaporan(value).click();
+    }
+
+    async pilihFilter(label) {
+        await this.fieldFilter.selectOption({ label });
+    }
+
+    async pilihOutlet(label) {
+        await this.fieldOutlet.selectOption({ label });
+    }
+
+    async enter() {
+        await this.button_enter_periode.click();
     }
 
     async ambilData() {
@@ -369,10 +382,6 @@ export class Btm{
         await this.page.locator('a.dp-cal-year').click();
         await this.page.locator(`a.dp-year:has-text("${value_tahun}")`).click();
         await this.page.locator(`a.dp-day:text-is("${value_tanggal}")`).click();
-    }
-
-    async enter() {
-        await this.button_enter_periode.click();
     }
 
     async ambilData_reportByKota() {

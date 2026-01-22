@@ -49,13 +49,19 @@ for (const site of sites) {
 
         await web.pilihTahun(site.data.PeriodeTahun);
 
+        await web.pilihFilter(site.data.FilterBy);
+
+        await web.pilihOutlet(site.data.Outlet);
+
+        await web.enter();
+
         await web.pilihBulan(site.data.PeriodeBulan);
 
         const laporan = await web.ambilDataAll();
 
         exportToExcel(laporan, 
-          `output/Laporan_Harian_${site.tag}_${site.data.PeriodeBulan}_${site.data.PeriodeTahun}.xlsx`, //Nama File
-          `${site.data.PeriodeBulan}_${site.data.PeriodeTahun}`); //Nama Sheet
+          `output/Laporan_Harian_${site.tag}_${site.data.PeriodeBulan}_${site.data.PeriodeTahun}_by ${site.data.FilterBy}.xlsx`, //Nama File
+          `${(site.data.Outlet).substring(0, 31)}`); //Nama Sheet
 
       });
     
@@ -68,6 +74,12 @@ for (const site of sites) {
         await page.goto(`${site.url}/asmat/laporan.harian`);
 
         await web.pilihTahun(site.data.PeriodeTahun);
+
+        await web.pilihFilter(site.data.FilterBy);
+
+        await web.pilihOutlet(site.data.Outlet);
+
+        await web.enter();
 
         await web.pilihBulan(site.data.PeriodeBulan);
 
@@ -96,6 +108,12 @@ for (const site of sites) {
         await page.goto(`${site.url}/asmat/laporan.harian`);
 
         await web.pilihTahun(site.data.PeriodeTahun);
+
+        await web.pilihFilter(site.data.FilterBy);
+
+        await web.pilihOutlet(site.data.Outlet);
+
+        await web.enter();
 
         await web.pilihBulan(site.data.PeriodeBulan);
 

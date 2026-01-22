@@ -20,7 +20,9 @@ export class Aragon {
 
         // Laporan
         this.field_tahun = page.locator('input#tahun');
-        this.button_enter_tahun = page.locator('a:text-is("GO!")');
+        this.button_enter_periode = page.locator('a:text-is("GO!")');
+        this.fieldFilter = page.locator('select#filter');
+        this.fieldOutlet = page.locator('select#selfilteroutlet');
     }
 
     getBulan(value) {
@@ -117,11 +119,22 @@ export class Aragon {
 
     async pilihTahun(value) {
         await this.field_tahun.fill(value);
-        await this.button_enter_tahun.click();
     }
 
     async pilihBulan(value) {
         await this.getOpsiBulanLaporan(value).click();
+    }
+
+    async pilihFilter(label) {
+        await this.fieldFilter.selectOption({ label });
+    }
+
+    async pilihOutlet(label) {
+        await this.fieldOutlet.selectOption({ label });
+    }
+
+    async enter() {
+        await this.button_enter_periode.click();
     }
 
     async ambilData() {
