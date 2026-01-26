@@ -83,7 +83,7 @@ for (const site of sites) {
 
         await web.pilihBulan(site.data.PeriodeBulan);
 
-        const laporan = await web.ambilData();
+        const laporan = await web.ambilDataHarian();
 
         const pendapatan_val = await web.hitungPendapatan(laporan);
 
@@ -117,7 +117,7 @@ for (const site of sites) {
 
         await web.pilihBulan(site.data.PeriodeBulan);
 
-        const laporan = await web.ambilData(); // Data harian tanpa total
+        const laporan = await web.ambilDataHarian(); // Data harian tanpa total
 
         const laporan_total = await web.ambilDataTotal(); // Data total setiap kolom
 

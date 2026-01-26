@@ -15,15 +15,15 @@ export const testData  = {
     },
 
     Baraya: {        
-        PeriodeTahun: '2025',
+        PeriodeTahun: '2026',
         PeriodeBulan: 'Januari',
         FilterBy: 'Waktu Keberangkatan',
         Outlet: 'SEMUA'
     },
 
     Aragon: {
-        PeriodeTahun: '2025',
-        PeriodeBulan: 'Januari',
+        PeriodeTahun: '2023',
+        PeriodeBulan: 'Juli',
         FilterBy: 'Waktu Keberangkatan',
         Outlet: 'SEMUA'
     },
