@@ -57,7 +57,7 @@ for (const site of sites) {
 
         await web.pilihBulan(site.data.PeriodeBulan);
 
-        const laporan = await web.ambilDataAll();
+        const laporan = await web.ambilDataAll(testData.IdentifierColumns);
 
         exportToExcel(laporan, 
           `output/Laporan_Harian_${site.tag}_${site.data.PeriodeBulan}_${site.data.PeriodeTahun}_by ${site.data.FilterBy}.xlsx`, //Nama File
@@ -83,11 +83,11 @@ for (const site of sites) {
 
         await web.pilihBulan(site.data.PeriodeBulan);
 
-        const laporan = await web.ambilDataHarian();
+        const laporan = await web.ambilDataHarian(testData.IdentifierColumns);
 
-        const pendapatan_val = await web.hitungPendapatan(laporan);
+        const pendapatan_val = await web.hitungPendapatan(laporan, site.data.KolomPendapatan);
 
-        const pengeluaran_val = await web.hitungPengeluaran(laporan);
+        const pengeluaran_val = await web.hitungPengeluaran(laporan, site.data.KolomPengeluaran);
 
         const laba_val = await web.hitungLaba(pendapatan_val, pengeluaran_val);
 
@@ -117,9 +117,9 @@ for (const site of sites) {
 
         await web.pilihBulan(site.data.PeriodeBulan);
 
-        const laporan = await web.ambilDataHarian(); // Data harian tanpa total
+        const laporan = await web.ambilDataHarian(testData.IdentifierColumns); // Data harian tanpa total
 
-        const laporan_total = await web.ambilDataTotal(); // Data total setiap kolom
+        const laporan_total = await web.ambilDataTotal(testData.IdentifierColumns); // Data total setiap kolom
 
         const baris_total_val = await web.hitungTotalPerField(laporan);
 

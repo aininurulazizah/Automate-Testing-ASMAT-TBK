@@ -153,7 +153,7 @@ export class Btm{
         await this.button_enter_periode.click();
     }
 
-    async ambilData(detail) {
+    async ambilData(detail, identifiers) {
         await this.page.waitForSelector('table tbody tr', {timeout: 2000});
 
         // Ambil Header
@@ -207,18 +207,14 @@ export class Btm{
                     
                 }
             } else {
-                data[keys[0]] = 'TOTAL';
 
-                console.log("keys.length : ", keys.length);
-
-                for (let j = 1; j < keys.length; j++) {
-                    console.log("current j = ", j);
-                    const rawText = (await col.nth(j).innerText()).trim();
-                    const totalKey = `Total_${keys[j]}`;
-                    data[totalKey] = this.parseNumber(rawText);
+                for (let j = 0; j < keys.length; j++) { //Untuk setiap kolom
+                    if(!identifiers.includes(keys[j])) { //Jika kolom bukan identifier maka masukkan ke total
+                        const rawText = (await col.nth(j).innerText()).trim();
+                        const totalKey = `Total_${keys[j]}`;
+                        data[totalKey] = this.parseNumber(rawText);
+                    }
                 }
-
-                delete data[Object.keys(data)[0]];
             }
 
             switch (detail) {
@@ -243,26 +239,22 @@ export class Btm{
 
     }
 
-    async ambilDataHarian() {
-        return await this.ambilData("Harian");
+    async ambilDataHarian(value_identifier) {
+        return await this.ambilData("Harian", value_identifier);
     }
 
-    async ambilDataTotal() {
-        return await this.ambilData("Total");
+    async ambilDataTotal(value_identifier) {
+        return await this.ambilData("Total", value_identifier);
     }
 
-    async ambilDataAll() {
-        return await this.ambilData("All");
+    async ambilDataAll(value_identifier) {
+        return await this.ambilData("All", value_identifier);
     }
 
-    async hitungPendapatan(values) {
+    async hitungPendapatan(values_laporan, list_pendapatan) {
         const result  = [];
-        const list_pendapatan = [ //Jika ada kolom baru tambahkan nama kolom yang termasuk ke dalam pendapatan ke list ini
-            'penjualan_tiket',
-            'penjualan_paket'
-        ];
 
-        for (const value of values) {
+        for (const value of values_laporan) {
             let total_pendapatan = 0;
             
             for (const key of list_pendapatan) {
@@ -279,18 +271,10 @@ export class Btm{
         return result;
     }
 
-    async hitungPengeluaran(values) {
+    async hitungPengeluaran(values_laporan, list_pengeluaran) {
         const result = [];
-        const list_pengeluaran = [ //Jika ada kolom baru tambahkan nama kolom yang termasuk ke dalam pengeluaran ke list ini
-            'biaya_op_test',
-            'biaya_op_bbm_cash',
-            'biaya_op_bbm_emoney',
-            'biaya_op_etoll',
-            'biaya_op_op_freelance',
-            'biaya_op_op_karyawan',
-        ]
 
-        for (const value of values) {
+        for (const value of values_laporan) {
             let total_pengeluaran = 0;
 
             for (const key of list_pengeluaran) {

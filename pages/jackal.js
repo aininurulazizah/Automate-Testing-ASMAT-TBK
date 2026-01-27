@@ -170,7 +170,7 @@ export class Jackal {
         await this.button_enter_periode.click();
     }
 
-    async ambilData(detail) {
+    async ambilData(detail, identifiers) {
         await this.page.waitForSelector('table tbody tr', {timeout: 1000});
 
         // Ambil Header
@@ -224,15 +224,15 @@ export class Jackal {
                     
                 }
             } else {
-                data[keys[0]] = 'TOTAL';
 
-                for (let j = 1; j < keys.length; j++) {
-                    const rawText = (await col.nth(j).innerText()).trim();
-                    const totalKey = `Total_${keys[j]}`;
-                    data[totalKey] = this.parseNumber(rawText);
+                for (let j = 0; j < keys.length; j++) { //Untuk setiap kolom
+                    if(!identifiers.includes(keys[j])) { //Jika kolom bukan identifier maka masukkan ke data total
+                        const rawText = (await col.nth(j).innerText()).trim();
+                        const totalKey = `Total_${keys[j]}`;
+                        data[totalKey] = this.parseNumber(rawText);
+                    }
                 }
 
-                delete data[Object.keys(data)[0]];
             }
 
             switch (detail) {
@@ -257,26 +257,22 @@ export class Jackal {
 
     }
 
-    async ambilDataHarian() {
-        return await this.ambilData("Harian");
+    async ambilDataHarian(value_identifier) {
+        return await this.ambilData("Harian", value_identifier);
     }
 
-    async ambilDataTotal() {
-        return await this.ambilData("Total");
+    async ambilDataTotal(value_identifier) {
+        return await this.ambilData("Total", value_identifier);
     }
 
-    async ambilDataAll() {
-        return await this.ambilData("All");
+    async ambilDataAll(value_identifier) {
+        return await this.ambilData("All", value_identifier);
     }
 
-    async hitungPendapatan(values) {
+    async hitungPendapatan(values_laporan, list_pendapatan) {
         const result  = [];
-        const list_pendapatan = [ //Jika ada kolom baru tambahkan nama kolom yang termasuk ke dalam pendapatan ke list ini
-            'penjualan_tiket',
-            'penjualan_paket'
-        ];
 
-        for (const value of values) {
+        for (const value of values_laporan) {
             let total_pendapatan = 0;
             
             for (const key of list_pendapatan) {
@@ -293,15 +289,10 @@ export class Jackal {
         return result;
     }
 
-    async hitungPengeluaran(values) {
+    async hitungPengeluaran(values_laporan, list_pengeluaran) {
         const result = [];
-        const list_pengeluaran = [ //Jika ada kolom baru tambahkan nama kolom yang termasuk ke dalam pengeluaran ke list ini
-            'biaya_op_bbm',
-            'biaya_op_premi_driver',
-            'biaya_op_toll'
-        ]
 
-        for (const value of values) {
+        for (const value of values_laporan) {
             let total_pengeluaran = 0;
 
             for (const key of list_pengeluaran) {
