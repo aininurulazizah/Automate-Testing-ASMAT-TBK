@@ -153,33 +153,24 @@ export class Baraya {
         await this.button_action_goshow.click()
     }
 
-    // Laporan
+    // ==================================== //
+    // ============== LAPORAN ============= //
+    // ==================================== //
 
-    async pilihTahun(value) {
-        await this.field_tahun.fill(value);
-    }
-
-    async pilihBulan(value) {
-        await this.getOpsiBulanLaporan(value).click();
-    }
-
-    async pilihFilter(label) {
-        await this.fieldFilter.selectOption({ label });
-    }
-
-    async pilihOutlet(label) {
-        await this.fieldOutlet.selectOption({ label });
-    }
-
-    async enter() {
-        await this.button_enter_periode.click();
-    }
+    // ** Pengambilan Data Laporan ** //
 
     async ambilData(detail, identifiers) {
-        await this.page.waitForSelector('table tbody tr', {timeout: 1000});
+        await this.page.waitForSelector('table tbody tr');
+
+        const hasSeparatedTable = 
+            await this.page.locator('#tableheader').count > 0 && 
+            await this.page.locator('#tablecontent').count > 0 //Hasil true/false apakah header dan isi tabel elemennya terpisah atau tidak
+
+        const headerTable = hasSeparatedTable ? this.page.locator('#tableheader') : this.page.locator('table');   //Assign tabel berdasarkan hasSeparatedTable?
+        const contentTable = hasSeparatedTable ? this.page.locator('#tablecontent') : this.page.locator('table');
 
         // Ambil Header
-        const headerRows = this.page.locator('table tbody tr'); //Ambil elemen tr (baris)
+        const headerRows = headerTable.locator('tbody tr'); //Ambil elemen tr (baris) untuk header
         const headerRow1 = headerRows.nth(0); //Ambil elemen baris pertama
         const headerRow2 = headerRows.nth(1); //Ambil elemen baris kedua
         const mainHeaders = await headerRow1.locator('th').all(); //Ambil elemen kolom header di baris pertama sebagai main header
@@ -187,54 +178,65 @@ export class Baraya {
         const keys = [];
         let subIndex = 0;
 
-        for(const th of mainHeaders) {
+        for(const th of mainHeaders) {  //Mengisi nama kolom
             const text = (await th.innerText()).trim();
             const colspan = await th.getAttribute('colspan');
             const rowspan = await th.getAttribute('rowspan');
-            const baseKey = text.toLowerCase().replace(/[\s-]+/g, '_');
+            const baseKey = text.toLowerCase().replace(/[\s\-()]+/g, '_').replace(/^_+|_+$/g, '');
             
-            if (rowspan === '2') {
-                keys.push(baseKey);
-            }
-
-            if (colspan) {
-                const span = parseInt(colspan);
-                for (let i = 0; i < span; i++) {
-                    const sub = subHeaders[subIndex].toLowerCase().replace(/[\s-]+/g, '_');
-                    keys.push(`${baseKey}_${sub}`);
-                    subIndex++;
+            if (text !== '') {
+                if (rowspan === '2') {
+                    keys.push(baseKey);
+                }
+    
+                if (colspan) {
+                    const span = parseInt(colspan);
+                    for (let i = 0; i < span; i++) {
+                        const sub = subHeaders[subIndex].toLowerCase().replace(/[\s\-()]+/g, '_').replace(/^_+|_+$/g, '');
+                        keys.push(`${baseKey}_${sub}`);
+                        subIndex++;
+                    }
                 }
             }
         }
 
         // Ambil data
-        const rowCount = await headerRows.count();
+        const rows = contentTable.locator('tbody tr'); //Ambil elemen baris untuk body/isi
+        const rowCount = await rows.count(); //Hitung jumlah baris
+        const startRowIndex = hasSeparatedTable ? 0 : 2;  //Jika header dan isi dipisah maka index penghitung baris dimulai dari 0
         const result = [];
 
-        for (let i = 2; i < rowCount; i++) {
-            const row = headerRows.nth(i);
+        for (let i = startRowIndex; i < rowCount; i++) { //Untuk setiap baris isi table
+            const row = rows.nth(i);
             const col = row.locator('td');
+            const colCount = await col.count();
             const isYellow = await row.evaluate(el => el.classList.contains('yellow'));
             const data = {}
 
-            if (!isYellow) {
-                for (let j = 0; j < keys.length; j++) {
+            if (!isYellow) {  // Jika baris bukan baris total (ditandai dengan baris kuning)
+
+                for (let j = 0; j < colCount; j++) {  //Untuk setiap kolom di baris tersebut
                     const rawText = (await col.nth(j).innerText()).trim();
     
-                    if(j === 0) {
-                        data[keys[j]] = rawText;
-                    } else {
-                        data[keys[j]] = this.parseNumber(rawText);
+                    if (keys[j] !== undefined) {
+                        if (identifiers.includes(keys[j])) { // Jika kolom identifier
+                            data[keys[j]] = rawText;
+                        } else {
+                            data[keys[j]] = this.parseNumber(rawText);
+                        }
                     }
                     
                 }
+
             } else {
 
-                for (let j = 0; j < keys.length; j++) { //Untuk setiap kolom
-                    if(!identifiers.includes(keys[j])) { //Jika kolom bukan identifier maka masukkan ke data total
-                        const rawText = (await col.nth(j).innerText()).trim();
+                let startTotalIndex = 1;
+                for (let j = 0; j < colCount; j++) {
+                    if(!identifiers.includes(keys[j]) && keys[j] !== undefined) { //Jika kolom bukan identifier maka masukkan ke total
+                        const rawText = (await col.nth(startTotalIndex).innerText()).trim();
                         const totalKey = `Total_${keys[j]}`;
                         data[totalKey] = this.parseNumber(rawText);
+                        startTotalIndex++;
                     }
                 }
 
@@ -274,39 +276,66 @@ export class Baraya {
         return await this.ambilData("All", value_identifier);
     }
 
-    async hitungPendapatan(values_laporan, list_pendapatan) {
-        const result  = [];
+    // ** Filter Laporan ** //
 
-        for (const value of values_laporan) {
-            let total_pendapatan = 0;
-            
-            for (const key of list_pendapatan) {
-                total_pendapatan += value[key] ?? 0;
-            }
+    async pilihTahun(value) {
+        await this.field_tahun.fill(value);
+    }
 
-            const data = {
-                id_tanggal  : value.tanggal,
-                pendapatan  : total_pendapatan
+    async pilihBulan(value) {
+        await this.getOpsiBulanLaporan(value).click();
+    }
+
+    async pilihFilter(label) {
+        await this.fieldFilter.selectOption({ label });
+    }
+
+    async pilihOutlet(label) {
+        await this.fieldOutlet.selectOption({ label });
+    }
+
+    async pilihPeriodeAwal(value_tahun, value_bulan, value_tanggal) {
+        await this.field_periode_awal.click();
+        await this.page.locator('a.dp-cal-month').click();
+        await this.page.locator(`a.dp-month:has-text("${value_bulan}")`).click();
+        await this.page.locator('a.dp-cal-year').click();
+        await this.page.locator(`a.dp-year:has-text("${value_tahun}")`).click();
+        await this.page.locator(`a.dp-day:text-is("${value_tanggal}")`).first().click();
+    }
+
+    async pilihPeriodeAkhir(value_tahun, value_bulan, value_tanggal) {
+        await this.field_periode_akhir.click();
+        await this.page.locator('a.dp-cal-month').click();
+        await this.page.locator(`a.dp-month:has-text("${value_bulan}")`).click();
+        await this.page.locator('a.dp-cal-year').click();
+        await this.page.locator(`a.dp-year:has-text("${value_tahun}")`).click();
+        await this.page.locator(`a.dp-day:text-is("${value_tanggal}")`).click();
+    }
+
+    async enter() {
+        await this.button_enter_periode.click();
+    }
+
+    // ** Laporan Harian ** //
+
+    async hitungTotalPerKategori(values_laporan, object_list, identifier) {
+        const result = [];
+
+        for (const value of values_laporan) {  // Untuk setiap baris
+            const data = {  //Definisi data pertama diisi dengan id
+                id: value[identifier]
             };
 
-            result.push(data);
-        }
-        return result;
-    }
+            for (const [kategori, koloms] of Object.entries(object_list)) { //Untuk setiap kategori pengeluaran/pendapatan
+                let total = 0;
 
-    async hitungPengeluaran(values_laporan, list_pengeluaran) {
-        const result = [];
+                for (const kolom of koloms) {  //Untuk setiap kolom di dalam setiap kategori
+                    total += value[kolom] ?? 0;  //Jumlahkan nilainya
+                }
 
-        for (const value of values_laporan) {
-            let total_pengeluaran = 0;
+                const key_column = kategori.toLowerCase();
 
-            for (const key of list_pengeluaran) {
-                total_pengeluaran += value[key] ?? 0;
-            }
-
-            const data = {
-                id_tanggal  : value.tanggal,
-                pengeluaran : total_pengeluaran
+                data[`${key_column}_total`] = total;  //isi kolom yang disesuaikan kategori saat ini
             }
 
             result.push(data);
@@ -314,28 +343,54 @@ export class Baraya {
         return result;
     }
 
+    async hitungPengeluaran(values_laporan, object_list_pengeluaran, identifier) {
+        return await this.hitungTotalPerKategori(values_laporan, object_list_pengeluaran, identifier);
+    }
+
+    async hitungPendapatan(values_laporan, object_list_pendapatan, identifier) {
+        return await this.hitungTotalPerKategori(values_laporan, object_list_pendapatan, identifier);
+    }
+
+    async jumlahTanpaId(row) {
+        let total = 0;
+    
+        for (const [key, value] of Object.entries(row)) {
+            if (key !== 'id') {
+                total += value ?? 0;
+            }
+        }
+    
+        return total;
+    }
+    
     async hitungLaba(pendapatan_values, pengeluaran_values) {
         const result = [];
-
-        for(const value of pendapatan_values) {
-
-            const data = {
-                id_tanggal  : value.id_tanggal,
-                laba        : value.pendapatan - (pengeluaran_values.find(p => p.id_tanggal === value.id_tanggal).pengeluaran )
-            }
-
-            result.push(data);
-
+    
+        for (const pendapatan of pendapatan_values) {
+            const total_pendapatan = await this.jumlahTanpaId(pendapatan);
+    
+            const pengeluaran = pengeluaran_values.find( p => p.id === pendapatan.id);
+    
+            const total_pengeluaran = pengeluaran
+                ? await this.jumlahTanpaId(pengeluaran)
+                : 0;
+    
+            result.push({
+                id: pendapatan.id,
+                laba: total_pendapatan - total_pengeluaran
+            });
         }
+    
         return result;
     }
-
-    async hitungTotalPerField(values) {
+    
+    async hitungTotalPerField(values, identifiers) {
         let temp_koloms = Object.keys(values[0]); // Ambil salah satu object untuk diambil nama kolomnya
         let result = [];
         let result_temp = {};
+
         for (const temp_kolom of temp_koloms) { // Pembuatan kolom temporari untuk setiap kolom
-            if (temp_kolom !== 'tanggal') {
+            if (!identifiers.includes(temp_kolom)) {
                 result_temp[`Total_${temp_kolom}`] = 0;
             }
         }
@@ -350,24 +405,31 @@ export class Baraya {
         }
 
         result.push(result_temp);
-        console.log('hasil semua total : ', result);
+
         return result;
     }
 
-    async validasiPengeluaran(values_laporan, values_pengeluaran_val) {
-        for (const value of values_pengeluaran_val) {
-            expect (
-                (values_laporan.find(p => p.tanggal === value.id_tanggal)).biaya_op_total,
-                `Validasi total pengeluaran pada tanggal ${value.id_tanggal}`
-            ).toBe(value.pengeluaran)
+    async validasiPengeluaran({ actual, expected }) {
+        const expected_columns = Object.keys(actual[0]).filter( key => key !== 'id' );
+
+        for (const value of expected) {
+            
+            for (const col of expected_columns) {
+                expect (
+                    (actual.find(p => p.id === value.id))[col],
+                    `Validasi ${col} pada ${value.id}`
+                ).toBe(value[col])
+            }
+
         }
     }
 
-    async validasiLaba(values_laporan, values_laba_val) {
-        for (const value of values_laba_val) {
+    async validasiLaba({ actual, expected, expected_column }) {
+
+        for (const value of expected) {
             expect (
-                (values_laporan.find(p => p.tanggal === value.id_tanggal)).total_laba,
-                `Validasi total laba pada tanggal ${value.id_tanggal}`
+                (actual.find(p => p.id === value.id))[expected_column],
+                `Validasi total laba pada ${value.id}`
             ).toBe(value.laba)
         }
     }
@@ -386,53 +448,5 @@ export class Baraya {
         }
     }
 
-
-    // ==================================== //
-    // =========== LAPORAN KOTA =========== //
-    // ==================================== //
-
-    async pilihPeriodeAwal(value_tahun, value_bulan, value_tanggal) {
-        
-    }
-
-    async pilihPeriodeAkhir(value_tahun, value_bulan, value_tanggal) {
-
-    }
-
-    async ambilData_reportByKota() {
-
-    }
-
-    async ambilDataTotal_reportByKota() {
-
-    }
-
-    async ambilDataAll_reportByKota() {
-
-    }
-
-    async hitungPendapatan_reportByKota() {
-
-    }
-
-    async hitungPengeluaran_reportByKota() {
-
-    }
-
-    async hitungLaba_reportByKota() {
-
-    }
-
-    async validasiPengeluaran_reportByKota() {
-
-    }
-
-    async validasiLaba_reportByKota() {
-
-    }
-
-    async hitungTotalPerField_reportByKota() {
-        
-    }
 
 }

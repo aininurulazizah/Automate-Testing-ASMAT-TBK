@@ -143,7 +143,7 @@ export class Aragon {
             const text = (await th.innerText()).trim();
             const colspan = await th.getAttribute('colspan');
             const rowspan = await th.getAttribute('rowspan');
-            const baseKey = text.toLowerCase().replace(/\s+/g, '_');
+            const baseKey = text.toLowerCase().replace(/[\s\-()]+/g, '_').replace(/^_+|_+$/g, '');
             
             if (rowspan === '2') {
                 keys.push(baseKey);
@@ -152,7 +152,7 @@ export class Aragon {
             if (colspan) {
                 const span = parseInt(colspan);
                 for (let i = 0; i < span; i++) {
-                    const sub = subHeaders[subIndex].toLowerCase().replace(/\s+/g, '_');
+                    const sub = subHeaders[subIndex].toLowerCase().replace(/[\s\-()]+/g, '_').replace(/^_+|_+$/g, '');
                     keys.push(`${baseKey}_${sub}`);
                     subIndex++;
                 }
@@ -226,39 +226,24 @@ export class Aragon {
         return await this.ambilData("All", value_identifier);
     }
 
-    async hitungPendapatan(values_laporan, list_pendapatan) {
-        const result  = [];
+    async hitungTotalPerKategori(values_laporan, object_list, identifier) {
+        const result = [];
 
-        for (const value of values_laporan) {
-            let total_pendapatan = 0;
-            
-            for (const key of list_pendapatan) {
-                total_pendapatan += value[key] ?? 0;
-            }
-
-            const data = {
-                id_tanggal  : value.tanggal,
-                pendapatan  : total_pendapatan
+        for (const value of values_laporan) {  // Untuk setiap baris
+            const data = {  //Definisi data pertama diisi dengan id
+                id: value[identifier]
             };
 
-            result.push(data);
-        }
-        return result;
-    }
+            for (const [kategori, koloms] of Object.entries(object_list)) { //Untuk setiap kategori pengeluaran/pendapatan
+                let total = 0;
 
-    async hitungPengeluaran(values_laporan, list_pengeluaran) {
-        const result = [];
+                for (const kolom of koloms) {  //Untuk setiap kolom di dalam setiap kategori
+                    total += value[kolom] ?? 0;  //Jumlahkan nilainya
+                }
 
-        for (const value of values_laporan) {
-            let total_pengeluaran = 0;
+                const key_column = kategori.toLowerCase();
 
-            for (const key of list_pengeluaran) {
-                total_pengeluaran += value[key] ?? 0;
-            }
-
-            const data = {
-                id_tanggal  : value.tanggal,
-                pengeluaran : total_pengeluaran
+                data[`${key_column}_total`] = total;  //isi kolom yang disesuaikan kategori saat ini
             }
 
             result.push(data);
@@ -266,28 +251,54 @@ export class Aragon {
         return result;
     }
 
+    async hitungPengeluaran(values_laporan, object_list_pengeluaran, identifier) {
+        return await this.hitungTotalPerKategori(values_laporan, object_list_pengeluaran, identifier);
+    }
+
+    async hitungPendapatan(values_laporan, object_list_pendapatan, identifier) {
+        return await this.hitungTotalPerKategori(values_laporan, object_list_pendapatan, identifier);
+    }
+
+    async jumlahTanpaId(row) {
+        let total = 0;
+    
+        for (const [key, value] of Object.entries(row)) {
+            if (key !== 'id') {
+                total += value ?? 0;
+            }
+        }
+    
+        return total;
+    }
+    
     async hitungLaba(pendapatan_values, pengeluaran_values) {
         const result = [];
-
-        for(const value of pendapatan_values) {
-
-            const data = {
-                id_tanggal  : value.id_tanggal,
-                laba        : value.pendapatan - (pengeluaran_values.find(p => p.id_tanggal === value.id_tanggal).pengeluaran )
-            }
-
-            result.push(data);
-
+    
+        for (const pendapatan of pendapatan_values) {
+            const total_pendapatan = await this.jumlahTanpaId(pendapatan);
+    
+            const pengeluaran = pengeluaran_values.find( p => p.id === pendapatan.id);
+    
+            const total_pengeluaran = pengeluaran
+                ? await this.jumlahTanpaId(pengeluaran)
+                : 0;
+    
+            result.push({
+                id: pendapatan.id,
+                laba: total_pendapatan - total_pengeluaran
+            });
         }
+    
         return result;
     }
-
-    async hitungTotalPerField(values) {
+    
+    async hitungTotalPerField(values, identifiers) {
         let temp_koloms = Object.keys(values[0]); // Ambil salah satu object untuk diambil nama kolomnya
         let result = [];
         let result_temp = {};
+
         for (const temp_kolom of temp_koloms) { // Pembuatan kolom temporari untuk setiap kolom
-            if (temp_kolom !== 'tanggal') {
+            if (!identifiers.includes(temp_kolom)) {
                 result_temp[`Total_${temp_kolom}`] = 0;
             }
         }
@@ -302,24 +313,31 @@ export class Aragon {
         }
 
         result.push(result_temp);
-        console.log('hasil semua total : ', result);
+
         return result;
     }
 
-    async validasiPengeluaran(values_laporan, values_pengeluaran_val) {
-        for (const value of values_pengeluaran_val) {
-            expect (
-                (values_laporan.find(p => p.tanggal === value.id_tanggal)).biaya_op_total,
-                `Validasi total pengeluaran pada tanggal ${value.id_tanggal}`
-            ).toBe(value.pengeluaran)
+    async validasiPengeluaran({ actual, expected }) {
+        const expected_columns = Object.keys(actual[0]).filter( key => key !== 'id' );
+
+        for (const value of expected) {
+            
+            for (const col of expected_columns) {
+                expect (
+                    (actual.find(p => p.id === value.id))[col],
+                    `Validasi ${col} pada ${value.id}`
+                ).toBe(value[col])
+            }
+
         }
     }
 
-    async validasiLaba(values_laporan, values_laba_val) {
-        for (const value of values_laba_val) {
+    async validasiLaba({ actual, expected, expected_column }) {
+
+        for (const value of expected) {
             expect (
-                (values_laporan.find(p => p.tanggal === value.id_tanggal)).total_laba,
-                `Validasi total laba pada tanggal ${value.id_tanggal}`
+                (actual.find(p => p.id === value.id))[expected_column],
+                `Validasi total laba pada ${value.id}`
             ).toBe(value.laba)
         }
     }

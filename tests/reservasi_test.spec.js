@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { Credential } from "../test-data/credential";
-// import { Daytrans } from "../pages/daytrans";
+import { Daytrans } from "../pages/daytrans";
 import { Baraya } from "../pages/baraya";
 import { Aragon } from "../pages/aragon";
 import { Jackal } from "../pages/jackal";
@@ -8,7 +8,7 @@ import { Btm } from "../pages/btm";
 import { testData } from "../test-data/reservasi_data";
 
 const sites = [
-    // {tag: '@daytrans', url: 'https://dev.daytrans.asmat.app', locator: Daytrans, data: testData.Daytrans, cred:Credential.Daytrans, roundTrip: true, connectingRes: true},
+    {tag: '@daytrans', url: 'https://dev.daytrans.asmat.app', locator: Daytrans, data: testData.Daytrans, cred:Credential.Daytrans, roundTrip: true, connectingRes: true},
     {tag: '@baraya', url: 'https://dev.baraya.asmat.app', locator: Baraya, data: testData.Baraya, cred:Credential.Baraya, roundTrip: true, connectingRes: false},
     {tag: '@aragon', url: 'https://dev.aragon.asmat.app', locator: Aragon, data: testData.Aragon, cred:Credential.Aragon, roundTrip: false, connectingRes: false},
     {tag: '@jackal', url: 'https://dev.jackalx.asmat.app', locator: Jackal, data: testData.Jackal, cred:Credential.Jackal, roundTrip: true, connectingRes: false},

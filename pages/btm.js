@@ -1,5 +1,4 @@
 import { expect } from "@playwright/test";
-import { throws } from "assert";
 
 export class Btm{
 
@@ -130,34 +129,23 @@ export class Btm{
 
 
     // ==================================== //
-    // ========== LAPORAN HARIAN ========== //
+    // ============== LAPORAN ============= //
     // ==================================== //
 
-    async pilihTahun(value) {
-        await this.field_tahun.fill(value);
-    }
-
-    async pilihBulan(value) {
-        await this.getOpsiBulanLaporan(value).click();
-    }
-
-    async pilihFilter(label) {
-        await this.fieldFilter.selectOption({ label });
-    }
-
-    async pilihOutlet(label) {
-        await this.fieldOutlet.selectOption({ label });
-    }
-
-    async enter() {
-        await this.button_enter_periode.click();
-    }
+    // ** Pengambilan Data Laporan ** //
 
     async ambilData(detail, identifiers) {
-        await this.page.waitForSelector('table tbody tr', {timeout: 2000});
+        await this.page.waitForSelector('table tbody tr');
+
+        const hasSeparatedTable = 
+            await this.page.locator('#tableheader').count > 0 && 
+            await this.page.locator('#tablecontent').count > 0 //Hasil true/false apakah header dan isi tabel elemennya terpisah atau tidak
+
+        const headerTable = hasSeparatedTable ? this.page.locator('#tableheader') : this.page.locator('table');   //Assign tabel berdasarkan hasSeparatedTable?
+        const contentTable = hasSeparatedTable ? this.page.locator('#tablecontent') : this.page.locator('table');
 
         // Ambil Header
-        const headerRows = this.page.locator('table tbody tr'); //Ambil elemen tr (baris)
+        const headerRows = headerTable.locator('tbody tr'); //Ambil elemen tr (baris) untuk header
         const headerRow1 = headerRows.nth(0); //Ambil elemen baris pertama
         const headerRow2 = headerRows.nth(1); //Ambil elemen baris kedua
         const mainHeaders = await headerRow1.locator('th').all(); //Ambil elemen kolom header di baris pertama sebagai main header
@@ -165,56 +153,68 @@ export class Btm{
         const keys = [];
         let subIndex = 0;
 
-        for(const th of mainHeaders) {
+        for(const th of mainHeaders) {  //Mengisi nama kolom
             const text = (await th.innerText()).trim();
             const colspan = await th.getAttribute('colspan');
             const rowspan = await th.getAttribute('rowspan');
-            const baseKey = text.toLowerCase().replace(/\s+/g, '_');
+            const baseKey = text.toLowerCase().replace(/[\s\-()]+/g, '_').replace(/^_+|_+$/g, '');
             
-            if (rowspan === '2') {
-                keys.push(baseKey);
-            }
-
-            if (colspan) {
-                const span = parseInt(colspan);
-                for (let i = 0; i < span; i++) {
-                    const sub = subHeaders[subIndex].toLowerCase().replace(/\s+/g, '_');
-                    keys.push(`${baseKey}_${sub}`);
-                    subIndex++;
+            if (text !== '') {
+                if (rowspan === '2') {
+                    keys.push(baseKey);
+                }
+    
+                if (colspan) {
+                    const span = parseInt(colspan);
+                    for (let i = 0; i < span; i++) {
+                        const sub = subHeaders[subIndex].toLowerCase().replace(/[\s\-()]+/g, '_').replace(/^_+|_+$/g, '');
+                        keys.push(`${baseKey}_${sub}`);
+                        subIndex++;
+                    }
                 }
             }
         }
 
         // Ambil data
-        const rowCount = await headerRows.count();
+        const rows = contentTable.locator('tbody tr'); //Ambil elemen baris untuk body/isi
+        const rowCount = await rows.count(); //Hitung jumlah baris
+        const startRowIndex = hasSeparatedTable ? 0 : 2;  //Jika header dan isi dipisah maka index penghitung baris dimulai dari 0
         const result = [];
 
-        for (let i = 2; i < rowCount; i++) {
-            const row = headerRows.nth(i);
+        for (let i = startRowIndex; i < rowCount; i++) { //Untuk setiap baris isi table
+            const row = rows.nth(i);
             const col = row.locator('td');
+            const colCount = await col.count();
             const isYellow = await row.evaluate(el => el.classList.contains('yellow'));
             const data = {}
 
-            if (!isYellow) {
-                for (let j = 0; j < keys.length; j++) {
+            if (!isYellow) {  // Jika baris bukan baris total (ditandai dengan baris kuning)
+
+                for (let j = 0; j < colCount; j++) {  //Untuk setiap kolom di baris tersebut
                     const rawText = (await col.nth(j).innerText()).trim();
     
-                    if(j === 0) {
-                        data[keys[j]] = rawText;
-                    } else {
-                        data[keys[j]] = this.parseNumber(rawText);
+                    if (keys[j] !== undefined) {
+                        if (identifiers.includes(keys[j])) { // Jika kolom identifier
+                            data[keys[j]] = rawText;
+                        } else {
+                            data[keys[j]] = this.parseNumber(rawText);
+                        }
                     }
                     
                 }
+
             } else {
 
-                for (let j = 0; j < keys.length; j++) { //Untuk setiap kolom
-                    if(!identifiers.includes(keys[j])) { //Jika kolom bukan identifier maka masukkan ke total
-                        const rawText = (await col.nth(j).innerText()).trim();
+                let startTotalIndex = 1;
+                for (let j = 0; j < colCount; j++) {
+                    if(!identifiers.includes(keys[j]) && keys[j] !== undefined) { //Jika kolom bukan identifier maka masukkan ke total
+                        const rawText = (await col.nth(startTotalIndex).innerText()).trim();
                         const totalKey = `Total_${keys[j]}`;
                         data[totalKey] = this.parseNumber(rawText);
+                        startTotalIndex++;
                     }
                 }
+
             }
 
             switch (detail) {
@@ -251,122 +251,23 @@ export class Btm{
         return await this.ambilData("All", value_identifier);
     }
 
-    async hitungPendapatan(values_laporan, list_pendapatan) {
-        const result  = [];
+    // ** Filter Laporan ** //
 
-        for (const value of values_laporan) {
-            let total_pendapatan = 0;
-            
-            for (const key of list_pendapatan) {
-                total_pendapatan += value[key] ?? 0;
-            }
-
-            const data = {
-                id_tanggal  : value.tanggal,
-                pendapatan  : total_pendapatan
-            };
-
-            result.push(data);
-        }
-        return result;
+    async pilihTahun(value) {
+        await this.field_tahun.fill(value);
     }
 
-    async hitungPengeluaran(values_laporan, list_pengeluaran) {
-        const result = [];
-
-        for (const value of values_laporan) {
-            let total_pengeluaran = 0;
-
-            for (const key of list_pengeluaran) {
-                total_pengeluaran += value[key] ?? 0;
-            }
-
-            const data = {
-                id_tanggal  : value.tanggal,
-                pengeluaran : total_pengeluaran
-            }
-
-            result.push(data);
-        }
-        return result;
+    async pilihBulan(value) {
+        await this.getOpsiBulanLaporan(value).click();
     }
 
-    async hitungLaba(pendapatan_values, pengeluaran_values) {
-        const result = [];
-
-        for(const value of pendapatan_values) {
-
-            const data = {
-                id_tanggal  : value.id_tanggal,
-                laba        : value.pendapatan - (pengeluaran_values.find(p => p.id_tanggal === value.id_tanggal).pengeluaran )
-            }
-
-            result.push(data);
-
-        }
-        return result;
+    async pilihFilter(label) {
+        await this.fieldFilter.selectOption({ label });
     }
 
-    async hitungTotalPerField(values) {
-        let temp_koloms = Object.keys(values[0]); // Ambil salah satu object untuk diambil nama kolomnya
-        let result = [];
-        let result_temp = {};
-        for (const temp_kolom of temp_koloms) { // Pembuatan kolom temporari untuk setiap kolom
-            if (temp_kolom !== 'tanggal') {
-                result_temp[`Total_${temp_kolom}`] = 0;
-            }
-        }
-
-        for(const value of values) { // Untuk setiap baris
-
-            for(const [key, value_temp] of Object.entries(result_temp)) { // Untuk setiap kolom dalam satu baris
-                const kolom_non_temp = key.replace('Total_', ''); // Dari nama kolom temporari menjadi nama kolom asli
-                result_temp[key] = value_temp + value[kolom_non_temp]; // Penambahan nilai dari kolom temporari dengan nilai dari kolom saat ini
-            }
-
-        }
-
-        result.push(result_temp);
-        console.log('hasil semua total : ', result);
-        return result;
+    async pilihOutlet(label) {
+        await this.fieldOutlet.selectOption({ label });
     }
-
-    async validasiPengeluaran(values_laporan, values_pengeluaran_val) {
-        for (const value of values_pengeluaran_val) {
-            expect (
-                (values_laporan.find(p => p.tanggal === value.id_tanggal)).biaya_op_total,
-                `Validasi total pengeluaran pada tanggal ${value.id_tanggal}`
-            ).toBe(value.pengeluaran)
-        }
-    }
-
-    async validasiLaba(values_laporan, values_laba_val) {
-        for (const value of values_laba_val) {
-            expect (
-                (values_laporan.find(p => p.tanggal === value.id_tanggal)).total_laba,
-                `Validasi total laba pada tanggal ${value.id_tanggal}`
-            ).toBe(value.laba)
-        }
-    }
-
-    async validasiTotalPerField(values_from_web, values_from_val) {
-        const expected = values_from_val[0]; //Karena values bentuknya array diambil elemen pertama
-        const actual = values_from_web[0]; //Selalu elemen pertama karena data total ini hanya list dengan satu object
-        
-        for (const key of Object.keys(expected)) {
-
-            expect (
-                actual[key],
-                `Validasi ${key}`
-            ).toBe(expected[key]);
-
-        }
-    }
-
-
-    // ==================================== //
-    // =========== LAPORAN KOTA =========== //
-    // ==================================== //
 
     async pilihPeriodeAwal(value_tahun, value_bulan, value_tanggal) {
         await this.field_periode_awal.click();
@@ -386,205 +287,138 @@ export class Btm{
         await this.page.locator(`a.dp-day:text-is("${value_tanggal}")`).click();
     }
 
-    async ambilData_reportByKota() {
-        await this.page.waitForSelector('table tbody tr', {timeout: 2000});
-        const rows = this.page.locator('table tbody tr');
-        const rowCount = await rows.count() - 1;
+    async enter() {
+        await this.button_enter_periode.click();
+    }
+
+    // ** Laporan Harian ** //
+
+    async hitungTotalPerKategori(values_laporan, object_list, identifier) {
         const result = [];
 
-        for (let i = 2; i < rowCount; i++) {
-            const row = rows.nth(i);
-            const col = row.locator('td');
+        for (const value of values_laporan) {  // Untuk setiap baris
+            const data = {  //Definisi data pertama diisi dengan id
+                id: value[identifier]
+            };
+
+            for (const [kategori, koloms] of Object.entries(object_list)) { //Untuk setiap kategori pengeluaran/pendapatan
+                let total = 0;
+
+                for (const kolom of koloms) {  //Untuk setiap kolom di dalam setiap kategori
+                    total += value[kolom] ?? 0;  //Jumlahkan nilainya
+                }
+
+                const key_column = kategori.toLowerCase();
+
+                data[`${key_column}_total`] = total;  //isi kolom yang disesuaikan kategori saat ini
+            }
+
+            result.push(data);
+        }
+        return result;
+    }
+
+    async hitungPengeluaran(values_laporan, object_list_pengeluaran, identifier) {
+        return await this.hitungTotalPerKategori(values_laporan, object_list_pengeluaran, identifier);
+    }
+
+    async hitungPendapatan(values_laporan, object_list_pendapatan, identifier) {
+        return await this.hitungTotalPerKategori(values_laporan, object_list_pendapatan, identifier);
+    }
+
+    async jumlahTanpaId(row) {
+        let total = 0;
+    
+        for (const [key, value] of Object.entries(row)) {
+            if (key !== 'id') {
+                total += value ?? 0;
+            }
+        }
+    
+        return total;
+    }
+    
+    async hitungLaba(pendapatan_values, pengeluaran_values) {
+        const result = [];
+    
+        for (const pendapatan of pendapatan_values) {
+            const total_pendapatan = await this.jumlahTanpaId(pendapatan);
+    
+            const pengeluaran = pengeluaran_values.find( p => p.id === pendapatan.id);
+    
+            const total_pengeluaran = pengeluaran
+                ? await this.jumlahTanpaId(pengeluaran)
+                : 0;
+    
+            result.push({
+                id: pendapatan.id,
+                laba: total_pendapatan - total_pengeluaran
+            });
+        }
+    
+        return result;
+    }
+    
+    async hitungTotalPerField(values, identifiers) {
+        let temp_koloms = Object.keys(values[0]); // Ambil salah satu object untuk diambil nama kolomnya
+        let result = [];
+        let result_temp = {};
+
+        for (const temp_kolom of temp_koloms) { // Pembuatan kolom temporari untuk setiap kolom
+            if (!identifiers.includes(temp_kolom)) {
+                result_temp[`Total_${temp_kolom}`] = 0;
+            }
+        }
+
+        for(const value of values) { // Untuk setiap baris
+
+            for(const [key, value_temp] of Object.entries(result_temp)) { // Untuk setiap kolom dalam satu baris
+                const kolom_non_temp = key.replace('Total_', ''); // Dari nama kolom temporari menjadi nama kolom asli
+                result_temp[key] = value_temp + value[kolom_non_temp]; // Penambahan nilai dari kolom temporari dengan nilai dari kolom saat ini
+            }
+
+        }
+
+        result.push(result_temp);
+
+        return result;
+    }
+
+    async validasiPengeluaran({ actual, expected }) {
+        const expected_columns = Object.keys(actual[0]).filter( key => key !== 'id' );
+
+        for (const value of expected) {
             
-            const data = {
-                kota                : (await col.nth(1).innerText()).trim(),
-                jumlah_tiket        : this.parseRupiah(await col.nth(2).innerText()),
-                penjualan_tiket     : this.parseRupiah(await col.nth(3).innerText()),
-                jumlah_paket        : this.parseRupiah(await col.nth(4).innerText()),
-                penjualan_paket     : this.parseRupiah(await col.nth(5).innerText()),
-                jumlah_charter      : this.parseRupiah(await col.nth(6).innerText()),
-                penjualan_charter   : this.parseRupiah(await col.nth(7).innerText()),
-                op_test             : this.parseRupiah(await col.nth(8).innerText()),
-                op_bbm_cash         : this.parseRupiah(await col.nth(9).innerText()),
-                op_bbm_emoney       : this.parseRupiah(await col.nth(10).innerText()),
-                op_etoll            : this.parseRupiah(await col.nth(11).innerText()),
-                op_freelance        : this.parseRupiah(await col.nth(12).innerText()),
-                op_karyawan         : this.parseRupiah(await col.nth(13).innerText()),
-                op_total            : this.parseRupiah(await col.nth(14).innerText()),
-                laba                : this.parseRupiah(await col.nth(15).innerText())
-            };
-
-            result.push(data);
-        }
-
-        // console.log('Data Harian : ', result);
-
-        return result;
-    }
-
-    async ambilDataTotal_reportByKota() {
-        await this.page.waitForSelector('table tbody tr', {timeout: 2000});
-        const rows = this.page.locator('table tbody tr');
-        const row_total = rows.last();
-        const col_total = row_total.locator('td');
-        const result =  {
-            total_jumlah_tiket      : this.parseRupiah(await col_total.nth(1).innerText()),
-            total_penjualan_tiket   : this.parseRupiah(await col_total.nth(2).innerText()),
-            total_jumlah_paket      : this.parseRupiah(await col_total.nth(3).innerText()),
-            total_penjualan_paket   : this.parseRupiah(await col_total.nth(4).innerText()),
-            total_jumlah_charter    : this.parseRupiah(await col_total.nth(5).innerText()),
-            total_penjualan_charter : this.parseRupiah(await col_total.nth(6).innerText()),
-            total_op_test           : this.parseRupiah(await col_total.nth(7).innerText()),
-            total_op_bbm_cash       : this.parseRupiah(await col_total.nth(8).innerText()),
-            total_op_bbm_emoney     : this.parseRupiah(await col_total.nth(9).innerText()),
-            total_op_etoll          : this.parseRupiah(await col_total.nth(10).innerText()),
-            total_op_freelance      : this.parseRupiah(await col_total.nth(11).innerText()),
-            total_op_karyawan       : this.parseRupiah(await col_total.nth(12).innerText()),
-            total_op_keseluruhan    : this.parseRupiah(await col_total.nth(13).innerText()),
-            total_laba              : this.parseRupiah(await col_total.nth(14).innerText())
-        }
-
-        // console.log('Data Total : ', result);
-
-        return result;
-
-    }
-
-    async ambilDataAll_reportByKota() {
-        const result = await this.ambilData_reportByKota();
-        const result_total = await this.ambilDataTotal_reportByKota();
-        result.push(result_total);
-        // console.log('Data All : ', result);
-        return result;
-    }
-
-    async hitungPendapatan_reportByKota(values) {
-        const result  = [];
-
-        for (const value of values) {
-
-            const data = {
-                kota  : await value.kota,
-                pendapatan  : await value.penjualan_tiket + value.penjualan_paket + value.penjualan_charter
-            };
-
-            result.push(data);
-        }
-        return result;
-    }
-
-    async hitungPengeluaran_reportByKota(values) {
-        const result = [];
-
-        for (const value of values) {
-
-            const data = {
-                kota  : await value.kota,
-                pengeluaran : await value.op_test + value.op_bbm_cash + value.op_bbm_emoney + value.op_etoll + value.op_freelance + value.op_karyawan
+            for (const col of expected_columns) {
+                expect (
+                    (actual.find(p => p.id === value.id))[col],
+                    `Validasi ${col} pada ${value.id}`
+                ).toBe(value[col])
             }
 
-            result.push(data);
         }
-        return result;
     }
 
-    async hitungLaba_reportByKota(pendapatan_values, pengeluaran_values) {
-        const result = [];
+    async validasiLaba({ actual, expected, expected_column }) {
 
-        for(const value of pendapatan_values) {
-
-            const data = {
-                kota  : await value.kota,
-                laba        : await value.pendapatan - (pengeluaran_values.find(p => p.kota === value.kota).pengeluaran )
-            }
-
-            result.push(data);
-
-        }
-        return result;
-    }
-
-    async validasiPengeluaran_reportByKota(values_laporan, values_pengeluaran_val) {
-        for (const value of values_pengeluaran_val) {
+        for (const value of expected) {
             expect (
-                (values_laporan.find(p => p.kota === value.kota)).op_total,
-                `Validasi total pengeluaran pada kota ${value.kota}`
-            ).toBe(value.pengeluaran)
-        }
-    }
-
-    async validasiLaba_reportByKota(values_laporan, values_laba_val) {
-        for (const value of values_laba_val) {
-            expect (
-                (values_laporan.find(p => p.kota === value.kota)).laba,
-                `Validasi total laba pada kota ${value.kota}`
+                (actual.find(p => p.id === value.id))[expected_column],
+                `Validasi total laba pada ${value.id}`
             ).toBe(value.laba)
         }
     }
 
-    async hitungTotalPerField_reportByKota(values) {
-        let result = [];
-        let temp_total_jumlah_tiket = 0;
-        let temp_total_penjualan_tiket = 0;
-        let temp_total_jumlah_paket = 0;
-        let temp_total_penjualan_paket = 0;
-        let temp_total_jumlah_charter = 0;
-        let temp_total_penjualan_charter = 0;
-        let temp_total_op_test = 0;
-        let temp_total_op_bbm_cash = 0;
-        let temp_total_op_bbm_emoney = 0;
-        let temp_total_op_etoll = 0;
-        let temp_total_op_freelance = 0;
-        let temp_total_op_karyawan = 0;
-        let temp_total_op_keseluruhan = 0;
-        let temp_total_laba = 0;
-
-        for(const value of values) {
-
-            temp_total_jumlah_tiket      = temp_total_jumlah_tiket + value.jumlah_tiket;
-            temp_total_penjualan_tiket   = temp_total_penjualan_tiket + value.penjualan_tiket;
-            temp_total_jumlah_paket      = temp_total_jumlah_paket + value.jumlah_paket;
-            temp_total_penjualan_paket   = temp_total_penjualan_paket + value.penjualan_paket;
-            temp_total_jumlah_charter    = temp_total_jumlah_charter + value.jumlah_charter;
-            temp_total_penjualan_charter = temp_total_penjualan_charter + value.penjualan_charter;
-            temp_total_op_test           = temp_total_op_test + value.op_test;
-            temp_total_op_bbm_cash       = temp_total_op_bbm_cash + value.op_bbm_cash;
-            temp_total_op_bbm_emoney     = temp_total_op_bbm_emoney + value.op_bbm_emoney;
-            temp_total_op_etoll          = temp_total_op_etoll + value.op_etoll;
-            temp_total_op_freelance      = temp_total_op_freelance + value.op_freelance;
-            temp_total_op_karyawan       = temp_total_op_karyawan + value.op_karyawan;
-            temp_total_op_keseluruhan    = temp_total_op_keseluruhan + value.op_total;
-            temp_total_laba              = temp_total_laba + value.laba
+    async validasiTotalPerField(values_from_web, values_from_val) {
+        const expected = values_from_val[0]; //Karena values bentuknya array diambil elemen pertama
+        const actual = values_from_web[0]; //Selalu elemen pertama karena data total ini hanya list dengan satu object
         
-            result = {
-                total_jumlah_tiket      : temp_total_jumlah_tiket,
-                total_penjualan_tiket   : temp_total_penjualan_tiket,
-                total_jumlah_paket      : temp_total_jumlah_paket,
-                total_penjualan_paket   : temp_total_penjualan_paket,
-                total_jumlah_charter    : temp_total_jumlah_charter,
-                total_penjualan_charter : temp_total_penjualan_charter,
-                total_op_test           : temp_total_op_test,
-                total_op_bbm_cash       : temp_total_op_bbm_cash,
-                total_op_bbm_emoney     : temp_total_op_bbm_emoney,
-                total_op_etoll          : temp_total_op_etoll,
-                total_op_freelance      : temp_total_op_freelance,
-                total_op_karyawan       : temp_total_op_karyawan,
-                total_op_keseluruhan    : temp_total_op_keseluruhan,
-                total_laba              : temp_total_laba
-            }
-
-        }
-        // console.log('hasil semua total : ', result)
-        return result;
-    }
-
-    async validasiTotalPerField_reportByKota(values_from_web, values_from_val) {
-        for (const [key, value] of Object.entries(values_from_web)) {
+        for (const key of Object.keys(expected)) {
 
             expect (
-                (value),
+                actual[key],
                 `Validasi ${key}`
-            ).toBe(values_from_val[key])
+            ).toBe(expected[key]);
 
         }
     }
