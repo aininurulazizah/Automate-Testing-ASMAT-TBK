@@ -1,11 +1,11 @@
 import { test, expect } from "@playwright/test";
-import { Credential } from "../test-data/credential";
+import { Credential } from "../data/credential";
 import { Daytrans } from "../pages/daytrans";
 import { Baraya } from "../pages/baraya";
 import { Aragon } from "../pages/aragon";
 import { Jackal } from "../pages/jackal";
 import { Btm } from "../pages/btm";
-import { testData } from "../test-data/reservasi_data";
+import { testData } from "../data/reservasi_data";
 
 const sites = [
     {tag: '@daytrans', url: 'https://dev.daytrans.asmat.app', locator: Daytrans, data: testData.Daytrans, cred:Credential.Daytrans, roundTrip: true, connectingRes: true},

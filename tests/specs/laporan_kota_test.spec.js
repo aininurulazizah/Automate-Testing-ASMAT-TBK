@@ -1,10 +1,11 @@
 import { test } from "@playwright/test";
-import { Credential } from "../test-data/credential";
+import { Credential } from "../data/credential";
 import { Baraya } from "../pages/baraya";
 import { Jackal } from "../pages/jackal";
 import { Btm } from "../pages/btm";
-import { testData } from "../test-data/laporan_kota_data";
+import { testData } from "../data/laporan_kota_data";
 import { exportToExcel } from "../utils/excelHelper";
+import { Laporan } from "../logics/laporan";
 
 
 const sites = [
@@ -59,11 +60,13 @@ for (const site of sites) {
 
       });
     
-      test(`${site.tag} - Test Case 1 - Cek Laporan Per Kota`, async() => {
+      test(`${site.tag} - Test Case 1 - Validasi Total Biaya Operasional Perhari`, async() => {
     
         const page = await context.newPage();
         
         const web = new site.locator(page);
+
+        const logic = new Laporan(page, site.locator);
             
         await page.goto(`${site.url}/asmat/laporan.kota`);
 
@@ -77,41 +80,28 @@ for (const site of sites) {
 
         const laporan = await web.ambilDataHarian(testData.IdentifierColumns);
 
-        // Ambil nilai aktual hanya id (kota) dan biaya pengeluaran (biaya_op_total_biaya_op)
-        const pengeluaran_act = laporan.map(({ kota, biaya_op_total_biaya_op }) => ({ kota, biaya_op_total_biaya_op }));
-
-        // Ambil nilai aktual hanya id (kota) dan biaya laba (total_laba)
-        const laba_act = laporan.map(({ kota, total_laba }) => ({ kota, total_laba }));
-
-        const pengeluaran_val = await web.hitungPengeluaran(laporan, site.data.KolomPengeluaran, testData.MainIdentifier);
-
-        const pendapatan_val = await web.hitungPendapatan(laporan, site.data.KolomPendapatan, testData.MainIdentifier); // Untuk kebutuhan hitung laba
-
-        const laba_val = await web.hitungLaba(pendapatan_val, pengeluaran_val);
+        // Ambil nilai aktual hanya id (tanggal) dan total biaya op
+        const total_biaya_op_act = await logic.ambilTotalBiayaOpPerhari(laporan, testData.MainIdentifier, 'biaya_op_total_biaya_op');
+        console.log("total_biaya_op_act : ", total_biaya_op_act);
         
-        await web.validasiPengeluaran({
-          actual: pengeluaran_act,
-          expected: pengeluaran_val,
-          id_column: testData.MainIdentifier,
-          expected_column: "biaya_op_total_biaya_op"
-        });
+        // Hitung total biaya op perhari sebagai nilai expected untuk validasi
+        const total_biaya_op_exp = await logic.hitungTotalBiayaOp(laporan, testData.MainIdentifier, site.data.KolomPengeluaran.Biaya_Op, 'biaya_op_total_biaya_op');
+        console.log("total_biaya_op_exp : ", total_biaya_op_exp);
+        await page.pause();
 
-        await web.validasiLaba({
-          actual: laba_act,
-          expected: laba_val,
-          id_column: testData.MainIdentifier,
-          expected_column: "total_laba"
-        });
-        
+        await logic.validasiArrayOfObject(total_biaya_op_act, total_biaya_op_exp, 'biaya_op_total_biaya_op');
+
         await page.pause();
                 
       })
 
-      test(`${site.tag} - Test Case 2 - Cek Laporan Total Semua Kota`, async() => {
+      test(`${site.tag} - Test Case 2 - Validasi Total Laba Perhari`, async() => {
     
         const page = await context.newPage();
         
         const web = new site.locator(page);
+
+        const logic = new Laporan(page, site.locator);
             
         await page.goto(`${site.url}/asmat/laporan.kota`);
 
@@ -121,13 +111,47 @@ for (const site of sites) {
 
         await web.pilihFilter(site.data.FilterBy);
 
+        await web.enter();
+
+        const laporan = await web.ambilDataHarian(testData.IdentifierColumns);
+
+        // Ambil nilai aktual hanya id (tanggal) dan total biaya op
+        const total_laba_act = await logic.ambilTotalLabaPerhari(laporan, testData.MainIdentifier, 'total_laba');
+        
+        // Hitung total biaya op perhari sebagai nilai expected untuk validasi
+        const total_laba_exp = await logic.hitungTotalLaba(laporan, testData.MainIdentifier, site.data.KolomPendapatan, site.data.KolomPengeluaran);
+
+        await logic.validasiArrayOfObject(total_laba_act, total_laba_exp, 'total_laba');
+
+        await page.pause();
+                
+      })
+
+      test(`${site.tag} - Test Case 3 - Cek Laporan Total Bulanan`, async() => {
+    
+        const page = await context.newPage();
+        
+        const web = new site.locator(page);
+
+        const logic = new Laporan(page, site.locator);
+            
+        await page.goto(`${site.url}/asmat/laporan.kota`);
+
+        await web.pilihPeriodeAwal(site.data.PeriodeAwalTahun, site.data.PeriodeAwalBulan, site.data.PeriodeAwalTanggal);
+
+        await web.pilihPeriodeAkhir(site.data.PeriodeAkhirTahun, site.data.PeriodeAkhirBulan, site.data.PeriodeAkhirTanggal);
+
+        await web.pilihFilter(site.data.FilterBy);
+
+        await web.enter();
+
         const laporan = await web.ambilDataHarian(testData.IdentifierColumns); // Data harian tanpa total
 
-        const laporan_total = await web.ambilDataTotal(testData.IdentifierColumns); // Data total setiap kolom
+        const totals_act = await web.ambilDataTotal(testData.IdentifierColumns); // Data total setiap kolom
 
-        const baris_total_val = await web.hitungTotalPerField(laporan, testData.IdentifierColumns);
+        const totals_exp = await logic.hitungTotalPerField(laporan, testData.IdentifierColumns);
 
-        await web.validasiTotalPerField(laporan_total, baris_total_val);
+        await logic.validasiArrayOfSingleObject(totals_act, totals_exp);
 
         await page.pause();
                 

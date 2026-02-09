@@ -14,16 +14,9 @@ export function normalizeObjectKeyToList(objectKeyToNormalize) {
     let normalized_list = [];
 
     for (const key of Object.keys(objectKeyToNormalize)){
-      normalized_list.push(`${key.toLowerCase()}_total`);
+      normalized_list.push(`${key.toLowerCase()}`);
     }
 
     return normalized_list;
 
 }
-
-// function jumlahkanNilai(obj, excludeKeys = ['id']) {
-//     return Object.entries(obj)
-//         .filter(([key]) => !excludeKeys.includes(key))
-//         .reduce((total, [, value]) => total + (value ?? 0), 0);
-// }
-

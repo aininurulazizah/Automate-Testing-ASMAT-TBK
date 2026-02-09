@@ -1,6 +1,6 @@
 import { expect } from "@playwright/test";
 
-export class Btm{
+export class Baraya {
 
     constructor(page) {
 
@@ -12,12 +12,13 @@ export class Btm{
         this.field_current_year = page.locator('span.kaltahun');
         this.field_outlet_keberangkatan = page.locator('span#seloutletasal');
         this.field_outlet_tujuan = page.locator('span#seloutlettujuan');
-        this.field_rute_connecting = page.locator('span#seljenisrute');
-        this.list_rute_connecting = page.locator('div#listcontent');
+        this.field_outletplg_keberangkatan = page.locator('span#seloutletasalpulang');
+        this.field_outletplg_tujuan = page.locator('span#seloutlettujuanpulang');
         this.list_jam_keberangkatan = page.locator('div.resvlistpilihan');
-        this.list_next_jam_keberangkatan = page.locator('div#resvshowkeberangkatan_1 >> div.resvlistpilihansel');
-        this.tab_next_jam_keberangkatan = page.locator('span#btnruteconnecting_1');
-        this.list_kursi_tersedia = page.locator('div.renderlabelkursikosong');
+        this.list_jam_keberangkatanplg = page.locator('#resvshowjadwalpulang .resvlistpilihan');
+        this.toggle_pp = page.locator('label:has(input#is_pp_switch2)');
+        this.field_tanggal_pulang = page.locator('input#tglpulang');
+        this.list_kursi_tersedia = page.locator('div.renderkursikosong:not(.selected)');
         this.field_notelp_pemesan = page.locator('input#telppemesan');
         this.field_nama_pemesan = page.locator('input#namapemesan');
         this.button_action_goshow = page.locator('span#btngoshow');
@@ -52,8 +53,16 @@ export class Btm{
         return this.page.locator(`div[onclick*="seloutlettujuan"]:has-text("${value}")`);
     }
 
+    getOutletKeberangkatanPulang(value) {
+        return this.page.locator(`div[onclick*="seloutletasalpulang"]:has-text("${value}")`).first();
+    }
+
+    getOutletTujuanPulang(value) {
+        return this.page.locator(`div[onclick*="seloutlettujuanpulang"]:has-text("${value}")`);
+    }
+
     getMetodePembayaran(value) {
-        return this.page.locator(`div.btnroundjplabel:has-text("${value}")`);
+        return this.page.locator(`div.btnjp:has-text("${value}")`);
     }
 
     getOpsiBulanLaporan(value) {
@@ -68,18 +77,13 @@ export class Btm{
         );
     }
 
-
-    // ==================================== //
-    // ============ RESERVASI ============= //
-    // ==================================== //
-
     async pilihTanggalBerangkat(value) {
-        const [tanggal, bulan, tahun] = value.split(" "); // Memisahkan tanggal, bulan, tahun
-        await this.field_current_month.click(); // Klik field bulan
-        await this.getBulan(bulan).click(); // PIlih bulan
-        await this.field_current_year.click(); // Klik field tahun
-        await this.getTahun(tahun).click(); // Pilih tahun
-        await this.getTanggal(tanggal).click(); // Langsung pilih tanggal
+        const [tanggal, bulan, tahun] = value.split(" ");
+        await this.field_current_month.click();
+        await this.getBulan(bulan).click();
+        await this.field_current_year.click();
+        await this.getTahun(tahun).click();
+        await this.getTanggal(tanggal).click();
     }
 
     async pilihKeberangkatan(value) {
@@ -92,25 +96,47 @@ export class Btm{
         await this.getOutletTujuan(value).click();
     }
 
-    async pilihRute() {
-        await this.field_rute_connecting.click();
-        await this.list_rute_connecting.first().click();
+    async klikPPToggle() {
+        await this.toggle_pp.click();
+    }
+
+    async pilihTanggalPulang(value) {
+        const [tanggal, bulanText, tahun] = value.split(' ');
+        const bulanMap = { Jan: '1', Feb: '2', Mar: '3', Apr: '4', Mei: '5', Jun: '6', Jul: '7', Agu: '8', Sep: '9', Okt: '10', Nov: '11', Des: '12'};
+        const bulan = bulanMap[bulanText];
+        const posisi_bulan = await this.field_tanggal_pulang.boundingBox(); //Mendapatkan koordinat posisi bulan pada field kalender tanggal pulang
+        const posisi_tanggal = {x: posisi_bulan.x + 10, y: posisi_bulan.y}; //Mendapatkan koordinat posisi tanggal pada field kalender tanggal pulang
+        await this.page.mouse.click(posisi_bulan.x, posisi_bulan.y); //Klik bagian bulan
+        await this.page.keyboard.type(bulan); //Isi bulan
+        await this.page.mouse.click(posisi_tanggal.x, posisi_tanggal.y); //Klik bagian tanggal
+        await this.page.keyboard.type(tanggal); //Isi tanggal
+        await this.field_tanggal_pulang.click(); //Klik field yang mengarah ke bagian tahun
+        await this.field_tanggal_pulang.type(tahun); //Isi tahun
+    }
+
+    async pilihKeberangkatanPulang(value) {
+        await this.field_outletplg_keberangkatan.click();
+        await this.getOutletKeberangkatanPulang(value).click();
+    }
+
+    async pilihTujuanPulang(value) {
+        await this.field_outletplg_tujuan.click();
+        await this.getOutletTujuanPulang(value).click();
     }
 
     async pilihJamKeberangkatan() {
         await this.list_jam_keberangkatan.first().click();
     }
 
-    async pilihNextJamKeberangkatan() {
-        await this.tab_next_jam_keberangkatan.click();
-        await this.list_next_jam_keberangkatan.first().click();
+    async pilihJamKeberangkatanPulang() {
+        await this.list_jam_keberangkatanplg.first().click();
     }
 
     async pilihKursi(value) {
         await this.page.waitForTimeout(2000);
-        for(let i = 0; i < value; i++){
+        for(let i = 0; i < value; i++) {
             await this.list_kursi_tersedia.nth(i).click();
-        }   
+        }
     }
 
     async isiDataPemesan(value) {
@@ -123,10 +149,9 @@ export class Btm{
         await this.getMetodePembayaran(value).click();
     }
 
-    async cetakTiket() {  //Sementara: bisa diganti aksi yang bisa custom/menyesuaikan metode bayar 
-        await this.button_action_goshow.click();
+    async cetakTiket() {
+        await this.button_action_goshow.click()
     }
-
 
     // ==================================== //
     // ============== LAPORAN ============= //
@@ -271,9 +296,9 @@ export class Btm{
 
     async pilihPeriodeAwal(value_tahun, value_bulan, value_tanggal) {
         await this.field_periode_awal.click();
-        await this.page.locator('.dp-cal-month').click();
+        await this.page.locator('a.dp-cal-month').click();
         await this.page.locator(`a.dp-month:has-text("${value_bulan}")`).click();
-        await this.page.locator('.dp-cal-year').click();
+        await this.page.locator('a.dp-cal-year').click();
         await this.page.locator(`a.dp-year:has-text("${value_tahun}")`).click();
         await this.page.locator(`a.dp-day:text-is("${value_tanggal}")`).first().click();
     }
@@ -290,137 +315,5 @@ export class Btm{
     async enter() {
         await this.button_enter_periode.click();
     }
-
-    // ** Laporan Harian ** //
-
-    async hitungTotalPerKategori(values_laporan, object_list, identifier) {
-        const result = [];
-
-        for (const value of values_laporan) {  // Untuk setiap baris
-            const data = {  //Definisi data pertama diisi dengan id
-                id: value[identifier]
-            };
-
-            for (const [kategori, koloms] of Object.entries(object_list)) { //Untuk setiap kategori pengeluaran/pendapatan
-                let total = 0;
-
-                for (const kolom of koloms) {  //Untuk setiap kolom di dalam setiap kategori
-                    total += value[kolom] ?? 0;  //Jumlahkan nilainya
-                }
-
-                const key_column = kategori.toLowerCase();
-
-                data[`${key_column}_total`] = total;  //isi kolom yang disesuaikan kategori saat ini
-            }
-
-            result.push(data);
-        }
-        return result;
-    }
-
-    async hitungPengeluaran(values_laporan, object_list_pengeluaran, identifier) {
-        return await this.hitungTotalPerKategori(values_laporan, object_list_pengeluaran, identifier);
-    }
-
-    async hitungPendapatan(values_laporan, object_list_pendapatan, identifier) {
-        return await this.hitungTotalPerKategori(values_laporan, object_list_pendapatan, identifier);
-    }
-
-    async jumlahTanpaId(row) {
-        let total = 0;
     
-        for (const [key, value] of Object.entries(row)) {
-            if (key !== 'id') {
-                total += value ?? 0;
-            }
-        }
-    
-        return total;
-    }
-    
-    async hitungLaba(pendapatan_values, pengeluaran_values) {
-        const result = [];
-    
-        for (const pendapatan of pendapatan_values) {
-            const total_pendapatan = await this.jumlahTanpaId(pendapatan);
-    
-            const pengeluaran = pengeluaran_values.find( p => p.id === pendapatan.id);
-    
-            const total_pengeluaran = pengeluaran
-                ? await this.jumlahTanpaId(pengeluaran)
-                : 0;
-    
-            result.push({
-                id: pendapatan.id,
-                laba: total_pendapatan - total_pengeluaran
-            });
-        }
-    
-        return result;
-    }
-    
-    async hitungTotalPerField(values, identifiers) {
-        let temp_koloms = Object.keys(values[0]); // Ambil salah satu object untuk diambil nama kolomnya
-        let result = [];
-        let result_temp = {};
-
-        for (const temp_kolom of temp_koloms) { // Pembuatan kolom temporari untuk setiap kolom
-            if (!identifiers.includes(temp_kolom)) {
-                result_temp[`Total_${temp_kolom}`] = 0;
-            }
-        }
-
-        for(const value of values) { // Untuk setiap baris
-
-            for(const [key, value_temp] of Object.entries(result_temp)) { // Untuk setiap kolom dalam satu baris
-                const kolom_non_temp = key.replace('Total_', ''); // Dari nama kolom temporari menjadi nama kolom asli
-                result_temp[key] = value_temp + value[kolom_non_temp]; // Penambahan nilai dari kolom temporari dengan nilai dari kolom saat ini
-            }
-
-        }
-
-        result.push(result_temp);
-
-        return result;
-    }
-
-    async validasiPengeluaran({ actual, expected }) {
-        const expected_columns = Object.keys(actual[0]).filter( key => key !== 'id' );
-
-        for (const value of expected) {
-            
-            for (const col of expected_columns) {
-                expect (
-                    (actual.find(p => p.id === value.id))[col],
-                    `Validasi ${col} pada ${value.id}`
-                ).toBe(value[col])
-            }
-
-        }
-    }
-
-    async validasiLaba({ actual, expected, expected_column }) {
-
-        for (const value of expected) {
-            expect (
-                (actual.find(p => p.id === value.id))[expected_column],
-                `Validasi total laba pada ${value.id}`
-            ).toBe(value.laba)
-        }
-    }
-
-    async validasiTotalPerField(values_from_web, values_from_val) {
-        const expected = values_from_val[0]; //Karena values bentuknya array diambil elemen pertama
-        const actual = values_from_web[0]; //Selalu elemen pertama karena data total ini hanya list dengan satu object
-        
-        for (const key of Object.keys(expected)) {
-
-            expect (
-                actual[key],
-                `Validasi ${key}`
-            ).toBe(expected[key]);
-
-        }
-    }
-
 }
