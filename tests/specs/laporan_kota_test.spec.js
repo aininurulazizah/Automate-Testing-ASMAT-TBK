@@ -87,11 +87,11 @@ for (const site of sites) {
         // Hitung total biaya op perhari sebagai nilai expected untuk validasi
         const total_biaya_op_exp = await logic.hitungTotalBiayaOp(laporan, testData.MainIdentifier, site.data.KolomPengeluaran.Biaya_Op, 'biaya_op_total_biaya_op');
         console.log("total_biaya_op_exp : ", total_biaya_op_exp);
-        await page.pause();
+        // await page.pause();
 
         await logic.validasiArrayOfObject(total_biaya_op_act, total_biaya_op_exp, 'biaya_op_total_biaya_op');
 
-        await page.pause();
+        // await page.pause();
                 
       })
 
@@ -123,7 +123,7 @@ for (const site of sites) {
 
         await logic.validasiArrayOfObject(total_laba_act, total_laba_exp, 'total_laba');
 
-        await page.pause();
+        // await page.pause();
                 
       })
 
@@ -153,7 +153,7 @@ for (const site of sites) {
 
         await logic.validasiArrayOfSingleObject(totals_act, totals_exp);
 
-        await page.pause();
+        // await page.pause();
                 
       })
     

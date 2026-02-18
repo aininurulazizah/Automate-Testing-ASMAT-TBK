@@ -127,6 +127,16 @@ export const testData  = {
             ]
         },
         KolomPengeluaran: {
+            Komisi: [
+                'komisi_app_api',
+                'komisi_whitelabel',
+                'komisi_tiketux',
+                'komisi_redbus',
+                'komisi_merchant_tiket',
+                'komisi_kiosk',
+                'komisi_traveloka_internal',
+                'komisi_traveloka_api_channel',
+            ],
             Biaya_Op: [
                 'biaya_op_bbm',
                 'biaya_op_premi_driver',

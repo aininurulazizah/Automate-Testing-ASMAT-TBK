@@ -100,7 +100,7 @@ for (const site of sites) {
 
         await logic.validasiArrayOfObject(total_biaya_op_act, total_biaya_op_exp, 'biaya_op_total');
 
-        await page.pause();
+        // await page.pause();
                 
       })
 
@@ -134,7 +134,7 @@ for (const site of sites) {
 
         await logic.validasiArrayOfObject(total_laba_act, total_laba_exp, 'total_laba');
 
-        await page.pause();
+        // await page.pause();
                 
       })
 
@@ -166,7 +166,7 @@ for (const site of sites) {
 
         await logic.validasiArrayOfSingleObject(totals_act, totals_exp);
 
-        await page.pause();
+        // await page.pause();
                 
       })
 
@@ -201,7 +201,7 @@ for (const site of sites) {
   
           await logic.validasiArrayOfObject(total_komisi_act, total_komisi_exp, 'komisi_total');
   
-          await page.pause();
+          // await page.pause();
                   
         })
       }
