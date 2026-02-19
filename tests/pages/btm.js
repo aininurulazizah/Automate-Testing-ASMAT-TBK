@@ -153,49 +153,6 @@ export class Btm {
 
     // ** Pengambilan Data Laporan ** //
 
-    async recursiveHeaderExtractor(headerRows, rowIndex, colStart, colSpan, path, result) {
-        if (rowIndex >= headerRows.length) {
-            result.push(path.join('_'));
-            return;
-        }
-
-        const cells = await headerRows[rowIndex].locator('th').all();
-        let colPointer = 0;
-      
-        for (const cell of cells) {
-          const colspan = Number(await cell.getAttribute('colspan')) || 1;
-          const rowspan = Number(await cell.getAttribute('rowspan')) || 1;
-      
-          const cellStart = colPointer;
-          const cellEnd = colPointer + colspan - 1;
-      
-          // cek overlap kolom
-          if (cellEnd < colStart || cellStart >= colStart + colSpan) {
-            colPointer += colspan;
-            continue;
-          }
-      
-          const text = this.parseText(await cell.innerText());
-          const newPath = [...path, text];
-      
-          // cek apakah dia leaf
-          if (rowIndex + rowspan >= headerRows.length) {
-            result.push(newPath.join('_'));
-          } else {
-            await this.recursiveHeaderExtractor(
-              headerRows,
-              rowIndex + rowspan,
-              cellStart,
-              colspan,
-              newPath,
-              result
-            );
-          }
-      
-          colPointer += colspan;
-        }
-      }
-
     async ambilData(detail, identifiers) {
         await this.page.waitForSelector('table tbody tr');
 
@@ -263,7 +220,14 @@ export class Btm {
         // Ambil data
         const rows = contentTable.locator('tbody tr'); //Ambil elemen baris untuk body/isi
         const rowCount = await rows.count(); //Hitung jumlah baris
-        const startRowIndex = hasSeparatedTable ? 0 : 2;  //Jika header dan isi dipisah maka index penghitung baris dimulai dari 0
+
+        let startRowIndex; //Index awal pengambilan data
+        if (hasSeparatedTable) {
+            startRowIndex = 0;  //Jika header dan konten terpisah maka index awal 0
+        } else {
+            startRowIndex = headerRows.length;  //Jika header dan konten disatukan maka index awal adalah baris ke x (tergantung banyak baris header)
+        }
+        
         const result = [];
 
         for (let i = startRowIndex; i < rowCount; i++) { //Untuk setiap baris isi table
@@ -319,7 +283,7 @@ export class Btm {
                     result.push(data);
                     break;
             
-                case "Harian":
+                case "Detail":
                     if (!isYellow) result.push(data);
                     break;
             
@@ -336,8 +300,8 @@ export class Btm {
 
     }
 
-    async ambilDataHarian(value_identifier) {
-        return await this.ambilData("Harian", value_identifier);
+    async ambilDataDetail(value_identifier) {
+        return await this.ambilData("Detail", value_identifier);
     }
 
     async ambilDataTotal(value_identifier) {

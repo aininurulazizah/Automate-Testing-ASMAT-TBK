@@ -23,6 +23,8 @@ export class Aragon {
         this.button_enter_periode = page.locator('a:text-is("GO!")');
         this.fieldFilter = page.locator('select#filter');
         this.fieldOutlet = page.locator('select#selfilteroutlet');
+        this.fieldLayanan = page.locator('.tail-select');
+
     }
 
     getBulan(value) {
@@ -53,12 +55,32 @@ export class Aragon {
         return this.page.locator(`a >> font:has-text("${value}")`);
     }
 
+    getPilihanLayanan(value) {
+        return this.page.locator(`ul.dropdown-optgroup >> li.dropdown-option:has-text("${value}")`);
+    }
+
     parseNumber(text) {
         return Number(
             text
                 .replace(/[^\d-]/g, '')
                 .trim()
         );
+    }
+
+    parseDecimal(text) {
+        return Number(
+            text
+                .replace(/[^\d.-]/g, '')
+                .trim()
+        );
+    }
+
+    parseText(text) {
+        return text
+            .toLowerCase()
+            .replace(/[\s\-()]+/g, '_')
+            .replace(/^_+|_+$/g, '')
+            .trim()
     }
 
     async pilihTanggalBerangkat(value) {
@@ -123,70 +145,137 @@ export class Aragon {
         await this.fieldOutlet.selectOption({ label });
     }
 
+    async pilihLayanan(label) {
+        await this.fieldLayanan.click();
+        await this.getPilihanLayanan(label);
+    }
+
     async enter() {
         await this.button_enter_periode.click();
     }
 
+    // ** Pengambilan Data Laporan ** //
+
     async ambilData(detail, identifiers) {
-        await this.page.waitForSelector('table tbody tr', {timeout: 1000});
+        await this.page.waitForSelector('table tbody tr');
+
+        const hasSeparatedTable = 
+            await this.page.locator('#tableheader').count > 0 && 
+            await this.page.locator('#tablecontent').count > 0 //Hasil true/false apakah header dan isi tabel elemennya terpisah atau tidak
+
+        const headerTable = hasSeparatedTable ? this.page.locator('#tableheader') : this.page.locator('table');   //Assign tabel berdasarkan hasSeparatedTable?
+        const contentTable = hasSeparatedTable ? this.page.locator('#tablecontent') : this.page.locator('table');
 
         // Ambil Header
-        const headerRows = this.page.locator('table tbody tr'); //Ambil elemen tr (baris)
-        const headerRow1 = headerRows.nth(0); //Ambil elemen baris pertama
-        const headerRow2 = headerRows.nth(1); //Ambil elemen baris kedua
-        const mainHeaders = await headerRow1.locator('th').all(); //Ambil elemen kolom header di baris pertama sebagai main header
-        const subHeaders = await headerRow2.locator('th').allInnerTexts(); //Ambil semua inner text kolom header di baris kedua sebagai subheader
-        const keys = [];
-        let subIndex = 0;
+        const headerRows = await headerTable.locator('tr:not([class])').all(); //Ambil elemen tr (baris) untuk header
+        let headers = [];
+        let keys = [];
+        let subIndex = 0;       //Index untuk sub header atau header baris ke-2
+        let subSubIndex = 0;    //Index utnuk sub sub header atau header baris ke-3 (asumsi maksimal header adalah 3 baris)
+        
 
-        for(const th of mainHeaders) {
-            const text = (await th.innerText()).trim();
-            const colspan = await th.getAttribute('colspan');
-            const rowspan = await th.getAttribute('rowspan');
-            const baseKey = text.toLowerCase().replace(/[\s\-()]+/g, '_').replace(/^_+|_+$/g, '');
-            
-            if (rowspan === '2') {
-                keys.push(baseKey);
-            }
+        for (let i = 0; i < headerRows.length; i++) {
+            const header = await headerRows[i].locator('th').all()
+            headers.push(header);
+        }
 
-            if (colspan) {
-                const span = parseInt(colspan);
-                for (let i = 0; i < span; i++) {
-                    const sub = subHeaders[subIndex].toLowerCase().replace(/[\s\-()]+/g, '_').replace(/^_+|_+$/g, '');
-                    keys.push(`${baseKey}_${sub}`);
-                    subIndex++;
+        const mainHeaders = headers[0];
+        const subHeaders = headers.slice(1);
+
+        for (const header of mainHeaders) {
+            let colspan = Number(await header.getAttribute('colspan')) || 1;
+            const header_text = await this.parseText(await header.innerText());
+
+            if (header_text !== "") {
+                if(colspan !== 1) {
+                    const sub_headers = subHeaders[0]
+    
+                        for(let i = 0; i < colspan; i++) {
+                            const sub_header = await sub_headers[subIndex];
+                            const sub_colspan = Number(await sub_header.getAttribute('colspan')) || 1;
+                            const sub_header_text = await this.parseText(await sub_header.innerText());
+                            subIndex++;
+    
+                            if(sub_colspan !== 1) {
+                                const sub_sub_headers = subHeaders[1];
+                                colspan = colspan - sub_colspan + 1;
+    
+                                for(let i = 0; i < sub_colspan; i++) {
+                                    const sub_sub_header = await sub_sub_headers[subSubIndex];
+                                    const sub_sub_header_text = await this.parseText(await sub_sub_header.innerText());
+                                    keys.push(`${header_text}_${sub_header_text}_${sub_sub_header_text}`);
+                                    subSubIndex++;
+                                }
+    
+                            } else {
+                                keys.push(`${header_text}_${sub_header_text}`)
+                            }
+    
+                        }
+        
+                } else {
+                    keys.push(header_text);
                 }
             }
         }
 
+
         // Ambil data
-        const rowCount = await headerRows.count();
+        const rows = contentTable.locator('tbody tr'); //Ambil elemen baris untuk body/isi
+        const rowCount = await rows.count(); //Hitung jumlah baris
+
+        let startRowIndex; //Index awal pengambilan data
+        if (hasSeparatedTable) {
+            startRowIndex = 0;  //Jika header dan konten terpisah maka index awal 0
+        } else {
+            startRowIndex = headerRows.length;  //Jika header dan konten disatukan maka index awal adalah baris ke x (tergantung banyak baris header)
+        }
+
         const result = [];
 
-        for (let i = 2; i < rowCount; i++) {
-            const row = headerRows.nth(i);
+        for (let i = startRowIndex; i < rowCount; i++) { //Untuk setiap baris isi table
+            const row = rows.nth(i);
             const col = row.locator('td');
+            const colCount = await col.count();
             const isYellow = await row.evaluate(el => el.classList.contains('yellow'));
             const data = {}
 
-            if (!isYellow) {
-                for (let j = 0; j < keys.length; j++) {
+            if (!isYellow) {  // Jika baris bukan baris total (ditandai dengan baris kuning)
+
+                for (let j = 0; j < colCount; j++) {  //Untuk setiap kolom di baris tersebut
                     const rawText = (await col.nth(j).innerText()).trim();
-    
-                    if(j === 0) {
-                        data[keys[j]] = rawText;
+
+                    if (keys[j] !== undefined) {
+                        if ( !keys[j].includes("avg")) {
+                            if (identifiers.includes(keys[j])) { // Jika kolom identifier
+                                data[keys[j]] = rawText;
+                            } else {
+                                data[keys[j]] = this.parseNumber(rawText);
+                            }
+                        }
                     } else {
-                        data[keys[j]] = this.parseNumber(rawText);
+                        if (keys[j] !== undefined) {
+                            data[keys[j]] = this.parseDecimal(rawText);
+                        }
                     }
                     
                 }
+
             } else {
 
-                for (let j = 0; j < keys.length; j++) { //Untuk setiap kolom
-                    if(!identifiers.includes(keys[j])) { //Jika kolom bukan identifier maka masukkan ke data total
-                        const rawText = (await col.nth(j).innerText()).trim();
+                let startTotalIndex = 1;
+                for (let j = 0; j < colCount; j++) {
+                    if(!identifiers.includes(keys[j]) && keys[j] !== undefined) { //Jika kolom bukan identifier maka masukkan ke total
+                        const rawText = (await col.nth(startTotalIndex).innerText()).trim();
                         const totalKey = `Total_${keys[j]}`;
-                        data[totalKey] = this.parseNumber(rawText);
+
+                        if (!totalKey.includes("avg")) {
+                            data[totalKey] = this.parseNumber(rawText);
+                        } else {
+                            data[totalKey] = this.parseDecimal(rawText);
+                        }
+                        
+                        startTotalIndex++;
                     }
                 }
 
@@ -197,7 +286,7 @@ export class Aragon {
                     result.push(data);
                     break;
             
-                case "Harian":
+                case "Detail":
                     if (!isYellow) result.push(data);
                     break;
             
@@ -214,8 +303,8 @@ export class Aragon {
 
     }
 
-    async ambilDataHarian(value_identifier) {
-        return await this.ambilData("Harian", value_identifier);
+    async ambilDataDetail(value_identifier) {
+        return await this.ambilData("Detail", value_identifier);
     }
 
     async ambilDataTotal(value_identifier) {

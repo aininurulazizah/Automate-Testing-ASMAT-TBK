@@ -28,6 +28,7 @@ export class Jackal {
         this.button_enter_periode = page.locator('a:text-is("GO!")');
         this.fieldFilter = page.locator('select#filter');
         this.fieldOutlet = page.locator('select#selfilteroutlet');
+        this.fieldLayanan = page.locator('.tail-select');
         this.field_periode_awal = page.locator('input#tgl_mulai'); //Laporan Kota
         this.field_periode_akhir = page.locator('input#tgl_akhir'); //Laporan Kota
     }
@@ -68,12 +69,32 @@ export class Jackal {
         return this.page.locator(`a >> font:has-text("${value}")`);
     }
 
+    getPilihanLayanan(value) {
+        return this.page.locator(`ul.dropdown-optgroup >> li.dropdown-option:has-text("${value}")`);
+    }
+
     parseNumber(text) {
         return Number(
             text
                 .replace(/[^\d-]/g, '')
                 .trim()
         );
+    }
+
+    parseDecimal(text) {
+        return Number(
+            text
+                .replace(/[^\d.-]/g, '')
+                .trim()
+        );
+    }
+
+    parseText(text) {
+        return text
+            .toLowerCase()
+            .replace(/[\s\-()]+/g, '_')
+            .replace(/^_+|_+$/g, '')
+            .trim()
     }
 
     async pilihTanggalBerangkat(value) {
@@ -167,40 +188,70 @@ export class Jackal {
         const contentTable = hasSeparatedTable ? this.page.locator('#tablecontent') : this.page.locator('table');
 
         // Ambil Header
-        const headerRows = headerTable.locator('tbody tr'); //Ambil elemen tr (baris) untuk header
-        const headerRow1 = headerRows.nth(0); //Ambil elemen baris pertama
-        const headerRow2 = headerRows.nth(1); //Ambil elemen baris kedua
-        const mainHeaders = await headerRow1.locator('th').all(); //Ambil elemen kolom header di baris pertama sebagai main header
-        const subHeaders = await headerRow2.locator('th').allInnerTexts(); //Ambil semua inner text kolom header di baris kedua sebagai subheader
-        const keys = [];
-        let subIndex = 0;
+        const headerRows = await headerTable.locator('tr:not([class])').all(); //Ambil elemen tr (baris) untuk header
+        let headers = [];
+        let keys = [];
+        let subIndex = 0;       //Index untuk sub header atau header baris ke-2
+        let subSubIndex = 0;    //Index utnuk sub sub header atau header baris ke-3 (asumsi maksimal header adalah 3 baris)
+        
 
-        for(const th of mainHeaders) {  //Mengisi nama kolom
-            const text = (await th.innerText()).trim();
-            const colspan = await th.getAttribute('colspan');
-            const rowspan = await th.getAttribute('rowspan');
-            const baseKey = text.toLowerCase().replace(/[\s\-()]+/g, '_').replace(/^_+|_+$/g, '');
-            
-            if (text !== '') {
-                if (rowspan === '2') {
-                    keys.push(baseKey);
-                }
+        for (let i = 0; i < headerRows.length; i++) {
+            const header = await headerRows[i].locator('th').all()
+            headers.push(header);
+        }
+
+        const mainHeaders = headers[0];
+        const subHeaders = headers.slice(1);
+
+        for (const header of mainHeaders) {
+            let colspan = Number(await header.getAttribute('colspan')) || 1;
+            const header_text = await this.parseText(await header.innerText());
+
+            if (header_text !== "") {
+                if(colspan !== 1) {
+                    const sub_headers = subHeaders[0]
     
-                if (colspan) {
-                    const span = parseInt(colspan);
-                    for (let i = 0; i < span; i++) {
-                        const sub = subHeaders[subIndex].toLowerCase().replace(/[\s\-()]+/g, '_').replace(/^_+|_+$/g, '');
-                        keys.push(`${baseKey}_${sub}`);
-                        subIndex++;
-                    }
+                        for(let i = 0; i < colspan; i++) {
+                            const sub_header = await sub_headers[subIndex];
+                            const sub_colspan = Number(await sub_header.getAttribute('colspan')) || 1;
+                            const sub_header_text = await this.parseText(await sub_header.innerText());
+                            subIndex++;
+    
+                            if(sub_colspan !== 1) {
+                                const sub_sub_headers = subHeaders[1];
+                                colspan = colspan - sub_colspan + 1;
+    
+                                for(let i = 0; i < sub_colspan; i++) {
+                                    const sub_sub_header = await sub_sub_headers[subSubIndex];
+                                    const sub_sub_header_text = await this.parseText(await sub_sub_header.innerText());
+                                    keys.push(`${header_text}_${sub_header_text}_${sub_sub_header_text}`);
+                                    subSubIndex++;
+                                }
+    
+                            } else {
+                                keys.push(`${header_text}_${sub_header_text}`)
+                            }
+    
+                        }
+        
+                } else {
+                    keys.push(header_text);
                 }
             }
         }
 
+
         // Ambil data
         const rows = contentTable.locator('tbody tr'); //Ambil elemen baris untuk body/isi
         const rowCount = await rows.count(); //Hitung jumlah baris
-        const startRowIndex = hasSeparatedTable ? 0 : 2;  //Jika header dan isi dipisah maka index penghitung baris dimulai dari 0
+        
+        let startRowIndex; //Index awal pengambilan data
+        if (hasSeparatedTable) {
+            startRowIndex = 0;  //Jika header dan konten terpisah maka index awal 0
+        } else {
+            startRowIndex = headerRows.length;  //Jika header dan konten disatukan maka index awal adalah baris ke x (tergantung banyak baris header)
+        }
+
         const result = [];
 
         for (let i = startRowIndex; i < rowCount; i++) { //Untuk setiap baris isi table
@@ -214,12 +265,18 @@ export class Jackal {
 
                 for (let j = 0; j < colCount; j++) {  //Untuk setiap kolom di baris tersebut
                     const rawText = (await col.nth(j).innerText()).trim();
-    
+
                     if (keys[j] !== undefined) {
-                        if (identifiers.includes(keys[j])) { // Jika kolom identifier
-                            data[keys[j]] = rawText;
-                        } else {
-                            data[keys[j]] = this.parseNumber(rawText);
+                        if ( !keys[j].includes("avg")) {
+                            if (identifiers.includes(keys[j])) { // Jika kolom identifier
+                                data[keys[j]] = rawText;
+                            } else {
+                                data[keys[j]] = this.parseNumber(rawText);
+                            }
+                        }
+                    } else {
+                        if (keys[j] !== undefined) {
+                            data[keys[j]] = this.parseDecimal(rawText);
                         }
                     }
                     
@@ -232,7 +289,13 @@ export class Jackal {
                     if(!identifiers.includes(keys[j]) && keys[j] !== undefined) { //Jika kolom bukan identifier maka masukkan ke total
                         const rawText = (await col.nth(startTotalIndex).innerText()).trim();
                         const totalKey = `Total_${keys[j]}`;
-                        data[totalKey] = this.parseNumber(rawText);
+
+                        if (!totalKey.includes("avg")) {
+                            data[totalKey] = this.parseNumber(rawText);
+                        } else {
+                            data[totalKey] = this.parseDecimal(rawText);
+                        }
+                        
                         startTotalIndex++;
                     }
                 }
@@ -244,7 +307,7 @@ export class Jackal {
                     result.push(data);
                     break;
             
-                case "Harian":
+                case "Detail":
                     if (!isYellow) result.push(data);
                     break;
             
@@ -261,8 +324,8 @@ export class Jackal {
 
     }
 
-    async ambilDataHarian(value_identifier) {
-        return await this.ambilData("Harian", value_identifier);
+    async ambilDataDetail(value_identifier) {
+        return await this.ambilData("Detail", value_identifier);
     }
 
     async ambilDataTotal(value_identifier) {
@@ -289,6 +352,11 @@ export class Jackal {
 
     async pilihOutlet(label) {
         await this.fieldOutlet.selectOption({ label });
+    }
+
+    async pilihLayanan(label) {
+        await this.fieldLayanan.click();
+        await this.getPilihanLayanan(label);
     }
 
     async pilihPeriodeAwal(value_tahun, value_bulan, value_tanggal) {

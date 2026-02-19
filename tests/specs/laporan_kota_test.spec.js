@@ -78,16 +78,13 @@ for (const site of sites) {
 
         await web.enter();
 
-        const laporan = await web.ambilDataHarian(testData.IdentifierColumns);
+        const laporan = await web.ambilDataDetail(testData.IdentifierColumns);
 
         // Ambil nilai aktual hanya id (tanggal) dan total biaya op
-        const total_biaya_op_act = await logic.ambilTotalBiayaOpPerhari(laporan, testData.MainIdentifier, 'biaya_op_total_biaya_op');
-        console.log("total_biaya_op_act : ", total_biaya_op_act);
+        const total_biaya_op_act = await logic.ambilTotalPerBaris(laporan, testData.MainIdentifier, 'biaya_op_total_biaya_op');
         
         // Hitung total biaya op perhari sebagai nilai expected untuk validasi
-        const total_biaya_op_exp = await logic.hitungTotalBiayaOp(laporan, testData.MainIdentifier, site.data.KolomPengeluaran.Biaya_Op, 'biaya_op_total_biaya_op');
-        console.log("total_biaya_op_exp : ", total_biaya_op_exp);
-        // await page.pause();
+        const total_biaya_op_exp = await logic.hitungTotalPerBaris(laporan, testData.MainIdentifier, site.data.KolomPengeluaran.Biaya_Op, 'biaya_op_total_biaya_op');
 
         await logic.validasiArrayOfObject(total_biaya_op_act, total_biaya_op_exp, 'biaya_op_total_biaya_op');
 
@@ -113,13 +110,13 @@ for (const site of sites) {
 
         await web.enter();
 
-        const laporan = await web.ambilDataHarian(testData.IdentifierColumns);
+        const laporan = await web.ambilDataDetail(testData.IdentifierColumns);
 
         // Ambil nilai aktual hanya id (tanggal) dan total biaya op
-        const total_laba_act = await logic.ambilTotalLabaPerhari(laporan, testData.MainIdentifier, 'total_laba');
+        const total_laba_act = await logic.ambilTotalPerBaris(laporan, testData.MainIdentifier, 'total_laba');
         
         // Hitung total biaya op perhari sebagai nilai expected untuk validasi
-        const total_laba_exp = await logic.hitungTotalLaba(laporan, testData.MainIdentifier, site.data.KolomPendapatan, site.data.KolomPengeluaran);
+        const total_laba_exp = await logic.hitungTotalLabaPerBaris(laporan, testData.MainIdentifier, site.data.KolomPendapatan, site.data.KolomPengeluaran);
 
         await logic.validasiArrayOfObject(total_laba_act, total_laba_exp, 'total_laba');
 
@@ -145,7 +142,7 @@ for (const site of sites) {
 
         await web.enter();
 
-        const laporan = await web.ambilDataHarian(testData.IdentifierColumns); // Data harian tanpa total
+        const laporan = await web.ambilDataDetail(testData.IdentifierColumns); // Data harian tanpa total
 
         const totals_act = await web.ambilDataTotal(testData.IdentifierColumns); // Data total setiap kolom
 

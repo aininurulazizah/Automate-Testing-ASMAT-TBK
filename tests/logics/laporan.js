@@ -8,7 +8,9 @@ export class Laporan {
 
     }
 
-    async ambilTotalPerhari (laporan, identifier, kolomTotal) {
+    //======= Main Function =======//
+
+    async ambilTotalPerBaris (laporan, identifier, kolomTotal) {
 
         return laporan.map((row) => {
             const result = { 
@@ -20,7 +22,7 @@ export class Laporan {
         })
     }
 
-    async hitungTotalPerhari (laporan, identifier, listKolom, namaKolom) {
+    async hitungTotalPerBaris (laporan, identifier, listKolom, namaKolomTotal) {
 
         return laporan.map((row) => {
             let total = 0;
@@ -33,7 +35,7 @@ export class Laporan {
                 total += row[column] ?? 0;
             }
 
-            result[namaKolom] = total;
+            result[namaKolomTotal] = total;
 
             return result;
        })
@@ -109,27 +111,7 @@ export class Laporan {
         return result
     }
 
-    async ambilTotalBiayaOpPerhari (laporan, identifier, kolomTotalBiayaOp) {
-        return this.ambilTotalPerhari(laporan, identifier, kolomTotalBiayaOp);
-    }
-
-    async ambilTotalKomisiPerhari (laporan, identifier, kolomTotalKomisi) {
-        return this.ambilTotalPerhari(laporan, identifier, kolomTotalKomisi);
-    }
-
-    async ambilTotalLabaPerhari (laporan, identifier, kolomTotalLaba) {
-        return this.ambilTotalPerhari(laporan, identifier, kolomTotalLaba);
-    }
-
-    async hitungTotalBiayaOp (laporan, identifier, listKolomBiayaOp, namaKolom) {
-        return this.hitungTotalPerhari(laporan, identifier, listKolomBiayaOp, namaKolom);
-    }
-
-    async hitungTotalKomisi (laporan, identifier, listKolomKomisi) {
-        return this.hitungTotalPerhari(laporan, identifier, listKolomKomisi, 'komisi_total');
-    }
-
-    async hitungTotalLaba (laporan, identifier, kolomPendapatan, kolomPengeluaran) {
+    async hitungTotalLabaPerBaris (laporan, identifier, kolomPendapatan, kolomPengeluaran) {
         let result = [];
         let total_pendapatan_perkategori = await this.hitungTotalPerkategori(laporan, identifier, kolomPendapatan);
         let total_pengeluaran_perkategori = await this.hitungTotalPerkategori(laporan, identifier, kolomPengeluaran);
@@ -175,10 +157,63 @@ export class Laporan {
         return result;
     }
 
+    //======= Steps Function =======//
+
+    async ambilTotalBiayaOpPerhari (laporan, identifier, kolomTotalBiayaOp) {
+        return this.ambilTotalPerIdentifier(laporan, identifier, kolomTotalBiayaOp);
+    }
+
+    async ambilTotalKomisiPerhari (laporan, identifier, kolomTotalKomisi) {
+        return this.ambilTotalPerIdentifier(laporan, identifier, kolomTotalKomisi);
+    }
+
+    async ambilTotalLabaPerhari (laporan, identifier, kolomTotalLaba) {
+        return this.ambilTotalPerIdentifier(laporan, identifier, kolomTotalLaba);
+    }
+
+    async hitungTotalBiayaOpPerhari (laporan, identifier, listKolomBiayaOp, kolomTotalBiayaOp) {
+        return this.hitungTotalPerIdentifier(laporan, identifier, listKolomBiayaOp, kolomTotalBiayaOp);
+    }
+
+    async hitungTotalKomisiPerhari (laporan, identifier, listKolomKomisi, kolomTotalKomisi) {
+        return this.hitungTotalPerIdentifier(laporan, identifier, listKolomKomisi, kolomTotalKomisi);
+    }
+
+    async ambilTotalBiayaOpPerkota (laporan, identifier, kolomTotalBiayaOp) {
+        return this.ambilTotalPerIdentifier(laporan, identifier, kolomTotalBiayaOp);
+    }
+
+    async ambilTotalKomisiPerkota (laporan, identifier, kolomTotalKomisi) {
+        return this.ambilTotalPerIdentifier(laporan, identifier, kolomTotalKomisi);
+    }
+
+    async ambilTotalLabaPerkota (laporan, identifier, kolomTotalLaba) {
+        return this.ambilTotalPerIdentifier(laporan, identifier, kolomTotalLaba);
+    }
+
+    async hitungTotalBiayaOpPerkota (laporan, identifier, listKolomBiayaOp, kolomTotalBiayaOp) {
+        return this.hitungTotalPerIdentifier(laporan, identifier, listKolomBiayaOp, kolomTotalBiayaOp);
+    }
+
+    async hitungTotalLabaPerkota (laporan, identifier, kolomPendapatan, kolomPengeluaran) {
+        return this.hitungTotalLabaPerIdentifier(laporan, identifier, kolomPendapatan, kolomPengeluaran);
+    }
+
+    //======= Validations =======//
+
     async validasiArrayOfObject (actual, expected, expected_column) {
         for (const row of expected) {
             expect (
                 (actual.find(p => p.id == row.id))[expected_column],
+                `Validasi ${expected_column} pada ${row.id}`
+            ).toBe(row[expected_column]);
+        }
+    }
+
+    async validasiArrayOfObjectDiffExpectedCol (actual, expected, actual_column, expected_column) {
+        for (const row of expected) {
+            expect (
+                (actual.find(p => p.id == row.id))[actual_column],
                 `Validasi ${expected_column} pada ${row.id}`
             ).toBe(row[expected_column]);
         }
