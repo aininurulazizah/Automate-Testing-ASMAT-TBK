@@ -8,7 +8,7 @@ export class Laporan {
 
     }
 
-    //======= Main Function =======//
+    //======= Steps =======//
 
     async ambilTotalPerBaris (laporan, identifier, kolomTotal) {
 
@@ -111,21 +111,37 @@ export class Laporan {
         return result
     }
 
-    async hitungTotalLabaPerBaris (laporan, identifier, kolomPendapatan, kolomPengeluaran) {
+    async hitungSelisihKategori (laporan, identifier, subBase, subPengurang, namaKolom) {
         let result = [];
-        let total_pendapatan_perkategori = await this.hitungTotalPerkategori(laporan, identifier, kolomPendapatan);
-        let total_pengeluaran_perkategori = await this.hitungTotalPerkategori(laporan, identifier, kolomPengeluaran);
-        let list_total_pendapatan = await this.hitungTotalGabunganKategori(total_pendapatan_perkategori, 'total_pendapatan');
-        let list_total_pengeluaran = await this.hitungTotalGabunganKategori(total_pengeluaran_perkategori, 'total_pengeluaran');
+        let total_base_perkategori = await this.hitungTotalPerkategori(laporan, identifier, subBase);
+        let total_pengurang_perkategori = await this.hitungTotalPerkategori(laporan, identifier, subPengurang);
+        let list_total_base = await this.hitungTotalGabunganKategori(total_base_perkategori, 'total_base');
+        let list_total_pengurang = await this.hitungTotalGabunganKategori(total_pengurang_perkategori, 'total_pengurang');
         
-        for (const pendapatan of list_total_pendapatan) {
-            const current_pendapatan = pendapatan.total_pendapatan;
-            const pengeluaran = list_total_pengeluaran.find(p => p.id === pendapatan.id);
-            const current_pengeluaran = pengeluaran.total_pengeluaran;
+        for (const base of list_total_base) {
+            const current_base = base.total_base;
+            const pengurang = list_total_pengurang.find(p => p.id === base.id);
+            const current_pengurang = pengurang.total_pengurang;
 
             result.push({
-                id : pendapatan.id,
-                total_laba : current_pendapatan - current_pengeluaran
+                id : base.id,
+                [namaKolom] : current_base - current_pengurang
+            })
+        }
+
+        return result;
+    }
+
+    async hitungAveragePerBaris(laporan, identifier, subBase, subPembagi, namaKolom) {
+        let result = [];
+
+        for (const data of laporan) {
+            const current_base = data[subBase];
+            const current_pembagi = data[subPembagi];
+
+            result.push({
+                id : data[identifier],
+                [namaKolom] : Math.round((current_base / current_pembagi) * 10) / 10
             })
         }
 
@@ -157,47 +173,6 @@ export class Laporan {
         return result;
     }
 
-    //======= Steps Function =======//
-
-    async ambilTotalBiayaOpPerhari (laporan, identifier, kolomTotalBiayaOp) {
-        return this.ambilTotalPerIdentifier(laporan, identifier, kolomTotalBiayaOp);
-    }
-
-    async ambilTotalKomisiPerhari (laporan, identifier, kolomTotalKomisi) {
-        return this.ambilTotalPerIdentifier(laporan, identifier, kolomTotalKomisi);
-    }
-
-    async ambilTotalLabaPerhari (laporan, identifier, kolomTotalLaba) {
-        return this.ambilTotalPerIdentifier(laporan, identifier, kolomTotalLaba);
-    }
-
-    async hitungTotalBiayaOpPerhari (laporan, identifier, listKolomBiayaOp, kolomTotalBiayaOp) {
-        return this.hitungTotalPerIdentifier(laporan, identifier, listKolomBiayaOp, kolomTotalBiayaOp);
-    }
-
-    async hitungTotalKomisiPerhari (laporan, identifier, listKolomKomisi, kolomTotalKomisi) {
-        return this.hitungTotalPerIdentifier(laporan, identifier, listKolomKomisi, kolomTotalKomisi);
-    }
-
-    async ambilTotalBiayaOpPerkota (laporan, identifier, kolomTotalBiayaOp) {
-        return this.ambilTotalPerIdentifier(laporan, identifier, kolomTotalBiayaOp);
-    }
-
-    async ambilTotalKomisiPerkota (laporan, identifier, kolomTotalKomisi) {
-        return this.ambilTotalPerIdentifier(laporan, identifier, kolomTotalKomisi);
-    }
-
-    async ambilTotalLabaPerkota (laporan, identifier, kolomTotalLaba) {
-        return this.ambilTotalPerIdentifier(laporan, identifier, kolomTotalLaba);
-    }
-
-    async hitungTotalBiayaOpPerkota (laporan, identifier, listKolomBiayaOp, kolomTotalBiayaOp) {
-        return this.hitungTotalPerIdentifier(laporan, identifier, listKolomBiayaOp, kolomTotalBiayaOp);
-    }
-
-    async hitungTotalLabaPerkota (laporan, identifier, kolomPendapatan, kolomPengeluaran) {
-        return this.hitungTotalLabaPerIdentifier(laporan, identifier, kolomPendapatan, kolomPengeluaran);
-    }
 
     //======= Validations =======//
 

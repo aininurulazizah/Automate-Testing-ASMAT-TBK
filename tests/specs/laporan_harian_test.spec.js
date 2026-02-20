@@ -130,7 +130,13 @@ for (const site of sites) {
         const total_laba_act = await logic.ambilTotalPerBaris(laporan, testData.MainIdentifier, 'total_laba');
         
         // Hitung total biaya op perhari sebagai nilai expected untuk validasi
-        const total_laba_exp = await logic.hitungTotalLabaPerBaris(laporan, testData.MainIdentifier, site.data.KolomPendapatan, site.data.KolomPengeluaran);
+        const total_laba_exp =  await logic.hitungSelisihKategori (
+                                  laporan, 
+                                  testData.MainIdentifier, 
+                                  site.data.KolomPendapatan, 
+                                  site.data.KolomPengeluaran, 
+                                  'total_laba'
+                                );
 
         await logic.validasiArrayOfObject(total_laba_act, total_laba_exp, 'total_laba');
 

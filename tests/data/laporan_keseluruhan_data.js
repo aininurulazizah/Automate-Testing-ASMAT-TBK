@@ -14,14 +14,10 @@ export const testData = {
             OmzetPenumpang: [
                 'omzet_penumpang'
             ],
-            Discount: [
-                'discount_discount',
-                'discount_discount_promo',
-                'discount_discount_voucher'
-            ],
             OmzetPaket: [
                 'omzet_paket_reguler',
                 'omzet_paket_corporate'
+                // 'omzet_paket_total'
             ]
         },
         KolomPengeluaran: {
@@ -32,6 +28,11 @@ export const testData = {
                 'biaya_op_etoll',
                 'biaya_op_op_freelance',
                 'biaya_op_op_karyawan'
+            ], 
+            Discount: [
+                'discount_discount',
+                'discount_discount_promo',
+                'discount_discount_voucher'
             ]
         },
         KolomNonMonetary: {
@@ -61,7 +62,7 @@ export const testData = {
             JmlPaket: [
                 'jml_paket_reguler',
                 'jml_paket_corporate'
-            ],
+            ]
 
         }
     },

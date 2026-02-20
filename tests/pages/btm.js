@@ -215,7 +215,7 @@ export class Btm {
                 }
             }
         }
-
+        
 
         // Ambil data
         const rows = contentTable.locator('tbody tr'); //Ambil elemen baris untuk body/isi
@@ -249,9 +249,7 @@ export class Btm {
                             } else {
                                 data[keys[j]] = this.parseNumber(rawText);
                             }
-                        }
-                    } else {
-                        if (keys[j] !== undefined) {
+                        } else {
                             data[keys[j]] = this.parseDecimal(rawText);
                         }
                     }
