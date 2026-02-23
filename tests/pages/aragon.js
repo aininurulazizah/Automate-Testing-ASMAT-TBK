@@ -218,7 +218,7 @@ export class Aragon {
                 }
             }
         }
-
+        
 
         // Ambil data
         const rows = contentTable.locator('tbody tr'); //Ambil elemen baris untuk body/isi
@@ -230,7 +230,7 @@ export class Aragon {
         } else {
             startRowIndex = headerRows.length;  //Jika header dan konten disatukan maka index awal adalah baris ke x (tergantung banyak baris header)
         }
-
+        
         const result = [];
 
         for (let i = startRowIndex; i < rowCount; i++) { //Untuk setiap baris isi table
@@ -252,9 +252,7 @@ export class Aragon {
                             } else {
                                 data[keys[j]] = this.parseNumber(rawText);
                             }
-                        }
-                    } else {
-                        if (keys[j] !== undefined) {
+                        } else {
                             data[keys[j]] = this.parseDecimal(rawText);
                         }
                     }
@@ -297,7 +295,7 @@ export class Aragon {
             
         }
 
-        console.log(`Data ${detail} Yang Diambil : `, result);
+        // console.log(`Data ${detail} Yang Diambil : `, result);
 
         return result;
 

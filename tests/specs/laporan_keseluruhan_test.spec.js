@@ -16,7 +16,7 @@ import { exportToExcel } from "../utils/excelHelper";
 
 const sites = [
   // {tag: '@daytrans', url: 'https://dev.daytrans.asmat.app', locator: Daytrans, data: testData.Daytrans, cred:Credential.Daytrans},
-  // {tag: '@baraya', url: 'https://dev.baraya.asmat.app', locator: Baraya, data: testData.Baraya, cred:Credential.Baraya},
+  {tag: '@baraya', url: 'https://dev.baraya.asmat.app', locator: Baraya, data: testData.Baraya, cred:Credential.Baraya},
   // {tag: '@aragon', url: 'https://dev.aragon.asmat.app', locator: Aragon, data: testData.Aragon, cred:Credential.Aragon},
   // {tag: '@jackal', url: 'https://dev.jackalx.asmat.app', locator: Jackal, data: testData.Jackal, cred:Credential.Jackal},
   {tag: '@btm', url: 'https://dev.btm.asmat.app', locator: Btm, data: testData.Btm, cred:Credential.Btm}
@@ -31,6 +31,7 @@ for (const site of sites) {
       let context;
     
       test.beforeAll(async ({ browser }) => {
+          test.setTimeout(60000);
           context = await browser.newContext();  
           const page = await context.newPage();  
           await page.goto(site.url);  // Step Login
@@ -216,7 +217,47 @@ for (const site of sites) {
                 
       })
 
-      test(`${site.tag} - Test Case 5 - Validasi Pendapatan Penumpang Perhari`, async() => {
+      if(site.data.KolomPendapatan.OmzetPenumpang.length > 1) {
+
+        test(`${site.tag} - Test Case 5 - Validasi Total Omzet Penumpang Perhari`, async() => {
+    
+          const page = await context.newPage();
+          
+          const web = new site.locator(page);
+  
+          const logic = new Laporan(page, site.locator);
+              
+          await page.goto(`${site.url}/asmat/laporan.keseluruhan`);
+  
+          await web.pilihTahun(site.data.PeriodeTahun);
+  
+          await web.pilihFilter(site.data.FilterBy);
+  
+          if(site.data.Layanan) {
+            await web.pilihLayanan(site.data.Layanan);
+          }
+  
+          await web.enter();
+  
+          await web.pilihBulan(site.data.PeriodeBulan);
+  
+          const laporan = await web.ambilDataDetail(testData.IdentifierColumns);
+  
+          // Ambil nilai aktual hanya id (tanggal) dan total jumlah penumpang by pembayaran
+          const total_omzet_penumpang_act = await logic.ambilTotalPerBaris(laporan, testData.MainIdentifier, 'omzet_penumpang_total');
+          
+          // Hitung total jumlah penumpang by pembayaran perhari sebagai nilai expected untuk validasi
+          const total_omzet_penumpang_exp = await logic.hitungTotalPerBaris(laporan, testData.MainIdentifier, site.data.KolomPendapatan.OmzetPenumpang, 'omzet_penumpang_total');
+  
+          await logic.validasiArrayOfObject(total_omzet_penumpang_act, total_omzet_penumpang_exp, 'omzet_penumpang_total');
+  
+          // await page.pause();
+                  
+        })
+
+      }
+
+      test(`${site.tag} - Test Case 6 - Validasi Pendapatan Penumpang Perhari`, async() => {
     
         const page = await context.newPage();
         
@@ -256,7 +297,7 @@ for (const site of sites) {
                 
       })
 
-      test(`${site.tag} - Test Case 6 - Validasi Jumlah Paket Perhari`, async() => {
+      test(`${site.tag} - Test Case 7 - Validasi Jumlah Paket Perhari`, async() => {
     
         const page = await context.newPage();
         
@@ -292,12 +333,12 @@ for (const site of sites) {
                 
       })
 
-      // test(`${site.tag} - Test Case 7 - Validasi Rata - Rata Paket Perhari`, async() => {
+      // test(`${site.tag} - Test Case 8 - Validasi Rata - Rata Paket Perhari`, async() => {
     
                 
       // })
 
-      test(`${site.tag} - Test Case 8 - Validasi Total Omzet Paket Perhari`, async() => {
+      test(`${site.tag} - Test Case 9 - Validasi Total Omzet Paket Perhari`, async() => {
     
         const page = await context.newPage();
         
@@ -333,7 +374,7 @@ for (const site of sites) {
                 
       })
 
-      test(`${site.tag} - Test Case 9 - Validasi Total Omzet Perhari`, async() => {
+      test(`${site.tag} - Test Case 10 - Validasi Total Omzet Perhari`, async() => {
     
         const page = await context.newPage();
         
@@ -373,7 +414,7 @@ for (const site of sites) {
                 
       })
 
-      test(`${site.tag} - Test Case 10 - Validasi Total Biaya Op Perhari`, async() => {
+      test(`${site.tag} - Test Case 11 - Validasi Total Biaya Op Perhari`, async() => {
     
         const page = await context.newPage();
         
@@ -409,7 +450,7 @@ for (const site of sites) {
                 
       })
 
-      test(`${site.tag} - Test Case 11 - Validasi Total Laba Kotor Perhari`, async() => {
+      test(`${site.tag} - Test Case 12 - Validasi Total Laba Kotor Perhari`, async() => {
         const page = await context.newPage();
         
         const web = new site.locator(page);

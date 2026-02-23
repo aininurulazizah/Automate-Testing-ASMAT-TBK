@@ -292,7 +292,7 @@ export class Btm {
             
         }
 
-        console.log(`Data ${detail} Yang Diambil : `, result);
+        // console.log(`Data ${detail} Yang Diambil : `, result);
 
         return result;
 

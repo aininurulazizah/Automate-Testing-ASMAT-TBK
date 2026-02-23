@@ -242,19 +242,19 @@ export class Baraya {
                 }
             }
         }
-
+        
 
         // Ambil data
         const rows = contentTable.locator('tbody tr'); //Ambil elemen baris untuk body/isi
         const rowCount = await rows.count(); //Hitung jumlah baris
-        
+
         let startRowIndex; //Index awal pengambilan data
         if (hasSeparatedTable) {
             startRowIndex = 0;  //Jika header dan konten terpisah maka index awal 0
         } else {
             startRowIndex = headerRows.length;  //Jika header dan konten disatukan maka index awal adalah baris ke x (tergantung banyak baris header)
         }
-
+        
         const result = [];
 
         for (let i = startRowIndex; i < rowCount; i++) { //Untuk setiap baris isi table
@@ -276,9 +276,7 @@ export class Baraya {
                             } else {
                                 data[keys[j]] = this.parseNumber(rawText);
                             }
-                        }
-                    } else {
-                        if (keys[j] !== undefined) {
+                        } else {
                             data[keys[j]] = this.parseDecimal(rawText);
                         }
                     }
@@ -321,7 +319,7 @@ export class Baraya {
             
         }
 
-        console.log(`Data ${detail} Yang Diambil : `, result);
+        // console.log(`Data ${detail} Yang Diambil : `, result);
 
         return result;
 

@@ -138,10 +138,11 @@ export class Laporan {
         for (const data of laporan) {
             const current_base = data[subBase];
             const current_pembagi = data[subPembagi];
+            const avg = current_pembagi === 0 ? 0 : Math.round((current_base / current_pembagi) * 10) / 10
 
             result.push({
                 id : data[identifier],
-                [namaKolom] : Math.round((current_base / current_pembagi) * 10) / 10
+                [namaKolom] : avg
             })
         }
 

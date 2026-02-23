@@ -252,10 +252,7 @@ export class Daytrans {
                 }
             }
         }
-
-        // console.log(JSON.stringify(keys, null, 2));
-        // await this.page.pause();
-
+        
 
         // Ambil data
         const rows = contentTable.locator('tbody tr'); //Ambil elemen baris untuk body/isi
@@ -267,7 +264,7 @@ export class Daytrans {
         } else {
             startRowIndex = headerRows.length;  //Jika header dan konten disatukan maka index awal adalah baris ke x (tergantung banyak baris header)
         }
-
+        
         const result = [];
 
         for (let i = startRowIndex; i < rowCount; i++) { //Untuk setiap baris isi table
@@ -286,19 +283,11 @@ export class Daytrans {
                         if ( !keys[j].includes("avg")) {
                             if (identifiers.includes(keys[j])) { // Jika kolom identifier
                                 data[keys[j]] = rawText;
-                                // console.log("kolom : ", keys[j]);
-                                // console.log("data : ", rawText);
                             } else {
                                 data[keys[j]] = this.parseNumber(rawText);
-                                // console.log("kolom : ", keys[j]);
-                                // console.log("data : ", rawText);
                             }
-                        }
-                    } else {
-                        if (keys[j] !== undefined) {
+                        } else {
                             data[keys[j]] = this.parseDecimal(rawText);
-                            // console.log("kolom : ", keys[j]);
-                            // console.log("data : ", rawText);
                         }
                     }
                     
@@ -340,7 +329,7 @@ export class Daytrans {
             
         }
 
-        console.log(`Data ${detail} Yang Diambil : `, result);
+        // console.log(`Data ${detail} Yang Diambil : `, result);
 
         return result;
 
