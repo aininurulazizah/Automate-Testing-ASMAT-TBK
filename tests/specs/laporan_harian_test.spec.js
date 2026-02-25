@@ -177,7 +177,7 @@ for (const site of sites) {
       })
 
       if (site.tag === '@daytrans') {
-        test(`${site.tag} - Test Case 4 (Daytrans) - Validasi Total Biaya Komisi Perhari`, async() => {
+        test(`${site.tag} - Test Case 4 - Validasi Total Biaya Komisi Perhari`, async() => {
     
           const page = await context.newPage();
           

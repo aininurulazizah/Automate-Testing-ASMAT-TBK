@@ -68,15 +68,71 @@ export const testData = {
     },
 
     Daytrans: {
-        PeriodeTahun: '2025',
-        PeriodeBulan: 'Januari',
+        PeriodeTahun: '2026',
+        PeriodeBulan: 'Februari',
         FilterBy: 'Waktu Keberangkatan',
 
         KolomPendapatan: {
-
+            OmzetPenumpang: [
+                'omzet_penumpang_dt_jakarta',
+                'omzet_penumpang_dt_jateng'
+            ],
+            OmzetPaket: [
+                'omzet_pkt_dt_jakarta',
+                'omzet_pkt_dt_jateng'
+            ]
         },
         KolomPengeluaran: {
-
+            Discount: [
+                'total_discount_penumpang_dt_jakarta',
+                'total_discount_penumpang_dt_jateng'
+            ],
+            DiscountPaket: [
+                'total_discount_paket_dt_jakarta',
+                'total_discount_paket_dt_jateng'
+            ],
+            Komisi: [
+                'komisi_app_api',
+                'komisi_whitelabel',
+                'komisi_tiketux',
+                'komisi_redbus',
+                'komisi_merchant_tiket',
+                'komisi_kiosk',
+                'komisi_traveloka_internal',
+                'komisi_traveloka_api_channel',
+            ],
+            BiayaOp: [
+                'biaya_tol',
+                'biaya_bbm',
+                'biaya_order_fee',
+                'biaya_biaya_langsung',
+                'biaya_biaya_tambahan'
+            ]
+        },
+        KolomNonMonetary: {
+            TotalTrip: [
+                'total_trip_dt_jakarta',
+                'total_trip_dt_jateng',
+                'total_trip_sewa_jakarta',
+                'total_trip_sewa_jateng'
+            ],
+            // JmlPenumpang: [], //Perlu tau dulu hitungannya dari mana
+            PendapatanPnp: [  //Perlu di-makesure ini masuk ke pendapatan/pengeluaran atau tidak
+                'pendapatan_pnp_nett_dt_jakarta',
+                'pendapatan_pnp_nett_dt_jateng'
+            ],
+            JmlPaket: [
+                'jum_paket_dt_jakarta',
+                'jum_paket_dt_jateng'
+            ],
+            OmzetUnitJakarta: [  //Perlu di-makesure ini masuk ke pendapatan/pengeluaran atau tidak
+                'omzet_unit_jakarta_pax',
+                'omzet_unit_jakarta_paket'
+            ],
+            OmzetUnitJateng: [  //Perlu di-makesure ini masuk ke pendapatan/pengeluaran atau tidak
+                'omzet_unit_jateng_pax',
+                'omzet_unit_jateng_paket'
+            ]
         }
     },
 

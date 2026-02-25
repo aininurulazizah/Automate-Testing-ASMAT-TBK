@@ -156,9 +156,13 @@ export class Btm {
     async ambilData(detail, identifiers) {
         await this.page.waitForSelector('table tbody tr');
 
-        const hasSeparatedTable = 
-            await this.page.locator('#tableheader').count > 0 && 
-            await this.page.locator('#tablecontent').count > 0 //Hasil true/false apakah header dan isi tabel elemennya terpisah atau tidak
+        // const hasSeparatedTable = 
+        //     await this.page.locator('#tableheader').count > 0 && 
+        //     await this.page.locator('#tablecontent').count > 0 //Hasil true/false apakah header dan isi tabel elemennya terpisah atau tidak
+
+        const hasSeparatedTable =
+            (await this.page.locator('#tableheader').count()) > 0 &&
+            (await this.page.locator('#tablecontent').count()) > 0; //Hasil true/false apakah header dan isi tabel elemennya terpisah atau tidak
 
         const headerTable = hasSeparatedTable ? this.page.locator('#tableheader') : this.page.locator('table');   //Assign tabel berdasarkan hasSeparatedTable?
         const contentTable = hasSeparatedTable ? this.page.locator('#tablecontent') : this.page.locator('table');

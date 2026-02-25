@@ -92,10 +92,16 @@ export class Daytrans {
     parseText(text) {
         return text
             .toLowerCase()
-            .replace(/[\s\-()]+/g, '_')
+            .replace(/[\s\-().]+/g, '_')
             .replace(/^_+|_+$/g, '')
             .trim()
     }
+
+    parseToSnakeCase(text) {
+        return text
+          .replace(/([a-z0-9])([A-Z])/g, '$1_$2')
+          .toLowerCase();
+      }
 
     async pilihTanggalBerangkat(value) {
         const [tanggal, bulan, tahun] = value.split(" ");
@@ -269,15 +275,14 @@ export class Daytrans {
 
         for (let i = startRowIndex; i < rowCount; i++) { //Untuk setiap baris isi table
             const row = rows.nth(i);
-            const col = row.locator('td');
-            const colCount = await col.count();
+            const texts = await row.locator('td').allInnerTexts();
             const isYellow = await row.evaluate(el => el.classList.contains('yellow'));
             const data = {}
 
             if (!isYellow) {  // Jika baris bukan baris total (ditandai dengan baris kuning)
 
-                for (let j = 0; j < colCount; j++) {  //Untuk setiap kolom di baris tersebut
-                    const rawText = (await col.nth(j).innerText()).trim();
+                for (let j = 0; j < texts.length; j++) {  //Untuk setiap kolom di baris tersebut
+                    const rawText = await texts[j].trim();
 
                     if (keys[j] !== undefined) {
                         if ( !keys[j].includes("avg")) {
@@ -296,9 +301,9 @@ export class Daytrans {
             } else {
 
                 let startTotalIndex = 1;
-                for (let j = 0; j < colCount; j++) {
+                for (let j = 0; j < texts.length; j++) {    
                     if(!identifiers.includes(keys[j]) && keys[j] !== undefined) { //Jika kolom bukan identifier maka masukkan ke total
-                        const rawText = (await col.nth(startTotalIndex).innerText()).trim();
+                        const rawText = (await texts[startTotalIndex]).trim();
                         const totalKey = `Total_${keys[j]}`;
 
                         if (!totalKey.includes("avg")) {
