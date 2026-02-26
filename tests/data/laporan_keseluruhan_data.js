@@ -231,6 +231,19 @@ export const testData = {
                 'biaya_op_tambahan_tol'
             ]
         },
+        KolomPendapatanCharter: {
+            OmzetCharter: [
+                'charter_omzet'
+            ]
+        },
+        KolomPengeluaranCharter: {
+          BiayaOpCharter: [
+            'charter_biaya_op_bahan_bakar_minyak',
+            'charter_biaya_op_jasa_driver',
+            'charter_biaya_op_lain_lain',
+            'charter_biaya_op_tol_dan_parkir'
+          ]  
+        },
         KolomNonMonetary: {
             JmlPenumpang: [
                 'jml_penumpang_go_show',

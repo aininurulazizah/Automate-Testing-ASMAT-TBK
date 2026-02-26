@@ -17,7 +17,7 @@ import { exportToExcel } from "../utils/excelHelper";
 const sites = [
   {tag: '@daytrans', url: 'https://dev.daytrans.asmat.app', locator: Daytrans, data: testData.Daytrans, cred:Credential.Daytrans},
   {tag: '@baraya', url: 'https://dev.baraya.asmat.app', locator: Baraya, data: testData.Baraya, cred:Credential.Baraya},
-  // {tag: '@aragon', url: 'https://dev.aragon.asmat.app', locator: Aragon, data: testData.Aragon, cred:Credential.Aragon},
+  {tag: '@aragon', url: 'https://dev.aragon.asmat.app', locator: Aragon, data: testData.Aragon, cred:Credential.Aragon},
   // {tag: '@jackal', url: 'https://dev.jackalx.asmat.app', locator: Jackal, data: testData.Jackal, cred:Credential.Jackal},
   {tag: '@btm', url: 'https://dev.btm.asmat.app', locator: Btm, data: testData.Btm, cred:Credential.Btm}
 ]
@@ -200,7 +200,7 @@ for (const site of sites) {
 
       }
 
-      if (site.tag === '@btm' || site.tag === '@baraya') {
+      if (site.tag !== '@daytrans') {
 
         test(`${site.tag} - Test Case ${caseNumber()} - Validasi Rata - Rata Penumpang Perhari`, async() => {
     
@@ -413,45 +413,50 @@ for (const site of sites) {
                 
       })
 
-      test(`${site.tag} - Test Case ${caseNumber()} - Validasi Total Omzet Perhari`, async() => {
+      if (site.tag !== '@daytrans') {
+
+        test(`${site.tag} - Test Case ${caseNumber()} - Validasi Total Omzet Perhari`, async() => {
     
-        const page = await context.newPage();
-        
-        const web = new site.locator(page);
+          const page = await context.newPage();
+          
+          const web = new site.locator(page);
+  
+          const logic = new Laporan(page, site.locator);
+              
+          await page.goto(`${site.url}/asmat/laporan.keseluruhan`);
+  
+          await web.pilihTahun(site.data.PeriodeTahun);
+  
+          await web.pilihFilter(site.data.FilterBy);
+  
+          if(site.data.Layanan) {
+            await web.pilihLayanan(site.data.Layanan);
+          }
+  
+          await web.enter();
+  
+          await web.pilihBulan(site.data.PeriodeBulan);
+  
+          const laporan = await web.ambilDataDetail(testData.IdentifierColumns);
+  
+          const total_omzet_act =  await logic.ambilTotalPerBaris(laporan, testData.MainIdentifier, 'total_omzet');
+  
+          const total_omzet_exp =  await logic.hitungSelisihKategori(
+                                              laporan, 
+                                              testData.MainIdentifier,     
+                                              site.data.KolomPendapatan,
+                                              { Discount: site.data.KolomPengeluaran.Discount },
+                                              'total_omzet'
+                                            );
+  
+          await logic.validasiArrayOfObject(total_omzet_act, total_omzet_exp, 'total_omzet');
+  
+          // await page.pause();
+                  
+        })
 
-        const logic = new Laporan(page, site.locator);
-            
-        await page.goto(`${site.url}/asmat/laporan.keseluruhan`);
+      }
 
-        await web.pilihTahun(site.data.PeriodeTahun);
-
-        await web.pilihFilter(site.data.FilterBy);
-
-        if(site.data.Layanan) {
-          await web.pilihLayanan(site.data.Layanan);
-        }
-
-        await web.enter();
-
-        await web.pilihBulan(site.data.PeriodeBulan);
-
-        const laporan = await web.ambilDataDetail(testData.IdentifierColumns);
-
-        const total_omzet_act =  await logic.ambilTotalPerBaris(laporan, testData.MainIdentifier, 'total_omzet');
-
-        const total_omzet_exp =  await logic.hitungSelisihKategori(
-                                            laporan, 
-                                            testData.MainIdentifier,     
-                                            site.data.KolomPendapatan,
-                                            { Discount: site.data.KolomPengeluaran.Discount },
-                                            'total_omzet'
-                                          );
-
-        await logic.validasiArrayOfObject(total_omzet_act, total_omzet_exp, 'total_omzet');
-
-        // await page.pause();
-                
-      })
 
       test(`${site.tag} - Test Case ${caseNumber()} - Validasi Total Biaya Op Perhari`, async() => {
     
@@ -491,6 +496,47 @@ for (const site of sites) {
                 
       })
 
+      if (site.data.KolomPengeluaranCharter) {
+
+        test(`${site.tag} - Test Case ${caseNumber()} - Validasi Total Biaya Op Charter Perhari`, async() => {
+    
+          const page = await context.newPage();
+          
+          const web = new site.locator(page);
+  
+          const logic = new Laporan(page, site.locator);
+              
+          await page.goto(`${site.url}/asmat/laporan.keseluruhan`);
+  
+          await web.pilihTahun(site.data.PeriodeTahun);
+  
+          await web.pilihFilter(site.data.FilterBy);
+  
+          if(site.data.Layanan) {
+            await web.pilihLayanan(site.data.Layanan);
+          }
+  
+          await web.enter();
+  
+          await web.pilihBulan(site.data.PeriodeBulan);
+  
+          const laporan = await web.ambilDataDetail(testData.IdentifierColumns);
+  
+          // Ambil nilai aktual hanya id (tanggal) dan total jumlah penumpang by pembayaran
+          const total_biaya_op_charter_act = await logic.ambilTotalPerBaris(laporan, testData.MainIdentifier, 'charter_biaya_op_total');
+          
+          // Hitung total jumlah penumpang by pembayaran perhari sebagai nilai expected untuk validasi
+          const total_biaya_op_charter_exp = await logic.hitungTotalPerBaris(laporan, testData.MainIdentifier, site.data.KolomPengeluaranCharter.BiayaOpCharter, 'charter_biaya_op_total');
+  
+          await logic.validasiArrayOfObject(total_biaya_op_charter_act, total_biaya_op_charter_exp, 'charter_biaya_op_total');
+  
+          // await page.pause();
+                  
+        })
+
+
+      }
+
       test(`${site.tag} - Test Case ${caseNumber()} - Validasi Total Laba Kotor Perhari`, async() => {
         const page = await context.newPage();
         
@@ -514,19 +560,25 @@ for (const site of sites) {
 
         const laporan = await web.ambilDataDetail(testData.IdentifierColumns);
 
-        console.log(laporan);
+        const nama_kolom = site.tag === '@daytrans' ? 'l/b_kotor' : 'total_laba_kotor';
 
-        // await page.pause();
-
-        const nama_kolom = site.tag === '@daytrans' ? 'l/b_kotor' : 'total_laba_kotor'
+        const kolomPendapatan =  {   //Kolom pendapatan didefinisikan dulu jika ada kolompendapatan lai
+          ...site.data.KolomPendapatan,
+          ...(site.data.KolomPendapatanCharter || {})
+        };
+      
+        const kolomPengeluaran = {   //Kolom pengeluaran didefinisikan dulu jika ada kolompendapatan lain(charter)
+          ...site.data.KolomPengeluaran,
+          ...(site.data.KolomPengeluaranCharter || {})
+        };
 
         const total_laba_kotor_act =  await logic.ambilTotalPerBaris(laporan, testData.MainIdentifier, nama_kolom);
 
         const total_laba_kotor_exp =  await logic.hitungSelisihKategori(
                                             laporan, 
                                             testData.MainIdentifier,     
-                                            site.data.KolomPendapatan,
-                                            site.data.KolomPengeluaran,
+                                            kolomPendapatan,
+                                            kolomPengeluaran,
                                             nama_kolom
                                           );
 
@@ -535,6 +587,51 @@ for (const site of sites) {
         // await page.pause();
                 
       })
+
+      if (site.data.KolomPendapatanCharter) {
+
+        test(`${site.tag} - Test Case ${caseNumber()} - Validasi Total Laba Kotor Charter Perhari`, async() => {
+          const page = await context.newPage();
+          
+          const web = new site.locator(page);
+  
+          const logic = new Laporan(page, site.locator);
+              
+          await page.goto(`${site.url}/asmat/laporan.keseluruhan`);
+  
+          await web.pilihTahun(site.data.PeriodeTahun);
+  
+          await web.pilihFilter(site.data.FilterBy);
+  
+          if(site.data.Layanan) {
+            await web.pilihLayanan(site.data.Layanan);
+          }
+  
+          await web.enter();
+  
+          await web.pilihBulan(site.data.PeriodeBulan);
+  
+          const laporan = await web.ambilDataDetail(testData.IdentifierColumns);
+  
+          const nama_kolom = site.tag === '@daytrans' ? 'l/b_kotor' : 'total_laba_kotor'
+  
+          const total_laba_charter_act =  await logic.ambilTotalPerBaris(laporan, testData.MainIdentifier, 'charter_laba_kotor');
+  
+          const total_laba_charter_exp =  await logic.hitungSelisihKategori(
+                                              laporan, 
+                                              testData.MainIdentifier,     
+                                              site.data.KolomPendapatanCharter,
+                                              site.data.KolomPengeluaranCharter,
+                                              'charter_laba_kotor'
+                                            );
+  
+          await logic.validasiArrayOfObject(total_laba_charter_act, total_laba_charter_exp, 'charter_laba_kotor');
+  
+          // await page.pause();
+                  
+        })
+
+      }
 
       if(site.data.KolomNonMonetary.TotalTrip) {
        
