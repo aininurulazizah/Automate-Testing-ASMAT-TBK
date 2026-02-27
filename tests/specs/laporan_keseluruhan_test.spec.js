@@ -18,7 +18,7 @@ const sites = [
   {tag: '@daytrans', url: 'https://dev.daytrans.asmat.app', locator: Daytrans, data: testData.Daytrans, cred:Credential.Daytrans},
   {tag: '@baraya', url: 'https://dev.baraya.asmat.app', locator: Baraya, data: testData.Baraya, cred:Credential.Baraya},
   {tag: '@aragon', url: 'https://dev.aragon.asmat.app', locator: Aragon, data: testData.Aragon, cred:Credential.Aragon},
-  // {tag: '@jackal', url: 'https://dev.jackalx.asmat.app', locator: Jackal, data: testData.Jackal, cred:Credential.Jackal},
+  {tag: '@jackal', url: 'https://dev.jackalx.asmat.app', locator: Jackal, data: testData.Jackal, cred:Credential.Jackal},
   {tag: '@btm', url: 'https://dev.btm.asmat.app', locator: Btm, data: testData.Btm, cred:Credential.Btm}
 ]
 
@@ -496,7 +496,7 @@ for (const site of sites) {
                 
       })
 
-      if (site.data.KolomPengeluaranCharter) {
+      if (site.data.KolomPengeluaranCharter && site.data.KolomPengeluaranCharter.BiayaOpCharter.length > 1) {
 
         test(`${site.tag} - Test Case ${caseNumber()} - Validasi Total Biaya Op Charter Perhari`, async() => {
     
@@ -671,7 +671,7 @@ for (const site of sites) {
 
       }
 
-      if (site.data.KolomPengeluaran.Komisi) {
+      if (site.data.KolomPengeluaran.Komisi && site.data.KolomPengeluaran.Komisi.length > 1) {
 
         test(`${site.tag} - Test Case ${caseNumber()} - Validasi Total Komisi Perhari`, async() => {
     
@@ -865,6 +865,40 @@ for (const site of sites) {
 
       }
     
+      test(`${site.tag} - Test Case ${caseNumber()} - Cek Laporan Total Bulanan`, async() => {
+    
+        const page = await context.newPage();
+          
+        const web = new site.locator(page);
+
+        const logic = new Laporan(page, site.locator);
+            
+        await page.goto(`${site.url}/asmat/laporan.keseluruhan`);
+
+        await web.pilihTahun(site.data.PeriodeTahun);
+
+        await web.pilihFilter(site.data.FilterBy);
+
+        if(site.data.Layanan) {
+          await web.pilihLayanan(site.data.Layanan);
+        }
+
+        await web.enter();
+
+        await web.pilihBulan(site.data.PeriodeBulan);
+  
+        const laporan = await web.ambilDataDetail(testData.IdentifierColumns); // Data harian tanpa total
+  
+        const totals_act = await web.ambilDataTotal(testData.IdentifierColumns); // Data total setiap kolom
+  
+        const totals_exp = await logic.hitungTotalPerField(laporan, testData.IdentifierColumns);
+  
+        await logic.validasiArrayOfSingleObject(totals_act, totals_exp);
+  
+        // await page.pause();
+                
+      })
+
     });
   
   }

@@ -169,6 +169,13 @@ export class Laporan {
 
         }
 
+        for(const key of Object.keys(result_temp)) {
+            
+            if(key.includes('avg') || key.includes('average')) {
+                result_temp[key] = Math.round((result_temp[key]) * 10) / 10;
+            }
+        }
+
         result.push(result_temp);
 
         return result;

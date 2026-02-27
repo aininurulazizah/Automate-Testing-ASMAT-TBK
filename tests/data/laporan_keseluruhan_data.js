@@ -277,15 +277,75 @@ export const testData = {
 
     Jackal: {
         PeriodeTahun: '2025',
-        PeriodeBulan: 'Januari',
+        PeriodeBulan: 'Desember',
         FilterBy: 'Waktu Keberangkatan',
         Layanan: 'Semua',
 
         KolomPendapatan: {
-
+            OmzetPenumpang: [
+                'omzet_penumpang'
+            ],
+            OmzetPaket: [
+                'omzet_paket_reguler',
+                'omzet_paket_corporate'
+            ]
         },
         KolomPengeluaran: {
-
+            Discount: [
+                'discount_discount',
+                'discount_discount_promo',
+                'discount_discount_voucher'
+            ],
+            BiayaOp: [
+                'biaya_op_bbm',
+                'biaya_op_premi_driver',
+                'biaya_op_tol'
+            ],
+            Komisi: [
+                'komisi'
+            ],
+            Ppn: [
+                'ppn'
+            ]
+        },
+        KolomPendapatanCharter: {
+            OmzetCharter: [
+                'charter_omzet'
+            ]
+        },
+        KolomPengeluaranCharter: {
+            BiayaOpCharter: [
+                'charter_biaya_op'
+            ]
+        },
+        KolomNonMonetary: {
+            JmlPenumpang: [
+                'jml_penumpang_go_show',
+                'jml_penumpang_offline',
+                'jml_penumpang_online'
+            ],
+            JmlPenumpangByPembayaran: [
+                'jml_penumpang_by_pembayaran_tun',
+                'jml_penumpang_by_pembayaran_edc',
+                'jml_penumpang_by_pembayaran_bni',
+                'jml_penumpang_by_pembayaran_vcr',
+                'jml_penumpang_by_pembayaran_trf',
+                'jml_penumpang_by_pembayaran_mbr',
+                'jml_penumpang_by_pembayaran_wl_and',
+                'jml_penumpang_by_pembayaran_wl_ios',
+                'jml_penumpang_by_pembayaran_wl_web',
+                'jml_penumpang_by_pembayaran_mer',
+                'jml_penumpang_by_pembayaran_ttx',
+                'jml_penumpang_by_pembayaran_trv',
+                'jml_penumpang_by_pembayaran_rdb',
+                'jml_penumpang_by_pembayaran_kiosk',
+                'jml_penumpang_by_pembayaran_esb',
+                'jml_penumpang_by_pembayaran_bca',
+            ],
+            JmlPaket: [
+                'jml_paket_reguler',
+                'jml_paket_corporate'
+            ]
         }
     }
 
