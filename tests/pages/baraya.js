@@ -191,7 +191,7 @@ export class Baraya {
         const contentTable = hasSeparatedTable ? this.page.locator('#tablecontent') : this.page.locator('table');
 
         // Ambil Header
-        const headerRows = await headerTable.locator('tr:not([class])').all(); //Ambil elemen tr (baris) untuk header
+        const headerRows = await headerTable.locator('tr:not([class]):not([style])').all(); //Ambil elemen tr (baris) untuk header
         let headers = [];
         let keys = [];
         let subIndex = 0;       //Index untuk sub header atau header baris ke-2
@@ -242,7 +242,7 @@ export class Baraya {
                 }
             }
         }
-        
+
 
         // Ambil data
         const rows = contentTable.locator('tbody tr'); //Ambil elemen baris untuk body/isi
@@ -261,7 +261,10 @@ export class Baraya {
             const row = rows.nth(i);
             const col = row.locator('td');
             const colCount = await col.count();
-            const isYellow = await row.evaluate(el => el.classList.contains('yellow'));
+            const isYellow = await row.evaluate(el => {
+                const bg = window.getComputedStyle(el).backgroundColor;
+                return el.classList.contains('yellow') || bg.includes('255, 255, 0');
+              });
             const data = {}
 
             if (!isYellow) {  // Jika baris bukan baris total (ditandai dengan baris kuning)
@@ -286,7 +289,7 @@ export class Baraya {
             } else {
 
                 let startTotalIndex = 1;
-                for (let j = 0; j < colCount; j++) {
+                for (let j = 0; j < keys.length; j++) {
                     if(!identifiers.includes(keys[j]) && keys[j] !== undefined) { //Jika kolom bukan identifier maka masukkan ke total
                         const rawText = (await col.nth(startTotalIndex).innerText()).trim();
                         const totalKey = `Total_${keys[j]}`;

@@ -24,6 +24,8 @@ export class Aragon {
         this.fieldFilter = page.locator('select#filter');
         this.fieldOutlet = page.locator('select#selfilteroutlet');
         this.fieldLayanan = page.locator('.tail-select');
+        this.field_periode_awal = page.locator('input#tgl_mulai');
+        this.field_periode_akhir = page.locator('input#tgl_akhir');
 
     }
 
@@ -57,6 +59,24 @@ export class Aragon {
 
     getPilihanLayanan(value) {
         return this.page.locator(`ul.dropdown-optgroup >> li.dropdown-option:has-text("${value}")`);
+    }
+
+    async pilihPeriodeAwal(value_tahun, value_bulan, value_tanggal) {
+        await this.field_periode_awal.click();
+        await this.page.locator('a.dp-cal-month').click();
+        await this.page.locator(`a.dp-month:has-text("${value_bulan}")`).click();
+        await this.page.locator('a.dp-cal-year').click();
+        await this.page.locator(`a.dp-year:has-text("${value_tahun}")`).click();
+        await this.page.locator(`a.dp-day:text-is("${value_tanggal}")`).first().click();
+    }
+
+    async pilihPeriodeAkhir(value_tahun, value_bulan, value_tanggal) {
+        await this.field_periode_akhir.click();
+        await this.page.locator('a.dp-cal-month').click();
+        await this.page.locator(`a.dp-month:has-text("${value_bulan}")`).click();
+        await this.page.locator('a.dp-cal-year').click();
+        await this.page.locator(`a.dp-year:has-text("${value_tahun}")`).click();
+        await this.page.locator(`a.dp-day:text-is("${value_tanggal}")`).click();
     }
 
     parseNumber(text) {
@@ -167,7 +187,7 @@ export class Aragon {
         const contentTable = hasSeparatedTable ? this.page.locator('#tablecontent') : this.page.locator('table');
 
         // Ambil Header
-        const headerRows = await headerTable.locator('tr:not([class])').all(); //Ambil elemen tr (baris) untuk header
+        const headerRows = await headerTable.locator('tr:not([class]):not([style])').all(); //Ambil elemen tr (baris) untuk header
         let headers = [];
         let keys = [];
         let subIndex = 0;       //Index untuk sub header atau header baris ke-2
@@ -262,7 +282,7 @@ export class Aragon {
             } else {
 
                 let startTotalIndex = 1;
-                for (let j = 0; j < colCount; j++) {
+                for (let j = 0; j < keys.length; j++) {
                     if(!identifiers.includes(keys[j]) && keys[j] !== undefined) { //Jika kolom bukan identifier maka masukkan ke total
                         const rawText = (await col.nth(startTotalIndex).innerText()).trim();
                         const totalKey = `Total_${keys[j]}`;

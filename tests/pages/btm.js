@@ -168,7 +168,7 @@ export class Btm {
         const contentTable = hasSeparatedTable ? this.page.locator('#tablecontent') : this.page.locator('table');
 
         // Ambil Header
-        const headerRows = await headerTable.locator('tr:not([class])').all(); //Ambil elemen tr (baris) untuk header
+        const headerRows = await headerTable.locator('tr:not([class]):not([style])').all(); //Ambil elemen tr (baris) untuk header
         let headers = [];
         let keys = [];
         let subIndex = 0;       //Index untuk sub header atau header baris ke-2
@@ -263,7 +263,7 @@ export class Btm {
             } else {
 
                 let startTotalIndex = 1;
-                for (let j = 0; j < colCount; j++) {
+                for (let j = 0; j < keys.length; j++) {
                     if(!identifiers.includes(keys[j]) && keys[j] !== undefined) { //Jika kolom bukan identifier maka masukkan ke total
                         const rawText = (await col.nth(startTotalIndex).innerText()).trim();
                         const totalKey = `Total_${keys[j]}`;

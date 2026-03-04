@@ -207,7 +207,7 @@ export class Daytrans {
         const contentTable = hasSeparatedTable ? this.page.locator('#tablecontent') : this.page.locator('table');
 
         // Ambil Header
-        const headerRows = await headerTable.locator('tr:not([class])').all(); //Ambil elemen tr (baris) untuk header
+        const headerRows = await headerTable.locator('tr:not([class]):not([style])').all(); //Ambil elemen tr (baris) untuk header
         let headers = [];
         let keys = [];
         let subIndex = 0;       //Index untuk sub header atau header baris ke-2
