@@ -17,7 +17,7 @@ const sites = [
 
 const data_Pemesan = testData.Pemesan;
 
-for (const site of sites) {
+sites.forEach((site) => {
 
   test.describe('Reservasi', () => {
 
@@ -149,6 +149,6 @@ for (const site of sites) {
   
   });
 
-}
+})
 
 
