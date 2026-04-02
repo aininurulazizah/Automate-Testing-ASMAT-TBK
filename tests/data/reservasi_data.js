@@ -63,8 +63,8 @@ export const testData = {
         TanggalBerangkat: getTanggal(2), //Ambil tanggal dua bulan dari sekarang
         TanggalPulang: getTanggal(3), //Ambil tanggal tiga bulan dari sekarang
         Keberangkatan: "DIPATIUKUR 89 SEBRANG UNI",
-        Tujuan: "CHARTER",
-        KeberangkatanPulang: "CHARTER",
+        Tujuan: "JABABEKA CIKARANG",
+        KeberangkatanPulang: "JABABEKA CIKARANG",
         TujuanPulang: "DIPATIUKUR 89 SEBRANG UNI",
         JumlahPenumpang: 2,
         MetodeBayar: "TUNAI"

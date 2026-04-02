@@ -43,7 +43,7 @@ export class Baraya {
     }
 
     getTanggal(value) {
-        return this.page.locator(`td[onclick*="pilihTanggal"]:text-is("${value}")`);
+        return this.page.locator(`td.kaldate[onclick*="pilihTanggal"]:text-is("${value}")`);
     }
 
     getOutletKeberangkatan(value) {
