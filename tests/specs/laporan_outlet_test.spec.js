@@ -67,7 +67,7 @@ for (const site of sites) {
         const laporan = await web.ambilDataAll(testData.IdentifierColumns);
 
         exportToExcel(laporan, 
-            `output/Laporan_Outlet_${site.tag}_${site.data.PeriodeAwalBulan}${site.data.PeriodeAwalTahun}-${site.data.PeriodeAkhirBulan}${site.data.PeriodeAkhirTahun}_by ${site.data.FilterBy}.xlsx`, //Nama File
+            `output/laporan/Laporan_Outlet_${site.tag}_${site.data.PeriodeAwalBulan}${site.data.PeriodeAwalTahun}-${site.data.PeriodeAkhirBulan}${site.data.PeriodeAkhirTahun}_by ${site.data.FilterBy}.xlsx`, //Nama File
             `${site.data.PeriodeAwalBulan}${site.data.PeriodeAwalTahun}-${site.data.PeriodeAkhirBulan}${site.data.PeriodeAkhirTahun}`); //Nama Sheet
 
       });

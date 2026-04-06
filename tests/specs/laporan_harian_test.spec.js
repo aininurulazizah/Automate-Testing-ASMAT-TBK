@@ -65,7 +65,7 @@ for (const site of sites) {
         const laporan = await web.ambilDataAll(testData.IdentifierColumns);
 
         exportToExcel(laporan, 
-          `output/Laporan_Harian_${site.tag}_${site.data.PeriodeBulan}_${site.data.PeriodeTahun}_by ${site.data.FilterBy}.xlsx`, //Nama File
+          `output/laporan/Laporan_Harian_${site.tag}_${site.data.PeriodeBulan}_${site.data.PeriodeTahun}_by ${site.data.FilterBy}.xlsx`, //Nama File
           `${(site.data.Outlet).substring(0, 31)}`); //Nama Sheet
 
       });

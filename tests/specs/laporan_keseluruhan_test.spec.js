@@ -75,7 +75,7 @@ for (const site of sites) {
         const layanan = site.data.layanan ? site.data.layanan : "";
 
         exportToExcel(laporan, 
-          `output/Laporan_Keseluruhan_${site.tag}_${site.data.PeriodeBulan}_${site.data.PeriodeTahun}_by ${site.data.FilterBy}.xlsx`, //Nama File
+          `output/laporan/Laporan_Keseluruhan_${site.tag}_${site.data.PeriodeBulan}_${site.data.PeriodeTahun}_by ${site.data.FilterBy}.xlsx`, //Nama File
           `${(layanan).substring(0, 31)}`); //Nama Sheet
 
       });
