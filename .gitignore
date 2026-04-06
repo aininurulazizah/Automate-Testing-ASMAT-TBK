@@ -7,5 +7,9 @@ node_modules/
 /playwright/.cache/
 /playwright/.auth/
 .env
-output/*
-!output/.gitkeep
+
+output/laporan/*
+!output/laporan/.gitkeep
+
+output/check poin member/*
+!output/check poin member/.gitkeep
