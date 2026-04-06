@@ -25,6 +25,11 @@ export const Credential = {
     Jackal: {
         Username: requiredEnv('JACKAL_USERNAME'),
         Password: requiredEnv('JACKAL_PASSWORD')
+    },
+
+    Kruzz: {
+        Username: requiredEnv('KRUZZ_USERNAME'),
+        Password: requiredEnv('KRUZZ_PASSWORD')
     }
 
 }

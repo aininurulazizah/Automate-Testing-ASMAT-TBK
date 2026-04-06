@@ -70,6 +70,12 @@ export const testData = {
         MetodeBayar: "TUNAI"
     },
 
+    Kruzz: {
+        Member: {
+            NoHP : '088218489970'
+        }
+    },
+
     Pemesan: {
         NamaPemesan: "Pemesan",
         NoHP: "080000000000",
