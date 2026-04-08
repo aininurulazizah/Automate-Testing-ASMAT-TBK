@@ -45,6 +45,19 @@ jobs:
             echo "Done running specific test: ${{ github.event.inputs.test_file }}"
           fi
         continue-on-error: true
+        env:
+          DAYTRANS_USERNAME: ${{ secrets.DAYTRANS_USERNAME }}
+          DAYTRANS_PASSWORD: ${{ secrets.DAYTRANS_PASSWORD }}
+          BARAYA_USERNAME: ${{ secrets.BARAYA_USERNAME }}
+          BARAYA_PASSWORD: ${{ secrets.BARAYA_PASSWORD }}
+          ARAGON_USERNAME: ${{ secrets.ARAGON_USERNAME }}
+          ARAGON_PASSWORD: ${{ secrets.ARAGON_PASSWORD }}
+          JACKAL_USERNAME: ${{ secrets.JACKAL_USERNAME }}
+          JACKAL_PASSWORD: ${{ secrets.JACKAL_PASSWORD }}
+          BTM_USERNAME: ${{ secrets.BTM_USERNAME }}
+          BTM_PASSWORD: ${{ secrets.BTM_PASSWORD }}
+          KRUZZ_USERNAME: ${{ secrets.KRUZZ_USERNAME }}
+          KRUZZ_PASSWORD: ${{ secrets.KRUZZ_PASSWORD }}
 
       - name: Build Telegram Report
         run: |
