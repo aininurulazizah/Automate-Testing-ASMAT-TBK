@@ -8,7 +8,7 @@ on:
         required: false
         default: ""
   schedule:
-    - cron: "45 3 * * *"
+    - cron: "0 23 * * *"
 
 jobs:
   run-test:
@@ -37,11 +37,11 @@ jobs:
         run: |
           if [ -z "${{ github.event.inputs.test_file }}" ]; then
             echo "Running all tests..."
-            npx playwright test --reporter=json --project=chromium --output=results || true
+            npx playwright test --reporter=json --project=chromium > result.json || true
             echo "Done running all tests"
           else
             echo "Running test file: ${{ github.event.inputs.test_file }}"
-            npx playwright test ./tests/${{ github.event.inputs.test_file }} --reporter=json --project=chromium --output=results || true
+            npx playwright test ./tests/${{ github.event.inputs.test_file }} --reporter=json --project=chromium > result.json || true
             echo "Done running specific test: ${{ github.event.inputs.test_file }}"
           fi
         continue-on-error: true
@@ -64,7 +64,7 @@ jobs:
             ].join(':');
           }
 
-          const data = JSON.parse(fs.readFileSync('results/report.json', 'utf8'));
+          const data = JSON.parse(fs.readFileSync('result.json', 'utf8'));
           const suites = data.suites || [];
           const stats = data.stats || {};
 
@@ -100,7 +100,7 @@ jobs:
           });
 
           const report =
-            `AUTOMATE TEST ASMAT REPORT
+            `AUTOMATE TEST REPORT
 
              📅 Date: ${date} 
              🕒 Time: ${time}
@@ -126,4 +126,3 @@ jobs:
           curl -s -X POST https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage \
             -d chat_id=${{ secrets.TELEGRAM_CHAT_ID }} \
             --data-urlencode "text=$TELEGRAM_REPORT"
-            
