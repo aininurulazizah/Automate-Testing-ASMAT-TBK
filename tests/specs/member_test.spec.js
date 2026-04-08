@@ -7,7 +7,6 @@ import { Kruzz } from "../pages/kruzz";
 // import { Jackal } from "../pages/jackal";
 // import { Btm } from "../pages/btm";
 import { testData } from "../data/reservasi_data";
-import exp from "constants";
 
 const sites = [
     {tag: '@kruzz', url: 'https://dev.kruzz.tiketux.id', locator: Kruzz, data: testData.Kruzz, cred:Credential.Kruzz},
