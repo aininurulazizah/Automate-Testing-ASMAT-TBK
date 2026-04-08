@@ -8,7 +8,7 @@ on:
         required: false
         default: ""
   schedule:
-    - cron: "41 3 * * *"
+    - cron: "45 3 * * *"
 
 jobs:
   run-test:
