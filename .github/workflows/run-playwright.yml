@@ -100,7 +100,7 @@ jobs:
           });
 
           const report =
-            `AUTOMATE TEST REPORT
+            `AUTOMATE TEST ASMAT REPORT
 
              📅 Date: ${date} 
              🕒 Time: ${time}
