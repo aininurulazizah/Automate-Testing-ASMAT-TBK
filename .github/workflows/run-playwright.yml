@@ -97,6 +97,7 @@ jobs:
             if (!suite.file) return;
 
             detail += `📁 File: ${suite.file}\n`;
+            console.log("Isi suties : ", suite);
 
             (suite.specs || []).forEach(spec => {
               const test = spec.tests?.[0];
