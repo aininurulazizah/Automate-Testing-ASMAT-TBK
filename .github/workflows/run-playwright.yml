@@ -37,14 +37,27 @@ jobs:
         run: |
           if [ -z "${{ github.event.inputs.test_file }}" ]; then
             echo "Running all tests..."
-            npx playwright test --reporter=json --project=chromium > result.json || true
+            npx playwright test --project=chromium || true
             echo "Done running all tests"
           else
             echo "Running test file: ${{ github.event.inputs.test_file }}"
-            npx playwright test ./tests/${{ github.event.inputs.test_file }} --reporter=json --project=chromium > result.json || true
+            npx playwright test ${{ github.event.inputs.test_file }} --project=chromium || true
             echo "Done running specific test: ${{ github.event.inputs.test_file }}"
           fi
         continue-on-error: true
+        env:
+          DAYTRANS_USERNAME: ${{ secrets.DAYTRANS_USERNAME }}
+          DAYTRANS_PASSWORD: ${{ secrets.DAYTRANS_PASSWORD }}
+          BARAYA_USERNAME: ${{ secrets.BARAYA_USERNAME }}
+          BARAYA_PASSWORD: ${{ secrets.BARAYA_PASSWORD }}
+          ARAGON_USERNAME: ${{ secrets.ARAGON_USERNAME }}
+          ARAGON_PASSWORD: ${{ secrets.ARAGON_PASSWORD }}
+          JACKAL_USERNAME: ${{ secrets.JACKAL_USERNAME }}
+          JACKAL_PASSWORD: ${{ secrets.JACKAL_PASSWORD }}
+          BTM_USERNAME: ${{ secrets.BTM_USERNAME }}
+          BTM_PASSWORD: ${{ secrets.BTM_PASSWORD }}
+          KRUZZ_USERNAME: ${{ secrets.KRUZZ_USERNAME }}
+          KRUZZ_PASSWORD: ${{ secrets.KRUZZ_PASSWORD }}
 
       - name: Build Telegram Report
         run: |
@@ -65,6 +78,10 @@ jobs:
           }
 
           const data = JSON.parse(fs.readFileSync('result.json', 'utf8'));
+          
+          console.log("=== FULL DATA ===");
+          console.log(JSON.stringify(data, null, 2));
+          
           const suites = data.suites || [];
           const stats = data.stats || {};
 
@@ -80,27 +97,34 @@ jobs:
           let failed = 0;
           let detail = '';
 
-          suites.forEach(suite => {
-            if (!suite.file) return;
-
-            detail += `📁 File: ${suite.file}\n`;
-
+          function processSuite(suite) {
             (suite.specs || []).forEach(spec => {
-              const test = spec.tests?.[0];
-              const status = test?.expectedStatus || 'unknown';
+              (spec.tests || []).forEach(test => {
+                (test.results || []).forEach(result => {
+                  const status = result.status || 'unknown';
 
-              total++;
-              if (status === 'passed') passed++;
-              else failed++;
+                  total++;
+                  if (status === 'passed') passed++;
+                  else failed++;
 
-              detail += `  • ${spec.title} — [ ${status} ]\n`;
+                  detail += `  • ${spec.title} — [ ${status} ]\n`;
+                });
+              });
             });
 
+            (suite.suites || []).forEach(child => {
+              processSuite(child);
+            });
+          }
+
+          suites.forEach(suite => {
+            detail += `📁 File: ${suite.file}\n`;
+            processSuite(suite);
             detail += '\n';
           });
 
           const report =
-            `AUTOMATE TEST REPORT
+            `AUTOMATE TEST ASMAT REPORT
 
              📅 Date: ${date} 
              🕒 Time: ${time}
