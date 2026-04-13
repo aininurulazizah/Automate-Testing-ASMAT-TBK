@@ -12,4 +12,5 @@ output/laporan/*
 !output/laporan/.gitkeep
 
 output/check poin member/*
-!output/check poin member/.gitkeepresult.json
+!output/check poin member/.gitkeep
+result.json
