@@ -41,7 +41,7 @@ jobs:
             echo "Done running all tests"
           else
             echo "Running test file: ${{ github.event.inputs.test_file }}"
-            npx playwright test ./tests/${{ github.event.inputs.test_file }} --project=chromium || true
+            npx playwright test ${{ github.event.inputs.test_file }} --project=chromium || true
             echo "Done running specific test: ${{ github.event.inputs.test_file }}"
           fi
         continue-on-error: true
