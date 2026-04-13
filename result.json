@@ -1,0 +1,3273 @@
+{
+  "config": {
+    "configFile": "E:\\Maganghub 2025\\TBK\\Automate-Testing-ASMAT-TBK\\playwright.config.ts",
+    "rootDir": "E:/Maganghub 2025/TBK/Automate-Testing-ASMAT-TBK/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {},
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        {
+          "open": "never"
+        }
+      ],
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "result.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "E:/Maganghub 2025/TBK/Automate-Testing-ASMAT-TBK/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {},
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "E:/Maganghub 2025/TBK/Automate-Testing-ASMAT-TBK/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "E:/Maganghub 2025/TBK/Automate-Testing-ASMAT-TBK/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {},
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "E:/Maganghub 2025/TBK/Automate-Testing-ASMAT-TBK/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.57.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "specs\\example.spec.ts",
+      "file": "specs/example.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "has title",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "3ca6f7a471321f5a1e4f-a95d7e2a7ae063780404",
+          "file": "specs/example.spec.ts",
+          "line": 3,
+          "column": 5
+        },
+        {
+          "title": "get started link",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "3ca6f7a471321f5a1e4f-42cd53ada4a40549a5e7",
+          "file": "specs/example.spec.ts",
+          "line": 10,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "specs\\laporan_harian_test.spec.js",
+      "file": "specs/laporan_harian_test.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Laporan Harian",
+          "file": "specs/laporan_harian_test.spec.js",
+          "line": 27,
+          "column": 10,
+          "specs": [
+            {
+              "title": "@daytrans - Test Case 0 - Ekspor Laporan Ke Excel",
+              "ok": true,
+              "tags": [
+                "daytrans"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "6de76a2e78d9cae5b29f-e60ae8548bd7f33b06c3",
+              "file": "specs/laporan_harian_test.spec.js",
+              "line": 47,
+              "column": 11
+            },
+            {
+              "title": "@daytrans - Test Case 1 - Validasi Total Biaya Operasional Perhari",
+              "ok": true,
+              "tags": [
+                "daytrans"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "6de76a2e78d9cae5b29f-515285d953d679e54948",
+              "file": "specs/laporan_harian_test.spec.js",
+              "line": 73,
+              "column": 11
+            },
+            {
+              "title": "@daytrans - Test Case 2 - Validasi Total Laba Perhari",
+              "ok": true,
+              "tags": [
+                "daytrans"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "6de76a2e78d9cae5b29f-be32a9efb44b242539dd",
+              "file": "specs/laporan_harian_test.spec.js",
+              "line": 107,
+              "column": 11
+            },
+            {
+              "title": "@daytrans - Test Case 3 - Cek Laporan Total Bulanan",
+              "ok": true,
+              "tags": [
+                "daytrans"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "6de76a2e78d9cae5b29f-2c111e99dc6fe39f997a",
+              "file": "specs/laporan_harian_test.spec.js",
+              "line": 147,
+              "column": 11
+            },
+            {
+              "title": "@daytrans - Test Case 4 - Validasi Total Biaya Komisi Perhari",
+              "ok": true,
+              "tags": [
+                "daytrans"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "6de76a2e78d9cae5b29f-e15f27c07000e4314449",
+              "file": "specs/laporan_harian_test.spec.js",
+              "line": 180,
+              "column": 13
+            },
+            {
+              "title": "@baraya - Test Case 0 - Ekspor Laporan Ke Excel",
+              "ok": true,
+              "tags": [
+                "baraya"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "6de76a2e78d9cae5b29f-b0e51b9696ad9323435e",
+              "file": "specs/laporan_harian_test.spec.js",
+              "line": 47,
+              "column": 11
+            },
+            {
+              "title": "@baraya - Test Case 1 - Validasi Total Biaya Operasional Perhari",
+              "ok": true,
+              "tags": [
+                "baraya"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "6de76a2e78d9cae5b29f-f2219a40a2c37d9c6df4",
+              "file": "specs/laporan_harian_test.spec.js",
+              "line": 73,
+              "column": 11
+            },
+            {
+              "title": "@baraya - Test Case 2 - Validasi Total Laba Perhari",
+              "ok": true,
+              "tags": [
+                "baraya"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "6de76a2e78d9cae5b29f-5e9217ae2fe78a3e5beb",
+              "file": "specs/laporan_harian_test.spec.js",
+              "line": 107,
+              "column": 11
+            },
+            {
+              "title": "@baraya - Test Case 3 - Cek Laporan Total Bulanan",
+              "ok": true,
+              "tags": [
+                "baraya"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "6de76a2e78d9cae5b29f-7c47d59415ddcbd2ec66",
+              "file": "specs/laporan_harian_test.spec.js",
+              "line": 147,
+              "column": 11
+            },
+            {
+              "title": "@aragon - Test Case 0 - Ekspor Laporan Ke Excel",
+              "ok": true,
+              "tags": [
+                "aragon"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "6de76a2e78d9cae5b29f-ccd826114df4a4c0b864",
+              "file": "specs/laporan_harian_test.spec.js",
+              "line": 47,
+              "column": 11
+            },
+            {
+              "title": "@aragon - Test Case 1 - Validasi Total Biaya Operasional Perhari",
+              "ok": true,
+              "tags": [
+                "aragon"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "6de76a2e78d9cae5b29f-d963e2875fb8931a2bd5",
+              "file": "specs/laporan_harian_test.spec.js",
+              "line": 73,
+              "column": 11
+            },
+            {
+              "title": "@aragon - Test Case 2 - Validasi Total Laba Perhari",
+              "ok": true,
+              "tags": [
+                "aragon"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "6de76a2e78d9cae5b29f-bb1078027e36edaeadf2",
+              "file": "specs/laporan_harian_test.spec.js",
+              "line": 107,
+              "column": 11
+            },
+            {
+              "title": "@aragon - Test Case 3 - Cek Laporan Total Bulanan",
+              "ok": true,
+              "tags": [
+                "aragon"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "6de76a2e78d9cae5b29f-53ad04021cfbb39e7270",
+              "file": "specs/laporan_harian_test.spec.js",
+              "line": 147,
+              "column": 11
+            },
+            {
+              "title": "@jackal - Test Case 0 - Ekspor Laporan Ke Excel",
+              "ok": true,
+              "tags": [
+                "jackal"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "6de76a2e78d9cae5b29f-659d05e8ef2620e03823",
+              "file": "specs/laporan_harian_test.spec.js",
+              "line": 47,
+              "column": 11
+            },
+            {
+              "title": "@jackal - Test Case 1 - Validasi Total Biaya Operasional Perhari",
+              "ok": true,
+              "tags": [
+                "jackal"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "6de76a2e78d9cae5b29f-68b13d2fe16a0eef7aa5",
+              "file": "specs/laporan_harian_test.spec.js",
+              "line": 73,
+              "column": 11
+            },
+            {
+              "title": "@jackal - Test Case 2 - Validasi Total Laba Perhari",
+              "ok": true,
+              "tags": [
+                "jackal"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "6de76a2e78d9cae5b29f-50a6ab79e85b55208f7e",
+              "file": "specs/laporan_harian_test.spec.js",
+              "line": 107,
+              "column": 11
+            },
+            {
+              "title": "@jackal - Test Case 3 - Cek Laporan Total Bulanan",
+              "ok": true,
+              "tags": [
+                "jackal"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "6de76a2e78d9cae5b29f-6e05b0218adddb8f2e5a",
+              "file": "specs/laporan_harian_test.spec.js",
+              "line": 147,
+              "column": 11
+            },
+            {
+              "title": "@btm - Test Case 0 - Ekspor Laporan Ke Excel",
+              "ok": true,
+              "tags": [
+                "btm"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "6de76a2e78d9cae5b29f-fd524df594c4a9d09e3a",
+              "file": "specs/laporan_harian_test.spec.js",
+              "line": 47,
+              "column": 11
+            },
+            {
+              "title": "@btm - Test Case 1 - Validasi Total Biaya Operasional Perhari",
+              "ok": true,
+              "tags": [
+                "btm"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "6de76a2e78d9cae5b29f-71b326884fb6469fd327",
+              "file": "specs/laporan_harian_test.spec.js",
+              "line": 73,
+              "column": 11
+            },
+            {
+              "title": "@btm - Test Case 2 - Validasi Total Laba Perhari",
+              "ok": true,
+              "tags": [
+                "btm"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "6de76a2e78d9cae5b29f-117c8f90f09625124db5",
+              "file": "specs/laporan_harian_test.spec.js",
+              "line": 107,
+              "column": 11
+            },
+            {
+              "title": "@btm - Test Case 3 - Cek Laporan Total Bulanan",
+              "ok": true,
+              "tags": [
+                "btm"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "6de76a2e78d9cae5b29f-1d730ae1481c94d63a33",
+              "file": "specs/laporan_harian_test.spec.js",
+              "line": 147,
+              "column": 11
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "specs\\laporan_keseluruhan_test.spec.js",
+      "file": "specs/laporan_keseluruhan_test.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Laporan Keseluruhan",
+          "file": "specs/laporan_keseluruhan_test.spec.js",
+          "line": 27,
+          "column": 10,
+          "specs": [
+            {
+              "title": "@daytrans - Test Case 0 - Ekspor Laporan Ke Excel",
+              "ok": true,
+              "tags": [
+                "daytrans"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-207b56fabfa8ed20222b",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 53,
+              "column": 11
+            },
+            {
+              "title": "@daytrans - Test Case 1 - Validasi Total Omzet Penumpang Perhari",
+              "ok": true,
+              "tags": [
+                "daytrans"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-062c09d9565285b601e4",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 245,
+              "column": 13
+            },
+            {
+              "title": "@daytrans - Test Case 2 - Validasi Pendapatan Penumpang Perhari",
+              "ok": true,
+              "tags": [
+                "daytrans"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-fbd8e16d0b8f3ffece3f",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 283,
+              "column": 11
+            },
+            {
+              "title": "@daytrans - Test Case 3 - Validasi Jumlah Paket Perhari",
+              "ok": true,
+              "tags": [
+                "daytrans"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-4845b2444db8c22c1f31",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 335,
+              "column": 11
+            },
+            {
+              "title": "@daytrans - Test Case 4 - Validasi Total Omzet Paket Perhari",
+              "ok": true,
+              "tags": [
+                "daytrans"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-1c23f0a794774e76915e",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 378,
+              "column": 11
+            },
+            {
+              "title": "@daytrans - Test Case 5 - Validasi Total Biaya Op Perhari",
+              "ok": true,
+              "tags": [
+                "daytrans"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-8645e901d5f046d33b74",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 461,
+              "column": 11
+            },
+            {
+              "title": "@daytrans - Test Case 6 - Validasi Total Laba Kotor Perhari",
+              "ok": true,
+              "tags": [
+                "daytrans"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-fddb365b69e3096d8c22",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 540,
+              "column": 11
+            },
+            {
+              "title": "@daytrans - Test Case 7 - Validasi Total Trip Perhari",
+              "ok": true,
+              "tags": [
+                "daytrans"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-a98b12f283b64b1d2cef",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 638,
+              "column": 13
+            },
+            {
+              "title": "@daytrans - Test Case 8 - Validasi Total Komisi Perhari",
+              "ok": true,
+              "tags": [
+                "daytrans"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-4699df9b3e78f4d89e63",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 676,
+              "column": 13
+            },
+            {
+              "title": "@daytrans - Test Case 9 - Validasi Omzet Unit Perhari",
+              "ok": true,
+              "tags": [
+                "daytrans"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-281fb0571ad5a5d6724f",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 722,
+              "column": 15
+            },
+            {
+              "title": "@daytrans - Test Case 10 - Validasi Omzet Unit Perhari",
+              "ok": true,
+              "tags": [
+                "daytrans"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-4822dd7acffe4864df37",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 722,
+              "column": 15
+            },
+            {
+              "title": "@daytrans - Test Case 11 - Validasi Total Discount Perhari",
+              "ok": true,
+              "tags": [
+                "daytrans"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-692a2d5fbfa2b40dc5f4",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 775,
+              "column": 13
+            },
+            {
+              "title": "@daytrans - Test Case 12 - Validasi Total Discount Paket Perhari",
+              "ok": true,
+              "tags": [
+                "daytrans"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-9ad78da1b76dfa308495",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 830,
+              "column": 13
+            },
+            {
+              "title": "@daytrans - Test Case 13 - Cek Laporan Total Bulanan",
+              "ok": true,
+              "tags": [
+                "daytrans"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-dfeb997cbf69a77ce0a2",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 868,
+              "column": 11
+            },
+            {
+              "title": "@baraya - Test Case 0 - Ekspor Laporan Ke Excel",
+              "ok": true,
+              "tags": [
+                "baraya"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-303859a72c7d413c092d",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 53,
+              "column": 11
+            },
+            {
+              "title": "@baraya - Test Case 1 - Validasi Jumlah Penumpang Perhari",
+              "ok": true,
+              "tags": [
+                "baraya"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-f470c4eea67f80d0b0fd",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 85,
+              "column": 13
+            },
+            {
+              "title": "@baraya - Test Case 2 - Validasi Jumlah Penumpang By Pembayaran Perhari",
+              "ok": true,
+              "tags": [
+                "baraya"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-1c3a01c24e704684b7a3",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 125,
+              "column": 13
+            },
+            {
+              "title": "@baraya - Test Case 3 - Validasi Jumlah Penumpang & Jumlah Penumpang By Pembayaran Perhari",
+              "ok": true,
+              "tags": [
+                "baraya"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-ff56a054b546fe7b4ae5",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 165,
+              "column": 13
+            },
+            {
+              "title": "@baraya - Test Case 4 - Validasi Rata - Rata Penumpang Perhari",
+              "ok": true,
+              "tags": [
+                "baraya"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-0c3f71515db7fc6557c8",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 205,
+              "column": 13
+            },
+            {
+              "title": "@baraya - Test Case 5 - Validasi Total Omzet Penumpang Perhari",
+              "ok": true,
+              "tags": [
+                "baraya"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-7f94db708f7cc008d02c",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 245,
+              "column": 13
+            },
+            {
+              "title": "@baraya - Test Case 6 - Validasi Pendapatan Penumpang Perhari",
+              "ok": true,
+              "tags": [
+                "baraya"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-c33de2e7314bfb6ddd6d",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 283,
+              "column": 11
+            },
+            {
+              "title": "@baraya - Test Case 7 - Validasi Jumlah Paket Perhari",
+              "ok": true,
+              "tags": [
+                "baraya"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-6eb82214d7b54f551e02",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 335,
+              "column": 11
+            },
+            {
+              "title": "@baraya - Test Case 8 - Validasi Total Omzet Paket Perhari",
+              "ok": true,
+              "tags": [
+                "baraya"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-12f0d957f225eec99b96",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 378,
+              "column": 11
+            },
+            {
+              "title": "@baraya - Test Case 9 - Validasi Total Omzet Perhari",
+              "ok": true,
+              "tags": [
+                "baraya"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-5080a91567b0f91c14da",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 418,
+              "column": 13
+            },
+            {
+              "title": "@baraya - Test Case 10 - Validasi Total Biaya Op Perhari",
+              "ok": true,
+              "tags": [
+                "baraya"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-162386d0cee88a13197f",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 461,
+              "column": 11
+            },
+            {
+              "title": "@baraya - Test Case 11 - Validasi Total Laba Kotor Perhari",
+              "ok": true,
+              "tags": [
+                "baraya"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-cd9790eea2ca280f3c4d",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 540,
+              "column": 11
+            },
+            {
+              "title": "@baraya - Test Case 12 - Cek Laporan Total Bulanan",
+              "ok": true,
+              "tags": [
+                "baraya"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-12e6ff51b0ea65f29a4c",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 868,
+              "column": 11
+            },
+            {
+              "title": "@aragon - Test Case 0 - Ekspor Laporan Ke Excel",
+              "ok": true,
+              "tags": [
+                "aragon"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-c53a038e5a3b76f66fc4",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 53,
+              "column": 11
+            },
+            {
+              "title": "@aragon - Test Case 1 - Validasi Jumlah Penumpang Perhari",
+              "ok": true,
+              "tags": [
+                "aragon"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-bcfc7dc4f6bcf4137efd",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 85,
+              "column": 13
+            },
+            {
+              "title": "@aragon - Test Case 2 - Validasi Jumlah Penumpang By Pembayaran Perhari",
+              "ok": true,
+              "tags": [
+                "aragon"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-c272708579ad52834217",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 125,
+              "column": 13
+            },
+            {
+              "title": "@aragon - Test Case 3 - Validasi Jumlah Penumpang & Jumlah Penumpang By Pembayaran Perhari",
+              "ok": true,
+              "tags": [
+                "aragon"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-400c357fd00119184fd0",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 165,
+              "column": 13
+            },
+            {
+              "title": "@aragon - Test Case 4 - Validasi Rata - Rata Penumpang Perhari",
+              "ok": true,
+              "tags": [
+                "aragon"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-5780e3a2f7bd27a68755",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 205,
+              "column": 13
+            },
+            {
+              "title": "@aragon - Test Case 5 - Validasi Pendapatan Penumpang Perhari",
+              "ok": true,
+              "tags": [
+                "aragon"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-475308e32ce8b30a3645",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 283,
+              "column": 11
+            },
+            {
+              "title": "@aragon - Test Case 6 - Validasi Jumlah Paket Perhari",
+              "ok": true,
+              "tags": [
+                "aragon"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-51aec806fed65c693888",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 335,
+              "column": 11
+            },
+            {
+              "title": "@aragon - Test Case 7 - Validasi Total Omzet Paket Perhari",
+              "ok": true,
+              "tags": [
+                "aragon"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-0a3c21ea8405b12f07b2",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 378,
+              "column": 11
+            },
+            {
+              "title": "@aragon - Test Case 8 - Validasi Total Omzet Perhari",
+              "ok": true,
+              "tags": [
+                "aragon"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-52d63adf0dd19853829c",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 418,
+              "column": 13
+            },
+            {
+              "title": "@aragon - Test Case 9 - Validasi Total Biaya Op Perhari",
+              "ok": true,
+              "tags": [
+                "aragon"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-63412b2bca9c1410cb11",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 461,
+              "column": 11
+            },
+            {
+              "title": "@aragon - Test Case 10 - Validasi Total Biaya Op Charter Perhari",
+              "ok": true,
+              "tags": [
+                "aragon"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-6517040272e5ee1bbabd",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 501,
+              "column": 13
+            },
+            {
+              "title": "@aragon - Test Case 11 - Validasi Total Laba Kotor Perhari",
+              "ok": true,
+              "tags": [
+                "aragon"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-085031b66fe3351a2ea3",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 540,
+              "column": 11
+            },
+            {
+              "title": "@aragon - Test Case 12 - Validasi Total Laba Kotor Charter Perhari",
+              "ok": true,
+              "tags": [
+                "aragon"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-a6973ba27aad7fd26619",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 593,
+              "column": 13
+            },
+            {
+              "title": "@aragon - Test Case 13 - Cek Laporan Total Bulanan",
+              "ok": true,
+              "tags": [
+                "aragon"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-65931a5a199af07f648c",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 868,
+              "column": 11
+            },
+            {
+              "title": "@jackal - Test Case 0 - Ekspor Laporan Ke Excel",
+              "ok": true,
+              "tags": [
+                "jackal"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-36a6e569e121f1c6641c",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 53,
+              "column": 11
+            },
+            {
+              "title": "@jackal - Test Case 1 - Validasi Jumlah Penumpang Perhari",
+              "ok": true,
+              "tags": [
+                "jackal"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-377968d5cbd959cf7ae1",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 85,
+              "column": 13
+            },
+            {
+              "title": "@jackal - Test Case 2 - Validasi Jumlah Penumpang By Pembayaran Perhari",
+              "ok": true,
+              "tags": [
+                "jackal"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-0384591ac7f3ff5ce55e",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 125,
+              "column": 13
+            },
+            {
+              "title": "@jackal - Test Case 3 - Validasi Jumlah Penumpang & Jumlah Penumpang By Pembayaran Perhari",
+              "ok": true,
+              "tags": [
+                "jackal"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-eca4119f90eddc4d046a",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 165,
+              "column": 13
+            },
+            {
+              "title": "@jackal - Test Case 4 - Validasi Rata - Rata Penumpang Perhari",
+              "ok": true,
+              "tags": [
+                "jackal"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-5ce1c54065c36dd211ec",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 205,
+              "column": 13
+            },
+            {
+              "title": "@jackal - Test Case 5 - Validasi Pendapatan Penumpang Perhari",
+              "ok": true,
+              "tags": [
+                "jackal"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-a1f469124e2d24b022da",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 283,
+              "column": 11
+            },
+            {
+              "title": "@jackal - Test Case 6 - Validasi Jumlah Paket Perhari",
+              "ok": true,
+              "tags": [
+                "jackal"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-c356a48b4044adb0c5a3",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 335,
+              "column": 11
+            },
+            {
+              "title": "@jackal - Test Case 7 - Validasi Total Omzet Paket Perhari",
+              "ok": true,
+              "tags": [
+                "jackal"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-efd285890cb59e3b565b",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 378,
+              "column": 11
+            },
+            {
+              "title": "@jackal - Test Case 8 - Validasi Total Omzet Perhari",
+              "ok": true,
+              "tags": [
+                "jackal"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-0f6541eea39bcf88fdc4",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 418,
+              "column": 13
+            },
+            {
+              "title": "@jackal - Test Case 9 - Validasi Total Biaya Op Perhari",
+              "ok": true,
+              "tags": [
+                "jackal"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-be985732f99eee38b2fc",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 461,
+              "column": 11
+            },
+            {
+              "title": "@jackal - Test Case 10 - Validasi Total Laba Kotor Perhari",
+              "ok": true,
+              "tags": [
+                "jackal"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-5ff1d1cc4219bd39e5cd",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 540,
+              "column": 11
+            },
+            {
+              "title": "@jackal - Test Case 11 - Validasi Total Laba Kotor Charter Perhari",
+              "ok": true,
+              "tags": [
+                "jackal"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-fc62c8b2522bc4a1a4b1",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 593,
+              "column": 13
+            },
+            {
+              "title": "@jackal - Test Case 12 - Cek Laporan Total Bulanan",
+              "ok": true,
+              "tags": [
+                "jackal"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-531485186af8b6f1d733",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 868,
+              "column": 11
+            },
+            {
+              "title": "@btm - Test Case 0 - Ekspor Laporan Ke Excel",
+              "ok": true,
+              "tags": [
+                "btm"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-da2114903036fc95ac0e",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 53,
+              "column": 11
+            },
+            {
+              "title": "@btm - Test Case 1 - Validasi Jumlah Penumpang Perhari",
+              "ok": true,
+              "tags": [
+                "btm"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-a9d8129c02b58f4154a0",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 85,
+              "column": 13
+            },
+            {
+              "title": "@btm - Test Case 2 - Validasi Jumlah Penumpang By Pembayaran Perhari",
+              "ok": true,
+              "tags": [
+                "btm"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-72c39b6f8e337bb61e1d",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 125,
+              "column": 13
+            },
+            {
+              "title": "@btm - Test Case 3 - Validasi Jumlah Penumpang & Jumlah Penumpang By Pembayaran Perhari",
+              "ok": true,
+              "tags": [
+                "btm"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-884bde9e44ef57220c39",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 165,
+              "column": 13
+            },
+            {
+              "title": "@btm - Test Case 4 - Validasi Rata - Rata Penumpang Perhari",
+              "ok": true,
+              "tags": [
+                "btm"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-c3cae22cc2b523c2adaa",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 205,
+              "column": 13
+            },
+            {
+              "title": "@btm - Test Case 5 - Validasi Pendapatan Penumpang Perhari",
+              "ok": true,
+              "tags": [
+                "btm"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-b92befd18bce4206894e",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 283,
+              "column": 11
+            },
+            {
+              "title": "@btm - Test Case 6 - Validasi Jumlah Paket Perhari",
+              "ok": true,
+              "tags": [
+                "btm"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-8b42840f5a5d88e933a9",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 335,
+              "column": 11
+            },
+            {
+              "title": "@btm - Test Case 7 - Validasi Total Omzet Paket Perhari",
+              "ok": true,
+              "tags": [
+                "btm"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-035a64fd9955d8bed07d",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 378,
+              "column": 11
+            },
+            {
+              "title": "@btm - Test Case 8 - Validasi Total Omzet Perhari",
+              "ok": true,
+              "tags": [
+                "btm"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-b895ef1f53afaf7b41ff",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 418,
+              "column": 13
+            },
+            {
+              "title": "@btm - Test Case 9 - Validasi Total Biaya Op Perhari",
+              "ok": true,
+              "tags": [
+                "btm"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-4d0bc3a96aaedaa91fd7",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 461,
+              "column": 11
+            },
+            {
+              "title": "@btm - Test Case 10 - Validasi Total Laba Kotor Perhari",
+              "ok": true,
+              "tags": [
+                "btm"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-3b019ca069b9bf352320",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 540,
+              "column": 11
+            },
+            {
+              "title": "@btm - Test Case 11 - Cek Laporan Total Bulanan",
+              "ok": true,
+              "tags": [
+                "btm"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2dae35d7f84362fd03ca-f1e6c53a407ee5f9c5b3",
+              "file": "specs/laporan_keseluruhan_test.spec.js",
+              "line": 868,
+              "column": 11
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "specs\\laporan_kota_test.spec.js",
+      "file": "specs/laporan_kota_test.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Laporan Kota",
+          "file": "specs/laporan_kota_test.spec.js",
+          "line": 19,
+          "column": 10,
+          "specs": [
+            {
+              "title": "@baraya - Test Case 0 - Ekspor Laporan Ke Excel",
+              "ok": true,
+              "tags": [
+                "baraya"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "c37306a51968a45c455a-cabfae3d7c385144c68d",
+              "file": "specs/laporan_kota_test.spec.js",
+              "line": 39,
+              "column": 11
+            },
+            {
+              "title": "@baraya - Test Case 1 - Validasi Total Biaya Operasional Perhari",
+              "ok": true,
+              "tags": [
+                "baraya"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "c37306a51968a45c455a-516e98936694c4ae8137",
+              "file": "specs/laporan_kota_test.spec.js",
+              "line": 63,
+              "column": 11
+            },
+            {
+              "title": "@baraya - Test Case 2 - Validasi Total Laba Perhari",
+              "ok": true,
+              "tags": [
+                "baraya"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "c37306a51968a45c455a-6569f693cb5dbbf1a45e",
+              "file": "specs/laporan_kota_test.spec.js",
+              "line": 95,
+              "column": 11
+            },
+            {
+              "title": "@baraya - Test Case 3 - Cek Laporan Total Bulanan",
+              "ok": true,
+              "tags": [
+                "baraya"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "c37306a51968a45c455a-8ac016f43733d36ffd76",
+              "file": "specs/laporan_kota_test.spec.js",
+              "line": 133,
+              "column": 11
+            },
+            {
+              "title": "@jackal - Test Case 0 - Ekspor Laporan Ke Excel",
+              "ok": true,
+              "tags": [
+                "jackal"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "c37306a51968a45c455a-66ab5ab63c131b833d36",
+              "file": "specs/laporan_kota_test.spec.js",
+              "line": 39,
+              "column": 11
+            },
+            {
+              "title": "@jackal - Test Case 1 - Validasi Total Biaya Operasional Perhari",
+              "ok": true,
+              "tags": [
+                "jackal"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "c37306a51968a45c455a-198559404c7d8bd18bc3",
+              "file": "specs/laporan_kota_test.spec.js",
+              "line": 63,
+              "column": 11
+            },
+            {
+              "title": "@jackal - Test Case 2 - Validasi Total Laba Perhari",
+              "ok": true,
+              "tags": [
+                "jackal"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "c37306a51968a45c455a-1c8d7a4458da6e15d3b5",
+              "file": "specs/laporan_kota_test.spec.js",
+              "line": 95,
+              "column": 11
+            },
+            {
+              "title": "@jackal - Test Case 3 - Cek Laporan Total Bulanan",
+              "ok": true,
+              "tags": [
+                "jackal"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "c37306a51968a45c455a-562cf968f105b270d98e",
+              "file": "specs/laporan_kota_test.spec.js",
+              "line": 133,
+              "column": 11
+            },
+            {
+              "title": "@btm - Test Case 0 - Ekspor Laporan Ke Excel",
+              "ok": true,
+              "tags": [
+                "btm"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "c37306a51968a45c455a-3523f3beab4e11860ce4",
+              "file": "specs/laporan_kota_test.spec.js",
+              "line": 39,
+              "column": 11
+            },
+            {
+              "title": "@btm - Test Case 1 - Validasi Total Biaya Operasional Perhari",
+              "ok": true,
+              "tags": [
+                "btm"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "c37306a51968a45c455a-04ff96940e2dd1334188",
+              "file": "specs/laporan_kota_test.spec.js",
+              "line": 63,
+              "column": 11
+            },
+            {
+              "title": "@btm - Test Case 2 - Validasi Total Laba Perhari",
+              "ok": true,
+              "tags": [
+                "btm"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "c37306a51968a45c455a-db4f8f6125d57f591aba",
+              "file": "specs/laporan_kota_test.spec.js",
+              "line": 95,
+              "column": 11
+            },
+            {
+              "title": "@btm - Test Case 3 - Cek Laporan Total Bulanan",
+              "ok": true,
+              "tags": [
+                "btm"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "c37306a51968a45c455a-aa58bf1660ef662ff706",
+              "file": "specs/laporan_kota_test.spec.js",
+              "line": 133,
+              "column": 11
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "specs\\laporan_outlet_test.spec.js",
+      "file": "specs/laporan_outlet_test.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Laporan Outlet",
+          "file": "specs/laporan_outlet_test.spec.js",
+          "line": 25,
+          "column": 10,
+          "specs": [
+            {
+              "title": "@baraya - Test Case 0 - Ekspor Laporan Ke Excel",
+              "ok": true,
+              "tags": [
+                "baraya"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1be5397acfabadab19fd-828e02e6c4a55791be67",
+              "file": "specs/laporan_outlet_test.spec.js",
+              "line": 51,
+              "column": 11
+            },
+            {
+              "title": "@baraya - Test Case 1 - Validasi Jumlah Penumpang/Tiket Perhari",
+              "ok": true,
+              "tags": [
+                "baraya"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1be5397acfabadab19fd-84a7c599632ffe978e8b",
+              "file": "specs/laporan_outlet_test.spec.js",
+              "line": 77,
+              "column": 13
+            },
+            {
+              "title": "@baraya - Test Case 2 - Validasi Total Penjualan Tiket Perhari",
+              "ok": true,
+              "tags": [
+                "baraya"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1be5397acfabadab19fd-365a625090ce3027e75d",
+              "file": "specs/laporan_outlet_test.spec.js",
+              "line": 115,
+              "column": 13
+            },
+            {
+              "title": "@baraya - Test Case 3 - Validasi Total Jumlah Paket Perhari",
+              "ok": true,
+              "tags": [
+                "baraya"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1be5397acfabadab19fd-adc5353374ad721e1c08",
+              "file": "specs/laporan_outlet_test.spec.js",
+              "line": 151,
+              "column": 13
+            },
+            {
+              "title": "@baraya - Test Case 4 - Validasi Total Penjualan Paket Perhari",
+              "ok": true,
+              "tags": [
+                "baraya"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1be5397acfabadab19fd-de97860cf43781037417",
+              "file": "specs/laporan_outlet_test.spec.js",
+              "line": 189,
+              "column": 15
+            },
+            {
+              "title": "@baraya - Test Case 5 - Validasi Total Laba Perhari",
+              "ok": true,
+              "tags": [
+                "baraya"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1be5397acfabadab19fd-6821f90ecb18988c042d",
+              "file": "specs/laporan_outlet_test.spec.js",
+              "line": 346,
+              "column": 11
+            },
+            {
+              "title": "@baraya - Test Case 6 - Cek Laporan Total Bulanan",
+              "ok": true,
+              "tags": [
+                "baraya"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1be5397acfabadab19fd-e31227d8f98187c927d3",
+              "file": "specs/laporan_outlet_test.spec.js",
+              "line": 422,
+              "column": 11
+            },
+            {
+              "title": "@aragon - Test Case 0 - Ekspor Laporan Ke Excel",
+              "ok": true,
+              "tags": [
+                "aragon"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1be5397acfabadab19fd-691991b7abcc4fca0b01",
+              "file": "specs/laporan_outlet_test.spec.js",
+              "line": 51,
+              "column": 11
+            },
+            {
+              "title": "@aragon - Test Case 1 - Validasi Jumlah Penumpang/Tiket Perhari",
+              "ok": true,
+              "tags": [
+                "aragon"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1be5397acfabadab19fd-b605b057bb444bb6ff79",
+              "file": "specs/laporan_outlet_test.spec.js",
+              "line": 77,
+              "column": 13
+            },
+            {
+              "title": "@aragon - Test Case 2 - Validasi Total Penjualan Tiket Perhari",
+              "ok": true,
+              "tags": [
+                "aragon"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1be5397acfabadab19fd-12b46e9e513e64cb889d",
+              "file": "specs/laporan_outlet_test.spec.js",
+              "line": 115,
+              "column": 13
+            },
+            {
+              "title": "@aragon - Test Case 3 - Validasi Total Discount Perhari",
+              "ok": true,
+              "tags": [
+                "aragon"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1be5397acfabadab19fd-803a187e436ea63d7b67",
+              "file": "specs/laporan_outlet_test.spec.js",
+              "line": 229,
+              "column": 15
+            },
+            {
+              "title": "@aragon - Test Case 4 - Validasi Total Pendapatan Tiket Perhari",
+              "ok": true,
+              "tags": [
+                "aragon"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1be5397acfabadab19fd-b39c2e6cd8c9e4cbd0c1",
+              "file": "specs/laporan_outlet_test.spec.js",
+              "line": 268,
+              "column": 13
+            },
+            {
+              "title": "@aragon - Test Case 5 - Validasi Total Biaya Op Perhari",
+              "ok": true,
+              "tags": [
+                "aragon"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1be5397acfabadab19fd-433c0288d130010e245b",
+              "file": "specs/laporan_outlet_test.spec.js",
+              "line": 310,
+              "column": 13
+            },
+            {
+              "title": "@aragon - Test Case 6 - Validasi Total Laba Perhari",
+              "ok": true,
+              "tags": [
+                "aragon"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1be5397acfabadab19fd-bb2f54d43e163c18f4e4",
+              "file": "specs/laporan_outlet_test.spec.js",
+              "line": 346,
+              "column": 11
+            },
+            {
+              "title": "@aragon - Test Case 7 - Cek Laporan Total Bulanan",
+              "ok": true,
+              "tags": [
+                "aragon"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1be5397acfabadab19fd-1704236ac146a286a962",
+              "file": "specs/laporan_outlet_test.spec.js",
+              "line": 422,
+              "column": 11
+            },
+            {
+              "title": "@jackal - Test Case 0 - Ekspor Laporan Ke Excel",
+              "ok": true,
+              "tags": [
+                "jackal"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1be5397acfabadab19fd-70f8462fb217197488ce",
+              "file": "specs/laporan_outlet_test.spec.js",
+              "line": 51,
+              "column": 11
+            },
+            {
+              "title": "@jackal - Test Case 1 - Validasi Total Biaya Op Perhari",
+              "ok": true,
+              "tags": [
+                "jackal"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1be5397acfabadab19fd-01513788ad6ffa5ac325",
+              "file": "specs/laporan_outlet_test.spec.js",
+              "line": 310,
+              "column": 13
+            },
+            {
+              "title": "@jackal - Test Case 2 - Validasi Total Laba Perhari",
+              "ok": true,
+              "tags": [
+                "jackal"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1be5397acfabadab19fd-abd3412d03d6238ee67a",
+              "file": "specs/laporan_outlet_test.spec.js",
+              "line": 346,
+              "column": 11
+            },
+            {
+              "title": "@jackal - Test Case 3 - Validasi Total Komisi Perhari",
+              "ok": true,
+              "tags": [
+                "jackal"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1be5397acfabadab19fd-3f22e30e2d8f1cc4a15d",
+              "file": "specs/laporan_outlet_test.spec.js",
+              "line": 388,
+              "column": 13
+            },
+            {
+              "title": "@jackal - Test Case 4 - Cek Laporan Total Bulanan",
+              "ok": true,
+              "tags": [
+                "jackal"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1be5397acfabadab19fd-69c3cc07739734184a5f",
+              "file": "specs/laporan_outlet_test.spec.js",
+              "line": 422,
+              "column": 11
+            },
+            {
+              "title": "@btm - Test Case 0 - Ekspor Laporan Ke Excel",
+              "ok": true,
+              "tags": [
+                "btm"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1be5397acfabadab19fd-4662ce4e439b6d83819b",
+              "file": "specs/laporan_outlet_test.spec.js",
+              "line": 51,
+              "column": 11
+            },
+            {
+              "title": "@btm - Test Case 1 - Validasi Jumlah Penumpang/Tiket Perhari",
+              "ok": true,
+              "tags": [
+                "btm"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1be5397acfabadab19fd-a9ebfdbd1817fd5dfa52",
+              "file": "specs/laporan_outlet_test.spec.js",
+              "line": 77,
+              "column": 13
+            },
+            {
+              "title": "@btm - Test Case 2 - Validasi Total Penjualan Tiket Perhari",
+              "ok": true,
+              "tags": [
+                "btm"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1be5397acfabadab19fd-0a58821c016b1723e686",
+              "file": "specs/laporan_outlet_test.spec.js",
+              "line": 115,
+              "column": 13
+            },
+            {
+              "title": "@btm - Test Case 3 - Validasi Total Discount Perhari",
+              "ok": true,
+              "tags": [
+                "btm"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1be5397acfabadab19fd-d48c9d27c00431f5177b",
+              "file": "specs/laporan_outlet_test.spec.js",
+              "line": 229,
+              "column": 15
+            },
+            {
+              "title": "@btm - Test Case 4 - Validasi Total Pendapatan Tiket Perhari",
+              "ok": true,
+              "tags": [
+                "btm"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1be5397acfabadab19fd-a01fc2e14e3e8c23c281",
+              "file": "specs/laporan_outlet_test.spec.js",
+              "line": 268,
+              "column": 13
+            },
+            {
+              "title": "@btm - Test Case 5 - Validasi Total Biaya Op Perhari",
+              "ok": true,
+              "tags": [
+                "btm"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1be5397acfabadab19fd-9a0f58b1347ad05abb44",
+              "file": "specs/laporan_outlet_test.spec.js",
+              "line": 310,
+              "column": 13
+            },
+            {
+              "title": "@btm - Test Case 6 - Validasi Total Laba Perhari",
+              "ok": true,
+              "tags": [
+                "btm"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1be5397acfabadab19fd-0564ef15ea985bd885e5",
+              "file": "specs/laporan_outlet_test.spec.js",
+              "line": 346,
+              "column": 11
+            },
+            {
+              "title": "@btm - Test Case 7 - Cek Laporan Total Bulanan",
+              "ok": true,
+              "tags": [
+                "btm"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1be5397acfabadab19fd-cf6a40cf2773b69de366",
+              "file": "specs/laporan_outlet_test.spec.js",
+              "line": 422,
+              "column": 11
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "specs\\member_test.spec.js",
+      "file": "specs/member_test.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Member",
+          "file": "specs/member_test.spec.js",
+          "line": 22,
+          "column": 8,
+          "specs": [
+            {
+              "title": "@kruzz - Test Case 1 - Cek Poin Member",
+              "ok": true,
+              "tags": [
+                "kruzz"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "988ae82fe9d7b2ef55b6-105a1da2b4bf9685e090",
+              "file": "specs/member_test.spec.js",
+              "line": 42,
+              "column": 9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "specs\\reservasi_test.spec.js",
+      "file": "specs/reservasi_test.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Reservasi",
+          "file": "specs/reservasi_test.spec.js",
+          "line": 22,
+          "column": 8,
+          "specs": [
+            {
+              "title": "@daytrans - Test Case 1 - Reservasi One Way Trip",
+              "ok": true,
+              "tags": [
+                "daytrans"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "02e2cd0bd40fbbd74fbe-80424ea82e3fadbe3313",
+              "file": "specs/reservasi_test.spec.js",
+              "line": 42,
+              "column": 9
+            },
+            {
+              "title": "@daytrans - Test Case 2 - Reservasi Round Trip",
+              "ok": true,
+              "tags": [
+                "daytrans"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "02e2cd0bd40fbbd74fbe-05460f713156dbdc9da2",
+              "file": "specs/reservasi_test.spec.js",
+              "line": 71,
+              "column": 11
+            },
+            {
+              "title": "@daytrans - Test Case 3 - Connecting Reservation",
+              "ok": true,
+              "tags": [
+                "daytrans"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "02e2cd0bd40fbbd74fbe-88be0460ee7185987c22",
+              "file": "specs/reservasi_test.spec.js",
+              "line": 114,
+              "column": 11
+            },
+            {
+              "title": "@baraya - Test Case 1 - Reservasi One Way Trip",
+              "ok": true,
+              "tags": [
+                "baraya"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "02e2cd0bd40fbbd74fbe-ba0469b1f9260c19e97c",
+              "file": "specs/reservasi_test.spec.js",
+              "line": 42,
+              "column": 9
+            },
+            {
+              "title": "@baraya - Test Case 2 - Reservasi Round Trip",
+              "ok": true,
+              "tags": [
+                "baraya"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "02e2cd0bd40fbbd74fbe-71b7c62a24f3af50ff6d",
+              "file": "specs/reservasi_test.spec.js",
+              "line": 71,
+              "column": 11
+            },
+            {
+              "title": "@aragon - Test Case 1 - Reservasi One Way Trip",
+              "ok": true,
+              "tags": [
+                "aragon"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "02e2cd0bd40fbbd74fbe-35f87c5a269a95066b4c",
+              "file": "specs/reservasi_test.spec.js",
+              "line": 42,
+              "column": 9
+            },
+            {
+              "title": "@jackal - Test Case 1 - Reservasi One Way Trip",
+              "ok": true,
+              "tags": [
+                "jackal"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "02e2cd0bd40fbbd74fbe-21fb6d4730d2ec2adfd0",
+              "file": "specs/reservasi_test.spec.js",
+              "line": 42,
+              "column": 9
+            },
+            {
+              "title": "@jackal - Test Case 2 - Reservasi Round Trip",
+              "ok": true,
+              "tags": [
+                "jackal"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "02e2cd0bd40fbbd74fbe-773057b09d1d7d28f39d",
+              "file": "specs/reservasi_test.spec.js",
+              "line": 71,
+              "column": 11
+            },
+            {
+              "title": "@btm - Test Case 1 - Reservasi One Way Trip",
+              "ok": true,
+              "tags": [
+                "btm"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "02e2cd0bd40fbbd74fbe-02e08ea8ccf7b827b67e",
+              "file": "specs/reservasi_test.spec.js",
+              "line": 42,
+              "column": 9
+            },
+            {
+              "title": "@btm - Test Case 3 - Connecting Reservation",
+              "ok": true,
+              "tags": [
+                "btm"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "02e2cd0bd40fbbd74fbe-9dcfe0de64687e6b06d8",
+              "file": "specs/reservasi_test.spec.js",
+              "line": 114,
+              "column": 11
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-04-08T08:27:00.722Z",
+    "duration": 2578.192,
+    "expected": 0,
+    "skipped": 140,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}
