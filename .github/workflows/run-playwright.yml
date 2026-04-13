@@ -103,14 +103,17 @@ jobs:
             detail += `📁 File: ${suite.file}\n`;
 
             (suite.specs || []).forEach(spec => {
-              const test = spec.tests?.[0];
-              const status = test?.expectedStatus || 'unknown';
+              (spec.tests || []).forEach(test => {
+                (test.results || []).forEach(result => {
+                  const status = result.status || 'unknown';
+                  
+                  total++;
+                  if (status === 'passed') passed++;
+                  else failed++;
 
-              total++;
-              if (status === 'passed') passed++;
-              else failed++;
-
-              detail += `  • ${spec.title} — [ ${status} ]\n`;
+                  detail += `  • ${spec.title} — [ ${status} ]\n`;
+                });
+              });
             });
 
             detail += '\n';
