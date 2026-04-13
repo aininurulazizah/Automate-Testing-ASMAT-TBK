@@ -78,6 +78,10 @@ jobs:
           }
 
           const data = JSON.parse(fs.readFileSync('result.json', 'utf8'));
+          
+          console.log("=== FULL DATA ===");
+          console.log(JSON.stringify(data, null, 2));
+          
           const suites = data.suites || [];
           const stats = data.stats || {};
 
@@ -97,7 +101,6 @@ jobs:
             if (!suite.file) return;
 
             detail += `📁 File: ${suite.file}\n`;
-            console.log("Isi suties : ", suite);
 
             (suite.specs || []).forEach(spec => {
               const test = spec.tests?.[0];
