@@ -133,7 +133,7 @@ jobs:
              ✅ Passed: ${passed}
              ❌ Failed: ${failed}
 
-             Detail
+             Failed Test Case
              ${detail}`;
 
           fs.appendFileSync(
