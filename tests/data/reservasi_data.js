@@ -11,7 +11,7 @@ function getTanggal(value) {
 export const testData = {
 
     Btm: {
-        TanggalBerangkat: getTanggal(2), //Ambil tanggal dua bulan dari sekarang
+        TanggalBerangkat: getTanggal(1), //Ambil tanggal dua bulan dari sekarang
         Keberangkatan: "BUAH BATU",
         Tujuan: "BTM CILEGON",
         JumlahPenumpang: 2,
@@ -23,8 +23,8 @@ export const testData = {
     },
 
     Daytrans: {
-        TanggalBerangkat: getTanggal(2),
-        TanggalPulang: getTanggal(3),
+        TanggalBerangkat: getTanggal(1),
+        TanggalPulang: getTanggal(2),
         Keberangkatan: "DIPATIUKUR",
         Tujuan: "ALFAMART RAYA PAJAJARAN BOGOR",
         KeberangkatanPulang: "ALFAMART RAYA PAJAJARAN BOGOR",
@@ -41,8 +41,8 @@ export const testData = {
     },
 
     Baraya: {        
-        TanggalBerangkat: getTanggal(2), //Ambil tanggal dua bulan dari sekarang
-        TanggalPulang: '10 Apr 2026', //Ambil tanggal tiga bulan dari sekarang
+        TanggalBerangkat: getTanggal(1), //Ambil tanggal dua bulan dari sekarang
+        TanggalPulang: getTanggal(2), //Ambil tanggal tiga bulan dari sekarang
         Keberangkatan: "CALL CENTER BANDUNG",
         Tujuan: "CIMAREME",
         KeberangkatanPulang: "CIMAREME",
@@ -52,7 +52,7 @@ export const testData = {
     },
 
     Aragon: {
-        TanggalBerangkat: getTanggal(2), //Ambil tanggal dua bulan dari sekarang
+        TanggalBerangkat: getTanggal(1), //Ambil tanggal dua bulan dari sekarang
         Keberangkatan: "BANDUNG",
         Tujuan: "Alfamart Banjar Atas",
         JumlahPenumpang: 2,
@@ -60,8 +60,8 @@ export const testData = {
     },
 
     Jackal: {
-        TanggalBerangkat: getTanggal(2), //Ambil tanggal dua bulan dari sekarang
-        TanggalPulang: getTanggal(3), //Ambil tanggal tiga bulan dari sekarang
+        TanggalBerangkat: getTanggal(1), //Ambil tanggal dua bulan dari sekarang
+        TanggalPulang: getTanggal(2), //Ambil tanggal tiga bulan dari sekarang
         Keberangkatan: "DIPATIUKUR 89 SEBRANG UNI",
         Tujuan: "JABABEKA CIKARANG",
         KeberangkatanPulang: "JABABEKA CIKARANG",

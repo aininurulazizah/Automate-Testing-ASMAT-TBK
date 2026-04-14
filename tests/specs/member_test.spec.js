@@ -23,28 +23,23 @@ sites.forEach((site) => {
 
     test.setTimeout(60000);
   
-    let context;
+    let page;
+    let web;
   
     test.beforeAll(async ({ browser }) => {
         test.setTimeout(60000);
-        context = await browser.newContext();  
-        const page = await context.newPage();  
+        const context = await browser.newContext();  
+        page = await context.newPage();  
+        web = new site.locator(page);
         await page.goto(site.url);  // Step Login
         await page.fill('#username', `${site.cred.Username}`);
         await page.fill('#password', `${site.cred.Password}`);
         await page.click('#loginbutton');
         await page.waitForURL('**/menu.operasional');
     });
-    
-    test.afterAll(async () => {
-        await context.close();
-    });
+
   
     test(`${site.tag} - Test Case 1 - Cek Poin Member`, async() => {
-  
-      const page = await context.newPage();
-      
-      const web = new site.locator(page);
           
       await page.goto(`${site.url}/asmat/member`);
 

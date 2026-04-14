@@ -28,16 +28,18 @@ for (const site of sites) {
   
       test.setTimeout(60000);
     
-      let context;
+      let page;
+      let web;
 
       let initialCaseNumber = 0;
-
       const caseNumber = () => initialCaseNumber++;
     
-      test.beforeAll(async ({ browser }) => {
+      test.beforeEach(async ({ browser }) => {
           test.setTimeout(60000);
-          context = await browser.newContext();  
-          const page = await context.newPage();  
+          const context = await browser.newContext();  
+          page = await context.newPage();  
+          web = new site.locator(page);
+
           await page.goto(site.url);  // Step Login
           await page.fill('#username', `${site.cred.Username}`);
           await page.fill('#password', `${site.cred.Password}`);
@@ -45,16 +47,8 @@ for (const site of sites) {
           await page.waitForURL('**/menu.operasional');
       });
       
-      test.afterAll(async () => {
-          await context.close();
-      });
-
 
       test(`${site.tag} - Test Case ${caseNumber()} - Ekspor Laporan Ke Excel`, async() => {
-
-        const page = await context.newPage();
-
-        const web = new site.locator(page);
 
         await page.goto(`${site.url}/asmat/laporan.keseluruhan`);
 
@@ -83,10 +77,6 @@ for (const site of sites) {
       if (site.data.KolomNonMonetary.JmlPenumpang) {
 
         test(`${site.tag} - Test Case ${caseNumber()} - Validasi Jumlah Penumpang Perhari`, async() => {
-    
-          const page = await context.newPage();
-          
-          const web = new site.locator(page);
   
           const logic = new Laporan(page, site.locator);
               
@@ -123,10 +113,6 @@ for (const site of sites) {
       if(site.data.KolomNonMonetary.JmlPenumpangByPembayaran) {
 
         test(`${site.tag} - Test Case ${caseNumber()} - Validasi Jumlah Penumpang By Pembayaran Perhari`, async() => {
-    
-          const page = await context.newPage();
-          
-          const web = new site.locator(page);
   
           const logic = new Laporan(page, site.locator);
               
@@ -163,10 +149,6 @@ for (const site of sites) {
       if (site.data.KolomNonMonetary.JmlPenumpang && site.data.KolomNonMonetary.JmlPenumpangByPembayaran) {
 
         test(`${site.tag} - Test Case ${caseNumber()} - Validasi Jumlah Penumpang & Jumlah Penumpang By Pembayaran Perhari`, async() => {
-       
-          const page = await context.newPage();
-          
-          const web = new site.locator(page);
   
           const logic = new Laporan(page, site.locator);
               
@@ -203,10 +185,6 @@ for (const site of sites) {
       if (site.tag !== '@daytrans') {
 
         test(`${site.tag} - Test Case ${caseNumber()} - Validasi Rata - Rata Penumpang Perhari`, async() => {
-    
-          const page = await context.newPage();
-          
-          const web = new site.locator(page);
   
           const logic = new Laporan(page, site.locator);
               
@@ -243,10 +221,6 @@ for (const site of sites) {
       if(site.data.KolomPendapatan.OmzetPenumpang.length > 1) {
 
         test(`${site.tag} - Test Case ${caseNumber()} - Validasi Total Omzet Penumpang Perhari`, async() => {
-    
-          const page = await context.newPage();
-          
-          const web = new site.locator(page);
   
           const logic = new Laporan(page, site.locator);
               
@@ -281,10 +255,6 @@ for (const site of sites) {
       }
 
       test(`${site.tag} - Test Case ${caseNumber()} - Validasi Pendapatan Penumpang Perhari`, async() => {
-    
-        const page = await context.newPage();
-        
-        const web = new site.locator(page);
 
         const logic = new Laporan(page, site.locator);
             
@@ -333,10 +303,6 @@ for (const site of sites) {
       })
 
       test(`${site.tag} - Test Case ${caseNumber()} - Validasi Jumlah Paket Perhari`, async() => {
-    
-        const page = await context.newPage();
-        
-        const web = new site.locator(page);
 
         const logic = new Laporan(page, site.locator);
             
@@ -376,10 +342,6 @@ for (const site of sites) {
       // })
 
       test(`${site.tag} - Test Case ${caseNumber()} - Validasi Total Omzet Paket Perhari`, async() => {
-    
-        const page = await context.newPage();
-        
-        const web = new site.locator(page);
 
         const logic = new Laporan(page, site.locator);
             
@@ -416,10 +378,6 @@ for (const site of sites) {
       if (site.tag !== '@daytrans') {
 
         test(`${site.tag} - Test Case ${caseNumber()} - Validasi Total Omzet Perhari`, async() => {
-    
-          const page = await context.newPage();
-          
-          const web = new site.locator(page);
   
           const logic = new Laporan(page, site.locator);
               
@@ -459,10 +417,6 @@ for (const site of sites) {
 
 
       test(`${site.tag} - Test Case ${caseNumber()} - Validasi Total Biaya Op Perhari`, async() => {
-    
-        const page = await context.newPage();
-        
-        const web = new site.locator(page);
 
         const logic = new Laporan(page, site.locator);
             
@@ -499,10 +453,6 @@ for (const site of sites) {
       if (site.data.KolomPengeluaranCharter && site.data.KolomPengeluaranCharter.BiayaOpCharter.length > 1) {
 
         test(`${site.tag} - Test Case ${caseNumber()} - Validasi Total Biaya Op Charter Perhari`, async() => {
-    
-          const page = await context.newPage();
-          
-          const web = new site.locator(page);
   
           const logic = new Laporan(page, site.locator);
               
@@ -538,9 +488,6 @@ for (const site of sites) {
       }
 
       test(`${site.tag} - Test Case ${caseNumber()} - Validasi Total Laba Kotor Perhari`, async() => {
-        const page = await context.newPage();
-        
-        const web = new site.locator(page);
 
         const logic = new Laporan(page, site.locator);
             
@@ -591,9 +538,6 @@ for (const site of sites) {
       if (site.data.KolomPendapatanCharter) {
 
         test(`${site.tag} - Test Case ${caseNumber()} - Validasi Total Laba Kotor Charter Perhari`, async() => {
-          const page = await context.newPage();
-          
-          const web = new site.locator(page);
   
           const logic = new Laporan(page, site.locator);
               
@@ -636,10 +580,6 @@ for (const site of sites) {
       if(site.data.KolomNonMonetary.TotalTrip) {
        
         test(`${site.tag} - Test Case ${caseNumber()} - Validasi Total Trip Perhari`, async() => {
-       
-          const page = await context.newPage();
-          
-          const web = new site.locator(page);
   
           const logic = new Laporan(page, site.locator);
               
@@ -674,10 +614,6 @@ for (const site of sites) {
       if (site.data.KolomPengeluaran.Komisi && site.data.KolomPengeluaran.Komisi.length > 1) {
 
         test(`${site.tag} - Test Case ${caseNumber()} - Validasi Total Komisi Perhari`, async() => {
-    
-          const page = await context.newPage();
-          
-          const web = new site.locator(page);
   
           const logic = new Laporan(page, site.locator);
               
@@ -720,10 +656,6 @@ for (const site of sites) {
         for (const [key, value] of omzetUnits) {
           
           test(`${site.tag} - Test Case ${caseNumber()} - Validasi Omzet Unit Perhari`, async() => {
-    
-            const page = await context.newPage();
-            
-            const web = new site.locator(page);
     
             const logic = new Laporan(page, site.locator);
                 
@@ -773,10 +705,6 @@ for (const site of sites) {
       if (hasTotalDiscount) {
 
         test(`${site.tag} - Test Case ${caseNumber()} - Validasi Total Discount Perhari`, async() => {
-    
-          const page = await context.newPage();
-          
-          const web = new site.locator(page);
   
           const logic = new Laporan(page, site.locator);
               
@@ -828,10 +756,6 @@ for (const site of sites) {
       if (hasTotalDiscountPaket) {
 
         test(`${site.tag} - Test Case ${caseNumber()} - Validasi Total Discount Paket Perhari`, async() => {
-    
-          const page = await context.newPage();
-          
-          const web = new site.locator(page);
   
           const logic = new Laporan(page, site.locator);
               
@@ -866,10 +790,6 @@ for (const site of sites) {
       }
     
       test(`${site.tag} - Test Case ${caseNumber()} - Cek Laporan Total Bulanan`, async() => {
-    
-        const page = await context.newPage();
-          
-        const web = new site.locator(page);
 
         const logic = new Laporan(page, site.locator);
             

@@ -26,7 +26,8 @@ for (const site of sites) {
   
       test.setTimeout(60000);
     
-      let context;
+      let page;
+      let web;
 
       let initialCaseNumber = 0;
 
@@ -34,8 +35,9 @@ for (const site of sites) {
     
       test.beforeAll(async ({ browser }) => {
           test.setTimeout(60000);
-          context = await browser.newContext();  
-          const page = await context.newPage();  
+          const context = await browser.newContext();  
+          page = await context.newPage();  
+          web = new site.locator(page);
           await page.goto(site.url);  // Step Login
           await page.fill('#username', `${site.cred.Username}`);
           await page.fill('#password', `${site.cred.Password}`);
@@ -43,16 +45,8 @@ for (const site of sites) {
           await page.waitForURL('**/menu.operasional');
       });
       
-      test.afterAll(async () => {
-          await context.close();
-      });
-
 
       test(`${site.tag} - Test Case ${caseNumber()} - Ekspor Laporan Ke Excel`, async() => {
-
-        const page = await context.newPage();
-
-        const web = new site.locator(page);
 
         await page.goto(`${site.url}/asmat/laporan.outlet`);
 
@@ -75,10 +69,6 @@ for (const site of sites) {
       if (site.data.KolomNonMonetary.JmlTiket) {
 
         test(`${site.tag} - Test Case ${caseNumber()} - Validasi Jumlah Penumpang/Tiket Perhari`, async() => {
-    
-          const page = await context.newPage();
-          
-          const web = new site.locator(page);
   
           const logic = new Laporan(page, site.locator);
               
@@ -114,10 +104,6 @@ for (const site of sites) {
 
         test(`${site.tag} - Test Case ${caseNumber()} - Validasi Total Penjualan Tiket Perhari`, async() => {
     
-            const page = await context.newPage();
-            
-            const web = new site.locator(page);
-    
             const logic = new Laporan(page, site.locator);
                 
             await page.goto(`${site.url}/asmat/laporan.outlet`);
@@ -149,10 +135,6 @@ for (const site of sites) {
       if (site.data.KolomNonMonetary.JmlPaket) {
 
         test(`${site.tag} - Test Case ${caseNumber()} - Validasi Total Jumlah Paket Perhari`, async() => {
-    
-            const page = await context.newPage();
-            
-            const web = new site.locator(page);
     
             const logic = new Laporan(page, site.locator);
                 
@@ -187,10 +169,6 @@ for (const site of sites) {
         if (site.data.KolomPendapatan.PenjualanPaket.length > 1) {
 
           test(`${site.tag} - Test Case ${caseNumber()} - Validasi Total Penjualan Paket Perhari`, async() => {
-      
-              const page = await context.newPage();
-              
-              const web = new site.locator(page);
       
               const logic = new Laporan(page, site.locator);
                   
@@ -228,10 +206,6 @@ for (const site of sites) {
 
           test(`${site.tag} - Test Case ${caseNumber()} - Validasi Total Discount Perhari`, async() => {
       
-              const page = await context.newPage();
-              
-              const web = new site.locator(page);
-      
               const logic = new Laporan(page, site.locator);
                   
               await page.goto(`${site.url}/asmat/laporan.outlet`);
@@ -266,10 +240,6 @@ for (const site of sites) {
       if (site.tag === '@btm' || site.tag === '@aragon') {
 
         test(`${site.tag} - Test Case ${caseNumber()} - Validasi Total Pendapatan Tiket Perhari`, async() => {
-    
-            const page = await context.newPage();
-            
-            const web = new site.locator(page);
     
             const logic = new Laporan(page, site.locator);
                 
@@ -309,10 +279,6 @@ for (const site of sites) {
 
         test(`${site.tag} - Test Case ${caseNumber()} - Validasi Total Biaya Op Perhari`, async() => {
     
-            const page = await context.newPage();
-            
-            const web = new site.locator(page);
-    
             const logic = new Laporan(page, site.locator);
                 
             await page.goto(`${site.url}/asmat/laporan.outlet`);
@@ -344,10 +310,6 @@ for (const site of sites) {
       }
 
       test(`${site.tag} - Test Case ${caseNumber()} - Validasi Total Laba Perhari`, async() => {
-    
-        const page = await context.newPage();
-        
-        const web = new site.locator(page);
 
         const logic = new Laporan(page, site.locator);
             
@@ -386,10 +348,6 @@ for (const site of sites) {
       if (site.data.KolomPengeluaran.Komisi) {
 
         test(`${site.tag} - Test Case ${caseNumber()} - Validasi Total Komisi Perhari`, async() => {
-    
-          const page = await context.newPage();
-          
-          const web = new site.locator(page);
   
           const logic = new Laporan(page, site.locator);
               
@@ -420,10 +378,6 @@ for (const site of sites) {
       }
 
       test(`${site.tag} - Test Case ${caseNumber()} - Cek Laporan Total Bulanan`, async() => {
-    
-        const page = await context.newPage();
-          
-        const web = new site.locator(page);
 
         const logic = new Laporan(page, site.locator);
             
