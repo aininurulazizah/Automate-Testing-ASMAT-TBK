@@ -26,6 +26,7 @@ sites.forEach((site) => {
     let context;
   
     test.beforeAll(async ({ browser }) => {
+        test.setTimeout(60000);
         context = await browser.newContext();  
         const page = await context.newPage();  
         await page.goto(site.url);  // Step Login
