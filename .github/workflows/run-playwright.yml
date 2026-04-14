@@ -94,30 +94,31 @@ jobs:
           let failed = 0;
           let detail = '';
 
-          function processSuite(suite) {
+          function processSuite(suite, fileName) {
             (suite.specs || []).forEach(spec => {
               (spec.tests || []).forEach(test => {
                 (test.results || []).forEach(result => {
                   const status = result.status || 'unknown';
 
                   total++;
-                  if (status === 'passed') passed++;
-                  else failed++;
-
-                  detail += `  • ${spec.title} — [ ${status} ]\n`;
+                  if (status === 'passed') {
+                    passed++;
+                  } else {
+                    failed++;
+                    detail += `📁 File: ${fileName}\n`;
+                    detail += `  • ${spec.title} — [ ${status} ]\n\n`;                    
+                  }
                 });
               });
             });
 
             (suite.suites || []).forEach(child => {
-              processSuite(child);
+              processSuite(child, fileName);
             });
           }
 
           suites.forEach(suite => {
-            detail += `📁 File: ${suite.file}\n`;
-            processSuite(suite);
-            detail += '\n';
+            processSuite(suite, suite.file);
           });
 
           const report =
@@ -132,7 +133,7 @@ jobs:
              ✅ Passed: ${passed}
              ❌ Failed: ${failed}
 
-             Detail
+             Failed Test Case
              ${detail}`;
 
           fs.appendFileSync(
