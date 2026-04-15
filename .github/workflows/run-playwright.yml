@@ -105,7 +105,8 @@ jobs:
                     passed++;
                   } else {
                     failed++;
-                    detail += `   • ${spec.title} — [ ${status} ]\n\n`;                    
+                    detail += `📁 File: ${fileName}\n`;
+                    detail += `  • ${spec.title} — [ ${status} ]\n\n`;                    
                   }
                 });
               });
