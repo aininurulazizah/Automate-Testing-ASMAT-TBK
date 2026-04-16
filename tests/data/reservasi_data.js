@@ -72,8 +72,8 @@ export const testData = {
     },
 
     Jackal: {
-        TanggalBerangkat: { tanggal: '17 Apr 2026', isWeekend: false }, //Ambil tanggal dua bulan dari sekarang
-        TanggalPulang: getTanggal(1), //Ambil tanggal tiga bulan dari sekarang
+        TanggalBerangkat: getTanggal(1), //Ambil tanggal dua bulan dari sekarang
+        TanggalPulang: getTanggal(2), //Ambil tanggal tiga bulan dari sekarang
         Keberangkatan: "DIPATIUKUR 89 SEBRANG UNI",
         Tujuan: "JABABEKA CIKARANG",
         KeberangkatanPulang: "JABABEKA CIKARANG",
