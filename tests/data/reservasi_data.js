@@ -5,7 +5,19 @@ function getTanggal(value) {
     today.setMonth(today.getMonth() + value); //Set bulan ke bulan setelah berapa 'bulan'
     const lastDay = new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate(); //Set tanggal terakhir di bulan tujuan
     today.setDate(Math.min(day,lastDay)); //Membandingkan tanggal hari ini (yang akan dipilih) dengan tanggal terakhir di bulan tujuan (misal tgl sekarang 31, tanggal terakhir di bulan target 28, maka yang dipilih 28)
-    return today.toLocaleDateString('id-ID', {day: 'numeric', month: 'short', year: 'numeric'}); //Mengembalikan nilai tanggal tujuan
+    
+    const dayOfWeek = today.getDay();
+    const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
+
+    return { //Mengembalikan nilai tanggal tujuan dan boolean apakah weekend atau bukan
+        tanggal: today.toLocaleDateString('id-ID', {
+            day: 'numeric',
+            month: 'short',
+            year: 'numeric'
+        }),
+        isWeekend: isWeekend
+    };
+    
 }
 
 export const testData = {
@@ -60,8 +72,8 @@ export const testData = {
     },
 
     Jackal: {
-        TanggalBerangkat: getTanggal(1), //Ambil tanggal dua bulan dari sekarang
-        TanggalPulang: getTanggal(2), //Ambil tanggal tiga bulan dari sekarang
+        TanggalBerangkat: { tanggal: '17 Apr 2026', isWeekend: false }, //Ambil tanggal dua bulan dari sekarang
+        TanggalPulang: getTanggal(1), //Ambil tanggal tiga bulan dari sekarang
         Keberangkatan: "DIPATIUKUR 89 SEBRANG UNI",
         Tujuan: "JABABEKA CIKARANG",
         KeberangkatanPulang: "JABABEKA CIKARANG",
