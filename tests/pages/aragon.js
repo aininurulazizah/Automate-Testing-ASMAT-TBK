@@ -37,8 +37,12 @@ export class Aragon {
         return this.page.locator(`td[onclick*="pilihTahun"]:has-text("${value}")`);
     }
 
-    getTanggal(value) {
-        return this.page.locator(`td.kaldate[onclick*="pilihTanggal"]:text-is("${value}")`);
+    getTanggal(value, isWeekend) {
+        if(isWeekend) {
+            return this.page.locator(`td.kaldatewe[onclick*="pilihTanggal"]:text-is("${value}")`);
+        } else {
+            return this.page.locator(`td.kaldate[onclick*="pilihTanggal"]:text-is("${value}")`);
+        }
     }
 
     getOutletKeberangkatan(value) {
@@ -104,12 +108,13 @@ export class Aragon {
     }
 
     async pilihTanggalBerangkat(value) {
-        const [tanggal, bulan, tahun] = value.split(" ");
+        const {tanggal, isWeekend} = value;
+        const [day, bulan, tahun] = tanggal.split(" ");
         await this.field_current_month.click();
         await this.getBulan(bulan).click();
         await this.field_current_year.click();
         await this.getTahun(tahun).click();
-        await this.getTanggal(tanggal).click();
+        await this.getTanggal(day, isWeekend).click();
     }
 
     async pilihKeberangkatan(value) {

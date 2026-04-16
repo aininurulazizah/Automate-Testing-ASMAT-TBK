@@ -41,8 +41,12 @@ export class Jackal {
         return this.page.locator(`td[onclick*="pilihTahun"]:has-text("${value}")`);
     }
 
-    getTanggal(value) {
-        return this.page.locator(`td.kaldate[onclick*="pilihTanggal"]:text-is("${value}")`);
+    getTanggal(value, isWeekend) {
+        if(isWeekend) {
+            return this.page.locator(`td.kaldatewe[onclick*="pilihTanggal"]:text-is("${value}")`);
+        } else {
+            return this.page.locator(`td.kaldate[onclick*="pilihTanggal"]:text-is("${value}")`);
+        }
     }
 
     getOutletKeberangkatan(value) {
@@ -98,12 +102,13 @@ export class Jackal {
     }
 
     async pilihTanggalBerangkat(value) {
-        const [tanggal, bulan, tahun] = value.split(" ");
+        const {tanggal, isWeekend} = value;
+        const [day, bulan, tahun] = tanggal.split(" ");
         await this.field_current_month.click();
         await this.getBulan(bulan).click();
         await this.field_current_year.click();
         await this.getTahun(tahun).click();
-        await this.getTanggal(tanggal).click();
+        await this.getTanggal(day, isWeekend).click();
     }
 
     async pilihKeberangkatan(value) {
@@ -121,7 +126,8 @@ export class Jackal {
     }
 
     async pilihTanggalPulang(value) {
-        const [tanggal, bulanText, tahun] = value.split(' ');
+        const {tanggal, isWeekend} = value;
+        const [day, bulanText, tahun] = tanggal.split(" ");
         const bulanMap = { Jan: '1', Feb: '2', Mar: '3', Apr: '4', Mei: '5', Jun: '6', Jul: '7', Agu: '8', Sep: '9', Okt: '10', Nov: '11', Des: '12'};
         const bulan = bulanMap[bulanText];
         const posisi_bulan = await this.field_tanggal_pulang.boundingBox(); //Mendapatkan koordinat posisi bulan pada field kalender tanggal pulang
@@ -129,7 +135,7 @@ export class Jackal {
         await this.page.mouse.click(posisi_bulan.x, posisi_bulan.y); //Klik bagian bulan
         await this.page.keyboard.type(bulan); //Isi bulan
         await this.page.mouse.click(posisi_tanggal.x, posisi_tanggal.y); //Klik bagian tanggal
-        await this.page.keyboard.type(tanggal); //Isi tanggal
+        await this.page.keyboard.type(day); //Isi tanggal
         await this.field_tanggal_pulang.click(); //Klik field yang mengarah ke bagian tahun
         await this.field_tanggal_pulang.type(tahun); //Isi tahun  
     }

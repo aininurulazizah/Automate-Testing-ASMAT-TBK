@@ -39,8 +39,12 @@ export class Btm {
         return this.page.locator(`td[onclick*="pilihTahun"]:has-text("${value}")`);
     }
 
-    getTanggal(value) {
-        return this.page.locator(`td.kaldate[onclick*="pilihTanggal"]:text-is("${value}")`);
+    getTanggal(value, isWeekend) {
+        if(isWeekend) {
+            return this.page.locator(`td.kaldatewe[onclick*="pilihTanggal"]:text-is("${value}")`);
+        } else {
+            return this.page.locator(`td.kaldate[onclick*="pilihTanggal"]:text-is("${value}")`);
+        }
     }
 
     getOutletKeberangkatan(value) {
@@ -93,12 +97,13 @@ export class Btm {
     // ==================================== //
 
     async pilihTanggalBerangkat(value) {
-        const [tanggal, bulan, tahun] = value.split(" "); // Memisahkan tanggal, bulan, tahun
-        await this.field_current_month.click(); // Klik field bulan
-        await this.getBulan(bulan).click(); // PIlih bulan
-        await this.field_current_year.click(); // Klik field tahun
-        await this.getTahun(tahun).click(); // Pilih tahun
-        await this.getTanggal(tanggal).click(); // Langsung pilih tanggal
+        const {tanggal, isWeekend} = value;
+        const [day, bulan, tahun] = tanggal.split(" ");
+        await this.field_current_month.click();
+        await this.getBulan(bulan).click();
+        await this.field_current_year.click();
+        await this.getTahun(tahun).click();
+        await this.getTanggal(day, isWeekend).click();
     }
 
     async pilihKeberangkatan(value) {
