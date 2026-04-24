@@ -200,7 +200,7 @@ export class Baraya {
     async validasiTotalTiket(harga_tiket_1, harga_tiket_2, jml_penumpang) {
         await this.hitung_total_btn.click();
         const total_tiket_1_exp = harga_tiket_1 * jml_penumpang;
-        const total_tiket_2_exp = harga_tiket_2 * 0;
+        const total_tiket_2_exp = harga_tiket_2 * jml_penumpang;
         const total_tiket_exp = total_tiket_1_exp + total_tiket_2_exp;
         const total_tiket_act = this.parseNumber(await this.total_bayar_label.innerText());
         expect(total_tiket_act).toBe(total_tiket_exp);
