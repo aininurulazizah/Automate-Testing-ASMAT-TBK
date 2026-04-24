@@ -1,0 +1,163 @@
+[
+  {
+    "kode_booking": "BBRT260421USTH",
+    "tanggal_keberangkatan": "21-Mei-2026",
+    "rute": "CALL CENTER BANDUNG - CIMAREME 01:20",
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 60.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 60.000",
+    "metode_bayar": "Pembayaran TUNAI ",
+    "tanggal_pemesanan": "21-Apr-2026 14:34:26 ",
+    "nama_pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT2604210JGN",
+    "tanggal_keberangkatan": "21-Mei-2026",
+    "rute": "CALL CENTER BANDUNG - CIMAREME 01:20",
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 60.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 60.000",
+    "metode_bayar": "Pembayaran TUNAI ",
+    "tanggal_pemesanan": "21-Apr-2026 14:47:09 ",
+    "nama_pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT260421OAGN",
+    "tanggal_keberangkatan": "21-Mei-2026",
+    "rute": "CALL CENTER BANDUNG - CIMAREME 01:20",
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 60.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 60.000",
+    "metode_bayar": "Pembayaran TUNAI ",
+    "tanggal_pemesanan": "21-Apr-2026 14:49:11 ",
+    "nama_pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT2604210ETB",
+    "tanggal_keberangkatan": "21-Mei-2026",
+    "rute": "CALL CENTER BANDUNG - CIMAREME 01:20",
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 60.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 60.000",
+    "metode_bayar": "Pembayaran TUNAI ",
+    "tanggal_pemesanan": "21-Apr-2026 14:57:54 ",
+    "nama_pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT260421V184",
+    "tanggal_keberangkatan": "21-Mei-2026",
+    "rute": "CALL CENTER BANDUNG - CIMAREME 01:20",
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 60.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 60.000",
+    "metode_bayar": "Pembayaran TUNAI ",
+    "tanggal_pemesanan": "21-Apr-2026 14:59:13 ",
+    "nama_pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT260423VX4B",
+    "tanggal_keberangkatan": "23-Mei-2026",
+    "rute": "CALL CENTER BANDUNG - CIMAREME 01:20",
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 60.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 60.000",
+    "metode_bayar": "Pembayaran TUNAI ",
+    "tanggal_pemesanan": "23-Apr-2026 11:20:58 ",
+    "nama_pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT260423UJV8",
+    "tanggal_keberangkatan": "23-Jun-2026",
+    "rute": "BUAH BATU - CALL CENTER BANDUNG 10:00",
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 260.000",
+    "metode_bayar": "Pembayaran TUNAI ",
+    "tanggal_pemesanan": "23-Apr-2026 17:21:05 ",
+    "nama_pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT260423J1QH",
+    "tanggal_keberangkatan": "23-Jun-2026",
+    "rute": "BUAH BATU - CALL CENTER BANDUNG 10:00",
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_tiket": {
+      "harga_pergi": "Rp 60.000 (2 tiket)",
+      "harga_pulang": "Rp 200.000 (2 tiket)"
+    },
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 260.000",
+    "metode_bayar": "Pembayaran TUNAI ",
+    "tanggal_pemesanan": "23-Apr-2026 17:25:13 ",
+    "nama_pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT2604237L3Z",
+    "tanggal_keberangkatan": "23-Mei-2026",
+    "rute": "CALL CENTER BANDUNG - CIMAREME 01:20",
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 60.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 60.000",
+    "metode_bayar": "Pembayaran TUNAI ",
+    "tanggal_pemesanan": "23-Apr-2026 17:41:19 ",
+    "nama_pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT260423C8XG",
+    "tanggal_keberangkatan": "23-Mei-2026",
+    "rute": "CALL CENTER BANDUNG - CIMAREME 01:20",
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 60.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 60.000",
+    "metode_bayar": "Pembayaran TUNAI ",
+    "tanggal_pemesanan": "23-Apr-2026 17:45:04 ",
+    "nama_pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT260423J2TH",
+    "tanggal_keberangkatan": "23-Jun-2026",
+    "rute": "BUAH BATU - CALL CENTER BANDUNG 10:00",
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_tiket": {
+      "harga_pergi": "Rp 60.000 (2 tiket)",
+      "harga_pulang": "Rp 200.000 (2 tiket)"
+    },
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 260.000",
+    "metode_bayar": "Pembayaran TUNAI ",
+    "tanggal_pemesanan": "23-Apr-2026 17:45:52 ",
+    "nama_pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT260424P2YB",
+    "tanggal_keberangkatan": "24-Mei-2026",
+    "rute": "CALL CENTER BANDUNG - CIMAREME 01:20",
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 60.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 60.000",
+    "metode_bayar": "Pembayaran TUNAI ",
+    "tanggal_pemesanan": "24-Apr-2026 08:47:28 ",
+    "nama_pencetak": "QCTTX SHUGI"
+  }
+]

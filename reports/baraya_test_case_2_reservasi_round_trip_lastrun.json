@@ -1,0 +1,16 @@
+{
+  "kode_booking": "BBRT260423J2TH",
+  "tanggal_keberangkatan": "23-Jun-2026",
+  "rute": "BUAH BATU - CALL CENTER BANDUNG 10:00",
+  "harga_tiket": "Rp 30.000",
+  "diskon": "Rp 0",
+  "total_tiket": {
+    "harga_pergi": "Rp 60.000 (2 tiket)",
+    "harga_pulang": "Rp 200.000 (2 tiket)"
+  },
+  "total_diskon": "Rp 0",
+  "total_bayar": "Rp 260.000",
+  "metode_bayar": "Pembayaran TUNAI ",
+  "tanggal_pemesanan": "23-Apr-2026 17:45:52 ",
+  "nama_pencetak": "QCTTX SHUGI"
+}

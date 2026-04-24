@@ -57,8 +57,8 @@ export const testData = {
         TanggalPulang: getTanggal(2), //Ambil tanggal tiga bulan dari sekarang
         Keberangkatan: "CALL CENTER BANDUNG",
         Tujuan: "CIMAREME",
-        KeberangkatanPulang: "CIMAREME",
-        TujuanPulang: "SOREANG2",
+        KeberangkatanPulang: "BUAH BATU",
+        TujuanPulang: "CALL CENTER BANDUNG",
         JumlahPenumpang: 2,
         MetodeBayar: "TUNAI"
     },
