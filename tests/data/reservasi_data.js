@@ -23,7 +23,7 @@ function getTanggal(value) {
 export const testData = {
 
     Btm: {
-        TanggalBerangkat: getTanggal(1), //Ambil tanggal dua bulan dari sekarang
+        TanggalBerangkat: getTanggal(1), //Ambil tanggal satu bulan dari sekarang
         Keberangkatan: "BUAH BATU",
         Tujuan: "BTM CILEGON",
         JumlahPenumpang: 2,
@@ -44,7 +44,7 @@ export const testData = {
         JumlahPenumpang: 2,
         ConnectingReservation: {
             Keberangkatan: "ALFAMART PRAMBANAN",
-            Tujuan: "DIPATIUKUR"
+            Tujuan: "ALFAMART RAYA PAJAJARAN BOGOR"
         },
         MetodeBayar: {
             Metode: "TUNAI",
@@ -53,8 +53,8 @@ export const testData = {
     },
 
     Baraya: {        
-        TanggalBerangkat: getTanggal(1), //Ambil tanggal dua bulan dari sekarang
-        TanggalPulang: getTanggal(2), //Ambil tanggal tiga bulan dari sekarang
+        TanggalBerangkat: getTanggal(1), //Ambil tanggal satu bulan dari sekarang
+        TanggalPulang: getTanggal(2), //Ambil tanggal dua bulan dari sekarang
         Keberangkatan: "CALL CENTER BANDUNG",
         Tujuan: "CIMAREME",
         KeberangkatanPulang: "BUAH BATU",
@@ -64,7 +64,7 @@ export const testData = {
     },
 
     Aragon: {
-        TanggalBerangkat: getTanggal(1), //Ambil tanggal dua bulan dari sekarang
+        TanggalBerangkat: getTanggal(1), //Ambil tanggal satu bulan dari sekarang
         Keberangkatan: "BANDUNG",
         Tujuan: "Alfamart Banjar Atas",
         JumlahPenumpang: 2,
@@ -72,12 +72,12 @@ export const testData = {
     },
 
     Jackal: {
-        TanggalBerangkat: getTanggal(1), //Ambil tanggal dua bulan dari sekarang
-        TanggalPulang: getTanggal(2), //Ambil tanggal tiga bulan dari sekarang
-        Keberangkatan: "DIPATIUKUR 89 SEBRANG UNI",
+        TanggalBerangkat: getTanggal(1), //Ambil tanggal satu bulan dari sekarang
+        TanggalPulang: getTanggal(2), //Ambil tanggal dua bulan dari sekarang
+        Keberangkatan: "DIPATIUKUR 89 SEBRANG UNIKOM",
         Tujuan: "JABABEKA CIKARANG",
         KeberangkatanPulang: "JABABEKA CIKARANG",
-        TujuanPulang: "DIPATIUKUR 89 SEBRANG UNI",
+        TujuanPulang: "DIPATIUKUR 89 SEBRANG UNIKOM",
         JumlahPenumpang: 2,
         MetodeBayar: "TUNAI"
     },

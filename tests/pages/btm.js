@@ -1,9 +1,12 @@
+import { expect } from "@playwright/test";
+
 export class Btm {
 
     constructor(page) {
 
         // General
         this.page = page;
+        this.context = page.context();
 
         // Reservation
         this.field_current_month = page.locator('span.kalbulan');
@@ -15,9 +18,12 @@ export class Btm {
         this.list_jam_keberangkatan = page.locator('div.resvlistpilihan');
         this.list_next_jam_keberangkatan = page.locator('div#resvshowkeberangkatan_1 >> div.resvlistpilihansel');
         this.tab_next_jam_keberangkatan = page.locator('span#btnruteconnecting_1');
+        this.data_keberangkatan_card = page.locator('span:has-text("Data Keberangkatan") + div.resvsectioncontent');
         this.list_kursi_tersedia = page.locator('div.renderlabelkursikosong');
         this.field_notelp_pemesan = page.locator('input#telppemesan');
         this.field_nama_pemesan = page.locator('input#namapemesan');
+        this.hitung_total_btn = page.locator('span#btntotal');
+        this.total_bayar_label = page.locator('span.resvisidatalabel:has-text("Total Bayar") + span');
         this.button_action_goshow = page.locator('span#btngoshow');
 
         // Laporan
@@ -119,6 +125,13 @@ export class Btm {
     async pilihRute() {
         await this.field_rute_connecting.click();
         await this.list_rute_connecting.first().click();
+
+        // cari span title yang ada teks yang dipisahkan dengan strip
+        const list_rute_elm = await this.page.locator('div.resvsection').first().locator('span.resvsectiontitle').filter({ hasText: /.+-.+/ });
+        const list_rute = (await list_rute_elm.allInnerTexts()).map(text => text.replace('KEBERANGKATAN\n', ''));
+        const jml_rute = list_rute.length;
+        
+        return { list_rute, jml_rute };
     }
 
     async pilihJamKeberangkatan() {
@@ -128,6 +141,23 @@ export class Btm {
     async pilihNextJamKeberangkatan() {
         await this.tab_next_jam_keberangkatan.click();
         await this.list_next_jam_keberangkatan.first().click();
+    }
+
+    async ambilHargaTiket() {
+        await this.page.waitForTimeout(1500);
+
+        let harga_tiket;
+        let is_diskon;
+        const textsOnCard = await this.data_keberangkatan_card.innerText();
+
+        if (textsOnCard.includes("NETT HARGA")) {
+            harga_tiket = this.parseNumber(await this.data_keberangkatan_card.locator('td:has-text("NETT HARGA") + td').innerText());
+            is_diskon = true;
+        } else {
+            harga_tiket = this.parseNumber(await this.data_keberangkatan_card.locator('td:has-text("HARGA TIKET") + td').innerText());
+            is_diskon = false;
+        }
+        return { harga_tiket, is_diskon }; 
     }
 
     async pilihKursi(value) {
@@ -147,8 +177,193 @@ export class Btm {
         await this.getMetodePembayaran(value).click();
     }
 
-    async cetakTiket() {  //Sementara: bisa diganti aksi yang bisa custom/menyesuaikan metode bayar 
-        await this.button_action_goshow.click();
+    async validasiTotalTiket(harga_tiket_1, harga_tiket_2, jml_penumpang) {
+        await this.hitung_total_btn.click();
+
+        let total_tiket_1_exp = 0, total_tiket_2_exp = 0;
+
+        if (Array.isArray(harga_tiket_1)) {
+            for (const harga of harga_tiket_1) {
+                total_tiket_1_exp += harga * jml_penumpang;
+            }
+        } else {
+            total_tiket_1_exp = harga_tiket_1 * jml_penumpang;
+            total_tiket_2_exp = harga_tiket_2 * jml_penumpang;
+        }
+
+        const total_tiket_exp = total_tiket_1_exp + total_tiket_2_exp;
+        const total_tiket_act = this.parseNumber(await this.total_bayar_label.innerText());
+        expect(total_tiket_act).toBe(total_tiket_exp);
+    }
+
+    async cetakTiket() { //Sementara: bisa diganti aksi yang bisa custom (selain goshow)/menyesuaikan metode bayar
+        const[TicketPage] = await Promise.all([
+            this.context.waitForEvent('page'),
+            await this.button_action_goshow.click()
+        ]);
+
+        await TicketPage.waitForLoadState();
+        return TicketPage;
+    }
+
+    async validasiPrefixTiket(ticket, ticketPrefix, jml_penumpang) {
+        for (let i = 0; i < jml_penumpang; i++) {
+            await expect(ticket.locator(`text=${ticketPrefix}`).nth(i)).toBeVisible();
+        }
+    }
+
+    async validasiKeberangkatanTujuan(ticket, keberangkatan, tujuan, jml_penumpang, tanggal_berangkat) {
+
+        const {tanggal, isWeekend} = tanggal_berangkat;
+        const tanggalVal = tanggal.replace(/ /g, '-');
+        const list_ticket = await ticket.locator(`div`).filter({hasText: `Pergi:${tanggalVal}`});
+        const list_ticket_count = await list_ticket.count();
+        let list_act_ticket = [];
+        let jml_match = 0;
+
+        for (let i = 0; i < list_ticket_count; i++) {
+            const pickup = await list_ticket.nth(i).locator('span:has-text("Pick Up") + br + span').innerText();
+            const dropoff = await list_ticket.nth(i).locator('span:has-text("Drop Off") + br + span').innerText();
+
+            list_act_ticket.push({
+                pickup: pickup.trim(),
+                dropoff: dropoff.trim()
+            })
+        }
+
+        for (const ticket of list_act_ticket) {
+            if (ticket.pickup === keberangkatan && ticket.dropoff === tujuan) {
+                jml_match++;
+            }
+        }
+
+        expect(jml_match).toBe(jml_penumpang);
+
+    }
+
+    async validasiTanggal(ticket, tanggal_validasi, jml_penumpang) {
+        const {tanggal, isWeekend} = tanggal_validasi;
+        const tanggalVal = tanggal.replace(/ /g, '-');
+        for (let i = 0; i < jml_penumpang; i++) {
+            await expect(ticket.locator(`text=${tanggalVal}`).nth(i)).toBeVisible();
+        }
+    }
+
+    async ambilDetailBooking(ticket, is_diskon, case_flag) {
+        let kode_booking;
+        let booking_detail;
+        let has_diskon;
+
+        // Ambil kode booking
+        const scripts = await ticket.locator('script').allTextContents();
+        for (const script of scripts) {
+            const match = script.match(/showDetailReservasi\([^,]+,\s*"([^"]+)"/);
+            if (match) {
+                kode_booking = match[1];
+            }
+        }
+
+        // Ambil detail reservasi di halaman asmat (klik kursi terbooking)
+        await this.page.bringToFront();
+        await this.page.locator(`[onclick*="${kode_booking}"]`).first().click(); //Klik seat booked
+
+        await expect(await this.page.locator('span#detail_harga_v2').first()).toBeVisible();
+        const detail_harga_card = await this.page.locator('span#detail_harga_v2').first();
+       
+        if (Array.isArray(is_diskon)) {
+            has_diskon = is_diskon.includes(true);
+        }
+
+        let tanggal_keberangkatan;
+        let rute;
+        let harga_tiket;
+        let diskon;
+        let total_tiket;
+        let total_diskon
+
+        if (case_flag === 'one way trip') {
+            const rute_asal = await this.page.locator('span.resvisidatalabel:text-is("Asal") + span').innerText();
+            const rute_tujuan = await this.page.locator('span.resvisidatalabel:text-is("Tujuan") + span').innerText();
+            const jam_keberangkatan = await this.page.locator('span.resvisidatalabel:text-is("Jam Keberangkatan") + span').innerText();
+
+            rute = `${rute_asal} - ${rute_tujuan} (Keberangkatan : ${jam_keberangkatan})`;
+            tanggal_keberangkatan = await this.page.locator('span.resvisidatalabel:text-is("Tanggal Keberangkatan") + span').innerText();
+            harga_tiket = await detail_harga_card.locator('span#sectiondatapemesan:has-text("Ringkasan Pembelian Tiket") + hr + span span.resvdisidatafield').innerText();
+            total_tiket = await detail_harga_card.locator('span#show_harga_keseluruhan span:has-text("Harga Tiket") + span.resvdisidatafield').innerText();
+        
+            diskon; //Belum nemu case diskon
+
+            total_diskon = is_diskon
+            ? await detail_harga_card.locator('span#show_harga_keseluruhan span:has-text("Discount Promo") + span.resvdisidatafield').innerText()
+            : "Rp 0";
+
+        } else if (case_flag === 'connecting') {
+            const data_rute_connecting = await this.page.locator(`
+                xpath=//span[@class='resvsectiontitle' and normalize-space()='Data Tiket Connecting']
+                /following-sibling::*[
+                    following-sibling::span[
+                        @class='resvsectiontitle' and normalize-space()='Pemesan & Penumpang'
+                    ]
+                ]
+            `);
+
+            const data_harga_connecting = await detail_harga_card.locator(`span#show_harga_keseluruhan span`);
+            
+            const texts_rute = await data_rute_connecting.allInnerTexts();
+            const texts_harga = await data_harga_connecting.allInnerTexts();
+            
+            rute = [];
+            harga_tiket = [];
+
+            for (let i = 0; i < texts_rute.length; i++) {
+                if (/^\d+\.\sRute$/.test(texts_rute[i])) { // Cari label "x. Rute"
+                    const nama_rute = texts_rute[i + 1];
+                    const waktu_full = texts_rute[i + 3]; // Cari waktu keberangkatan
+                    const jam = waktu_full.split(' ')[1]; // Ambil jam saja
+                    rute.push(`${nama_rute} (Keberangkatan : ${jam})`);
+                }
+            }
+
+            console.log(texts_harga);
+
+            for (let i = 0; i < texts_harga.length; i++) {
+                if (/^Harga\s[A-Z-]+$/.test(texts_harga[i])) { 
+                    const rute = texts_harga[i].replace('Harga ','');
+                    const harga = texts_harga[i+1];
+                    harga_tiket.push({
+                        Rute: rute,
+                        Harga_Tiket: harga
+                    });
+                }
+            }
+
+            tanggal_keberangkatan = await this.page.locator('span.resvisidatalabel:text-is("Tanggal Keberangkatan") + span').innerText();
+            diskon; //Belum nemu case ada diskonnya
+            total_tiket = await detail_harga_card.locator('span#show_harga_keseluruhan span:has-text("Total Bayar") + span.resvdisidatafield').innerText();
+            
+            total_diskon = has_diskon
+            ? await detail_harga_card.locator('span#show_harga_keseluruhan span:has-text("Discount Promo") + span.resvdisidatafield').innerText()
+            : "Rp 0";
+        }
+        
+        const metode_bayar = await this.page.locator('span.resvisidatalabel:has-text("Jenis Pembayaran") + span').innerText();
+        const tanggal_pemesanan = await this.page.locator('span.resvisidatalabel:has-text("Waktu Pemesanan") + span').innerText();
+        const pencetak = await this.page.locator('span.resvisidatalabel:has-text("Agen Pemesan") + span').innerText();
+        const total_bayar = await detail_harga_card.locator('span#show_harga_keseluruhan span:has-text("Total Bayar") + span.resvdisidatafield').innerText();
+
+        return booking_detail = {
+            kode_booking,
+            tanggal_keberangkatan,
+            rute,
+            harga_tiket,
+            diskon,
+            total_tiket,
+            total_diskon,
+            total_bayar,
+            metode_bayar,
+            tanggal_pemesanan,
+            pencetak
+        }
     }
 
 

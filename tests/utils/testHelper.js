@@ -26,7 +26,7 @@ export function normalizeObjectKeyToList(objectKeyToNormalize) {
 
 export function saveBookingDetails(detail, test_case_name) {
     const test_name = test_case_name.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, ''); 
-    const reportsPath = path.resolve(__dirname, '../../reports');
+    const reportsPath = path.resolve(__dirname, '../../reports/test cases');
     const allBookingPath = path.join(reportsPath, 'all_booking.json');
     const currentBookingPath = path.join(reportsPath, `${test_name}_lastrun.json`);
 

@@ -1,0 +1,30 @@
+{
+  "kode_booking": "BDTR260519OPV8",
+  "tanggal_keberangkatan": "19-Jun-2026",
+  "rute": [
+    "ALFAMART PRAMBANAN - SRONDOL (Keberangkatan : 03:45)",
+    "SRONDOL - REST AREA KM 62 (Keberangkatan : 08:30)",
+    "REST AREA KM 62 - ALFAMART RAYA PAJAJARAN BOGOR (Keberangkatan : 11:00)"
+  ],
+  "harga_tiket": [
+    {
+      "Rute": "PRA-SRL",
+      "Harga_Tiket": 2250002
+    },
+    {
+      "Rute": "SRL-PRK",
+      "Harga_Tiket": 6150002
+    },
+    {
+      "Rute": "PRK-APB",
+      "Harga_Tiket": 1550002
+    }
+  ],
+  "total_tiket": "Rp 1.004.000",
+  "total_diskon": "Rp 0",
+  "asuransi": "Rp 9.000",
+  "total_bayar": "Rp 1.004.000",
+  "metode_bayar": "TUNAI (ubah)",
+  "tanggal_pemesanan": "19-Mei-2026 14:25",
+  "pencetak": "QCTTX SHUGI"
+}

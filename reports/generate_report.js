@@ -98,6 +98,10 @@ let html = `
             margin: 5px;
         }
 
+        .total-card p {
+            color: #0047AB;
+        }
+
         .passed-card p {
             color: green;
         }
@@ -108,6 +112,10 @@ let html = `
 
         .flaky-card p {
             color: orange;
+        }
+
+        .skipped-card p {
+            color: #696969;
         }
 
         table { 
@@ -213,6 +221,7 @@ const total_test = tests.length;
 let total_passed = 0;
 let total_failed = 0;
 let total_flaky = 0;
+let total_skipped = 0;
 let group_index = 0;
 
 tests.forEach(test => {
@@ -221,9 +230,12 @@ tests.forEach(test => {
         total_passed++;
     } else if (status === 'flaky') {
         total_flaky++;
+    } else if (status === 'skipped') {
+        total_skipped++;
     } else {
         total_failed++;
     }
+
 });
 
 html += `
@@ -231,13 +243,13 @@ html += `
 <div class="header">
 <h3>Summary Test Report Asmat</h3>
     <div class="dashboard">
-        <div class="card">
+        <div class="card total-card">
             <div class="card-content">
                 <h4>TOTAL TEST</h4>
                 <p>${total_test}</p>  
             </div>
             <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24">
-                <path fill="#555" fill-rule="evenodd" d="M7.263 3.26A2.25 2.25 0 0 1 9.5 1.25h5a2.25 2.25 0 0 1 2.237 2.01c.764.016 1.423.055 1.987.159c.758.14 1.403.404 1.928.93c.602.601.86 1.36.982 2.26c.116.866.116 1.969.116 3.336v6.11c0 1.367 0 2.47-.116 3.337c-.122.9-.38 1.658-.982 2.26s-1.36.86-2.26.982c-.867.116-1.97.116-3.337.116h-6.11c-1.367 0-2.47 0-3.337-.116c-.9-.122-1.658-.38-2.26-.982s-.86-1.36-.981-2.26c-.117-.867-.117-1.97-.117-3.337v-6.11c0-1.367 0-2.47.117-3.337c.12-.9.38-1.658.981-2.26c.525-.525 1.17-.79 1.928-.929c.564-.104 1.224-.143 1.987-.159m.002 1.5c-.718.016-1.272.052-1.718.134c-.566.104-.895.272-1.138.515c-.277.277-.457.665-.556 1.4c-.101.754-.103 1.756-.103 3.191v6c0 1.435.002 2.436.103 3.192c.099.734.28 1.122.556 1.399c.277.277.665.457 1.4.556c.754.101 1.756.103 3.191.103h6c1.435 0 2.436-.002 3.192-.103c.734-.099 1.122-.28 1.399-.556c.277-.277.457-.665.556-1.4c.101-.755.103-1.756.103-3.191v-6c0-1.435-.002-2.437-.103-3.192c-.099-.734-.28-1.122-.556-1.399c-.244-.243-.572-.41-1.138-.515c-.446-.082-1-.118-1.718-.133A2.25 2.25 0 0 1 14.5 6.75h-5a2.25 2.25 0 0 1-2.235-1.99M9.5 2.75a.75.75 0 0 0-.75.75v1c0 .414.336.75.75.75h5a.75.75 0 0 0 .75-.75v-1a.75.75 0 0 0-.75-.75zM6.25 10.5A.75.75 0 0 1 7 9.75h.5a.75.75 0 0 1 0 1.5H7a.75.75 0 0 1-.75-.75m3.5 0a.75.75 0 0 1 .75-.75H17a.75.75 0 0 1 0 1.5h-6.5a.75.75 0 0 1-.75-.75M6.25 14a.75.75 0 0 1 .75-.75h.5a.75.75 0 0 1 0 1.5H7a.75.75 0 0 1-.75-.75m3.5 0a.75.75 0 0 1 .75-.75H17a.75.75 0 0 1 0 1.5h-6.5a.75.75 0 0 1-.75-.75m-3.5 3.5a.75.75 0 0 1 .75-.75h.5a.75.75 0 0 1 0 1.5H7a.75.75 0 0 1-.75-.75m3.5 0a.75.75 0 0 1 .75-.75H17a.75.75 0 0 1 0 1.5h-6.5a.75.75 0 0 1-.75-.75" clip-rule="evenodd"/>
+                <path fill="#0047AB" fill-rule="evenodd" d="M7.263 3.26A2.25 2.25 0 0 1 9.5 1.25h5a2.25 2.25 0 0 1 2.237 2.01c.764.016 1.423.055 1.987.159c.758.14 1.403.404 1.928.93c.602.601.86 1.36.982 2.26c.116.866.116 1.969.116 3.336v6.11c0 1.367 0 2.47-.116 3.337c-.122.9-.38 1.658-.982 2.26s-1.36.86-2.26.982c-.867.116-1.97.116-3.337.116h-6.11c-1.367 0-2.47 0-3.337-.116c-.9-.122-1.658-.38-2.26-.982s-.86-1.36-.981-2.26c-.117-.867-.117-1.97-.117-3.337v-6.11c0-1.367 0-2.47.117-3.337c.12-.9.38-1.658.981-2.26c.525-.525 1.17-.79 1.928-.929c.564-.104 1.224-.143 1.987-.159m.002 1.5c-.718.016-1.272.052-1.718.134c-.566.104-.895.272-1.138.515c-.277.277-.457.665-.556 1.4c-.101.754-.103 1.756-.103 3.191v6c0 1.435.002 2.436.103 3.192c.099.734.28 1.122.556 1.399c.277.277.665.457 1.4.556c.754.101 1.756.103 3.191.103h6c1.435 0 2.436-.002 3.192-.103c.734-.099 1.122-.28 1.399-.556c.277-.277.457-.665.556-1.4c.101-.755.103-1.756.103-3.191v-6c0-1.435-.002-2.437-.103-3.192c-.099-.734-.28-1.122-.556-1.399c-.244-.243-.572-.41-1.138-.515c-.446-.082-1-.118-1.718-.133A2.25 2.25 0 0 1 14.5 6.75h-5a2.25 2.25 0 0 1-2.235-1.99M9.5 2.75a.75.75 0 0 0-.75.75v1c0 .414.336.75.75.75h5a.75.75 0 0 0 .75-.75v-1a.75.75 0 0 0-.75-.75zM6.25 10.5A.75.75 0 0 1 7 9.75h.5a.75.75 0 0 1 0 1.5H7a.75.75 0 0 1-.75-.75m3.5 0a.75.75 0 0 1 .75-.75H17a.75.75 0 0 1 0 1.5h-6.5a.75.75 0 0 1-.75-.75M6.25 14a.75.75 0 0 1 .75-.75h.5a.75.75 0 0 1 0 1.5H7a.75.75 0 0 1-.75-.75m3.5 0a.75.75 0 0 1 .75-.75H17a.75.75 0 0 1 0 1.5h-6.5a.75.75 0 0 1-.75-.75m-3.5 3.5a.75.75 0 0 1 .75-.75h.5a.75.75 0 0 1 0 1.5H7a.75.75 0 0 1-.75-.75m3.5 0a.75.75 0 0 1 .75-.75H17a.75.75 0 0 1 0 1.5h-6.5a.75.75 0 0 1-.75-.75" clip-rule="evenodd"/>
             </svg>
         </div>
         <div class="card passed-card">
@@ -268,6 +280,15 @@ html += `
                 <path fill="#fd7e14" d="M17.25 22a1.25 1.25 0 1 1-2.5 0a1.25 1.25 0 0 1 2.5 0M16 9a1 1 0 0 0-1 1v8a1 1 0 1 0 2 0v-8a1 1 0 0 0-1-1m-3.064-5.191c1.332-2.41 4.796-2.41 6.128 0l10.493 18.999C30.846 25.14 29.158 28 26.494 28H5.507c-2.665 0-4.352-2.86-3.064-5.192zm4.377.967a1.5 1.5 0 0 0-2.626 0L4.194 23.775A1.5 1.5 0 0 0 5.507 26h20.987a1.5 1.5 0 0 0 1.313-2.225z"/>
             </svg>
         </div>
+        <div class="card skipped-card">
+            <div class="card-content">
+                <h4>SKIPEED TEST</h4>
+                <p>${total_skipped}</p>
+            </div>  
+            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 16 16">
+                <path fill="#696969" d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M1.5 8a6.5 6.5 0 1 0 13 0a6.5 6.5 0 0 0-13 0m9.78-2.22l-5.5 5.5a.749.749 0 0 1-1.275-.326a.75.75 0 0 1 .215-.734l5.5-5.5a.75.75 0 0 1 1.042.018a.75.75 0 0 1 .018 1.042"/>
+            </svg>
+        </div>
     </div>
 </div>
 
@@ -287,9 +308,18 @@ tests.forEach(test => {
     const mitra = test.tags[0];
     const title = test.title;
     const steps_result = test.test.results[0].steps;
-    const test_result = test.test.results[0].status === 'passed' ? 'Passed' : 'Failed';
+    const test_result_status = test.test.results[0].status;
     const result_class = test.test.results[0].status === 'passed' ? 'passed-test-result' : 'failed-test-result';
     const attachments = test.test.results[0].attachments;
+    let test_result;
+    
+    if (test_result_status === 'passed') {
+        test_result = 'Passed';
+    } else if (test_result_status === 'skipped') {
+        test_result = 'Skipped';
+    }  else {
+        test_result = 'Failed';
+    }
 
     let detail;
 
@@ -300,63 +330,130 @@ tests.forEach(test => {
     })
 
     let firstRow = true;
+
     const group_class = group_index % 2 === 0 ? 'group-even' : 'group-odd';
     group_index++;
 
-    steps_result.forEach((step, index) => {
-        
-        const status = step.error ? 'Failed' : 'Passed';
-        const raw_message = step.error?.message || '';
-        const error_message = cleanError(raw_message);
+    if (!steps_result || steps_result.length === 0) {
 
-        let detailHtml = '';
         let row_class = '';
 
-        if (index === 0) {
-            row_class = 'group-start';
-        }
-
-        if (detail) {
-            Object.entries(detail).forEach(([key, value]) => {
-                let value_data;
-                if (value !== null & typeof value === 'object') {
-                    value_data = `Harga Pergi : ${value.harga_pergi}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Harga Pulang : ${value.harga_pulang}`;
-                } else {
-                    value_data = value;
-                }
-                detailHtml += `
-                    <div class="json-row">
-                        <span class="json-key">${key}</span> :
-                        <span class="json-value">${value_data}</span>
-                    </div>`;
-            });
-        }
+        row_class = 'group-start';
 
         html += `<tr class="${row_class} ${group_class}">`
-
+    
         if (firstRow) {
-            html += `<td rowspan = "${steps_result.length}">${mitra}</td>`;
-            html += `<td rowspan = "${steps_result.length}">${title}</td>`;
+            html += `<td>${mitra}</td>`;
+            html += `<td>${title}</td>`;
         }
 
         html += `
-            <td>${step.title}</td>
-            <td class="step-status"> 
-                <span class=${status.toLocaleLowerCase()}>${status}</span>
-                ${error_message ? `<br><small class="error">${error_message}</small>` : ''}
-            </td>`
+            <td> - </td>
+            <td> - </td>`
 
         if (firstRow) {
-            html += `<td rowspan = "${steps_result.length}" class="${result_class}">${test_result}</td>`;
-            html += `<td rowspan = "${steps_result.length}">
-                        <div class="json-box">${detailHtml}</div>
-                    </td>`
+            html += `<td class="${result_class}">${test_result}</td>`;
+            html += `<td> <div class="json-box"> - </div> </td>`
             firstRow = false;
         }
 
         html += `</tr>`
 
-    });
+    } else {
+
+        steps_result.forEach((step, index) => {
+        
+            const status = step.error ? 'Failed' : 'Passed';
+            const raw_message = step.error?.message || '';
+            const error_message = cleanError(raw_message);
+    
+            let detailHtml = '';
+            let row_class = '';
+    
+            if (index === 0) {
+                row_class = 'group-start';
+            }
+    
+            if (detail) {
+                Object.entries(detail).forEach(([key, value]) => {
+                    
+                    let value_data;
+                
+                    if (value !== null && typeof value === 'object') { // Jika berupa object/array
+                
+                        if (Array.isArray(value)) { // Jika berupa array 
+                            value_data = value.map((item, index) => {
+                
+                                if (item !== null && typeof item === 'object') { // Jika item array adalah object
+                
+                                    const object_text = Object.entries(item)
+                                        .map(([objKey, objVal]) =>
+                                            `<li>${objKey} : ${objVal}</li>`
+                                        )
+                                        .join('');
+                
+                                    return `<ul>${object_text}</ul>`;
+                                }
+                
+                                return `<ul><li>${item}</li></ul>`;
+                
+                            }).join('');
+                
+                        }
+                
+                        // Jika object biasa
+                        else {
+                
+                            value_data = Object.entries(value)
+                                .map(([objKey, objVal]) =>
+                                    `<br>&nbsp;&nbsp;&nbsp;${objKey} : ${objVal}`
+                                )
+                                .join('');
+                        }
+                
+                    }
+                
+                    // Jika bukan object
+                    else {
+                        value_data = value;
+                    }
+                
+                    detailHtml += `
+                        <div class="json-row">
+                            <span class="json-key">${key}</span> :
+                            <span class="json-value">${value_data}</span>
+                        </div>
+                    `;
+                });
+            }
+    
+            html += `<tr class="${row_class} ${group_class}">`
+    
+            if (firstRow) {
+                html += `<td rowspan = "${steps_result.length}">${mitra}</td>`;
+                html += `<td rowspan = "${steps_result.length}">${title}</td>`;
+            }
+    
+            html += `
+                <td>${step.title}</td>
+                <td class="step-status"> 
+                    <span class=${status.toLocaleLowerCase()}>${status}</span>
+                    ${error_message ? `<br><small class="error">${error_message}</small>` : ''}
+                </td>`
+    
+            if (firstRow) {
+                html += `<td rowspan = "${steps_result.length}" class="${result_class}">${test_result}</td>`;
+                html += `<td rowspan = "${steps_result.length}">
+                            <div class="json-box">${detailHtml}</div>
+                        </td>`
+                firstRow = false;
+            }
+    
+            html += `</tr>`
+    
+        });
+
+    }
 
 });
 

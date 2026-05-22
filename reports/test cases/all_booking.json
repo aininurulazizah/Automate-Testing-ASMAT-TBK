@@ -1,0 +1,1789 @@
+[
+  {
+    "kode_booking": "BBRT260421USTH",
+    "tanggal_keberangkatan": "21-Mei-2026",
+    "rute": "CALL CENTER BANDUNG - CIMAREME 01:20",
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 60.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 60.000",
+    "metode_bayar": "Pembayaran TUNAI ",
+    "tanggal_pemesanan": "21-Apr-2026 14:34:26 ",
+    "nama_pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT2604210JGN",
+    "tanggal_keberangkatan": "21-Mei-2026",
+    "rute": "CALL CENTER BANDUNG - CIMAREME 01:20",
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 60.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 60.000",
+    "metode_bayar": "Pembayaran TUNAI ",
+    "tanggal_pemesanan": "21-Apr-2026 14:47:09 ",
+    "nama_pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT260421OAGN",
+    "tanggal_keberangkatan": "21-Mei-2026",
+    "rute": "CALL CENTER BANDUNG - CIMAREME 01:20",
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 60.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 60.000",
+    "metode_bayar": "Pembayaran TUNAI ",
+    "tanggal_pemesanan": "21-Apr-2026 14:49:11 ",
+    "nama_pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT2604210ETB",
+    "tanggal_keberangkatan": "21-Mei-2026",
+    "rute": "CALL CENTER BANDUNG - CIMAREME 01:20",
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 60.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 60.000",
+    "metode_bayar": "Pembayaran TUNAI ",
+    "tanggal_pemesanan": "21-Apr-2026 14:57:54 ",
+    "nama_pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT260421V184",
+    "tanggal_keberangkatan": "21-Mei-2026",
+    "rute": "CALL CENTER BANDUNG - CIMAREME 01:20",
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 60.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 60.000",
+    "metode_bayar": "Pembayaran TUNAI ",
+    "tanggal_pemesanan": "21-Apr-2026 14:59:13 ",
+    "nama_pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT260423VX4B",
+    "tanggal_keberangkatan": "23-Mei-2026",
+    "rute": "CALL CENTER BANDUNG - CIMAREME 01:20",
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 60.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 60.000",
+    "metode_bayar": "Pembayaran TUNAI ",
+    "tanggal_pemesanan": "23-Apr-2026 11:20:58 ",
+    "nama_pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT260423UJV8",
+    "tanggal_keberangkatan": "23-Jun-2026",
+    "rute": "BUAH BATU - CALL CENTER BANDUNG 10:00",
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 260.000",
+    "metode_bayar": "Pembayaran TUNAI ",
+    "tanggal_pemesanan": "23-Apr-2026 17:21:05 ",
+    "nama_pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT260423J1QH",
+    "tanggal_keberangkatan": "23-Jun-2026",
+    "rute": "BUAH BATU - CALL CENTER BANDUNG 10:00",
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_tiket": {
+      "harga_pergi": "Rp 60.000 (2 tiket)",
+      "harga_pulang": "Rp 200.000 (2 tiket)"
+    },
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 260.000",
+    "metode_bayar": "Pembayaran TUNAI ",
+    "tanggal_pemesanan": "23-Apr-2026 17:25:13 ",
+    "nama_pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT2604237L3Z",
+    "tanggal_keberangkatan": "23-Mei-2026",
+    "rute": "CALL CENTER BANDUNG - CIMAREME 01:20",
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 60.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 60.000",
+    "metode_bayar": "Pembayaran TUNAI ",
+    "tanggal_pemesanan": "23-Apr-2026 17:41:19 ",
+    "nama_pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT260423C8XG",
+    "tanggal_keberangkatan": "23-Mei-2026",
+    "rute": "CALL CENTER BANDUNG - CIMAREME 01:20",
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 60.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 60.000",
+    "metode_bayar": "Pembayaran TUNAI ",
+    "tanggal_pemesanan": "23-Apr-2026 17:45:04 ",
+    "nama_pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT260423J2TH",
+    "tanggal_keberangkatan": "23-Jun-2026",
+    "rute": "BUAH BATU - CALL CENTER BANDUNG 10:00",
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_tiket": {
+      "harga_pergi": "Rp 60.000 (2 tiket)",
+      "harga_pulang": "Rp 200.000 (2 tiket)"
+    },
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 260.000",
+    "metode_bayar": "Pembayaran TUNAI ",
+    "tanggal_pemesanan": "23-Apr-2026 17:45:52 ",
+    "nama_pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT260424P2YB",
+    "tanggal_keberangkatan": "24-Mei-2026",
+    "rute": "CALL CENTER BANDUNG - CIMAREME 01:20",
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 60.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 60.000",
+    "metode_bayar": "Pembayaran TUNAI ",
+    "tanggal_pemesanan": "24-Apr-2026 08:47:28 ",
+    "nama_pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BARG260424UPVT",
+    "tanggal_keberangkatan": "Pergi:24-Mei-2026",
+    "rute": "BANDUNG - Alfamart Banjar Atas ",
+    "harga_tiket": "Rp 125.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 250.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 250.000",
+    "metode_bayar": "tunaissssssssss",
+    "tanggal_pemesanan": "24-Apr-2026 11:12:26",
+    "nama_pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT260424OJMN",
+    "tanggal_keberangkatan": "24-Mei-2026",
+    "rute": "CALL CENTER BANDUNG - CIMAREME 01:20",
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 60.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 60.000",
+    "metode_bayar": "Pembayaran TUNAI ",
+    "tanggal_pemesanan": "24-Apr-2026 11:31:08 ",
+    "nama_pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT260424CYNB",
+    "tanggal_keberangkatan": "24-Jun-2026",
+    "rute": "BUAH BATU - CALL CENTER BANDUNG 10:00",
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_tiket": {
+      "harga_pergi": "Rp 60.000 (2 tiket)",
+      "harga_pulang": "Rp 200.000 (2 tiket)"
+    },
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 260.000",
+    "metode_bayar": "Pembayaran TUNAI ",
+    "tanggal_pemesanan": "24-Apr-2026 11:31:54 ",
+    "nama_pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BARG2604240STB",
+    "tanggal_keberangkatan": "Pergi:24-Mei-2026",
+    "rute": "BANDUNG - Alfamart Banjar Atas ",
+    "harga_tiket": "Rp 125.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 250.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 250.000",
+    "metode_bayar": "tunaissssssssss",
+    "tanggal_pemesanan": "24-Apr-2026 11:32:25",
+    "nama_pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT260424068F",
+    "tanggal_keberangkatan": "24-Mei-2026",
+    "rute": "CALL CENTER BANDUNG - CIMAREME 01:20",
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 60.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 60.000",
+    "metode_bayar": "Pembayaran TUNAI ",
+    "tanggal_pemesanan": "24-Apr-2026 13:58:01 ",
+    "nama_pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT2604241YAB",
+    "tanggal_keberangkatan": "24-Jun-2026",
+    "rute": "BUAH BATU - CALL CENTER BANDUNG 10:00",
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_tiket": {
+      "harga_pergi": "Rp 60.000 (2 tiket)",
+      "harga_pulang": "Rp 200.000 (2 tiket)"
+    },
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 260.000",
+    "metode_bayar": "Pembayaran TUNAI ",
+    "tanggal_pemesanan": "24-Apr-2026 13:58:34 ",
+    "nama_pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BARG2604240PDM",
+    "tanggal_keberangkatan": "Pergi:24-Mei-2026",
+    "rute": "BANDUNG - Alfamart Banjar Atas ",
+    "harga_tiket": "Rp 125.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 250.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 250.000",
+    "metode_bayar": "tunaissssssssss",
+    "tanggal_pemesanan": "24-Apr-2026 13:59:07",
+    "nama_pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT260424XAGB",
+    "tanggal_keberangkatan": "24-Mei-2026",
+    "rute": "CALL CENTER BANDUNG - CIMAREME 01:20",
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 60.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 60.000",
+    "metode_bayar": "Pembayaran TUNAI ",
+    "tanggal_pemesanan": "24-Apr-2026 15:04:57 ",
+    "nama_pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT260424ATZH",
+    "tanggal_keberangkatan": {
+      "tanggal_keberangkatan_pergi": "24-Jun-2026",
+      "tanggal_keberangkatan_pulang": "24-Jun-2026"
+    },
+    "rute": {
+      "rute_pergi": "BUAH BATU - CALL CENTER BANDUNG 10:00",
+      "rute_pulang": "BUAH BATU - CALL CENTER BANDUNG 10:00"
+    },
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_tiket": {
+      "harga_pergi": "Rp 60.000 (2 tiket)",
+      "harga_pulang": "Rp 200.000 (2 tiket)"
+    },
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 260.000",
+    "metode_bayar": "Pembayaran TUNAI ",
+    "tanggal_pemesanan": "24-Apr-2026 15:05:38 ",
+    "nama_pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BARG260424O9F4",
+    "tanggal_keberangkatan": "Pergi:24-Mei-2026",
+    "rute": "BANDUNG - Alfamart Banjar Atas ",
+    "harga_tiket": "Rp 125.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 250.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 250.000",
+    "metode_bayar": "tunaissssssssss",
+    "tanggal_pemesanan": "24-Apr-2026 15:06:04",
+    "nama_pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT260428QAN5",
+    "tanggal_keberangkatan": {
+      "pergi": "28-Jun-2026",
+      "pulang": "28-Jun-2026"
+    },
+    "rute": {
+      "rute_pergi": "BUAH BATU - CALL CENTER BANDUNG 10:00",
+      "rute_pulang": "BUAH BATU - CALL CENTER BANDUNG 10:00"
+    },
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_tiket": {
+      "harga_pergi": "Rp 90.000 (3 tiket)",
+      "harga_pulang": "Rp 300.000 (3 tiket)"
+    },
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 390.000",
+    "metode_bayar": "Pembayaran TUNAI ",
+    "tanggal_pemesanan": "28-Apr-2026 08:34:31 ",
+    "nama_pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT260428C124",
+    "tanggal_keberangkatan": {
+      "tanggal_pergi": "28-Mei-2026",
+      "tanggal_pulang": "28-Mei-2026"
+    },
+    "rute": {
+      "rute_pergi": "CALL CENTER BANDUNG, BANDUNG - CIMAREME, BANDUNG (Keberangkatan : 01:20)",
+      "rute_pulang": "CALL CENTER BANDUNG, BANDUNG - CIMAREME, BANDUNG (Keberangkatan : 01:20)"
+    },
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_tiket": {
+      "harga_pergi": "Rp 60.000 (2 tiket)",
+      "harga_pulang": "Rp 200.000 (2 tiket)"
+    },
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 260.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "28-Apr-2026 11:17",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT260428S4NZ",
+    "tanggal_keberangkatan": {
+      "tanggal_pergi": "28-Mei-2026",
+      "tanggal_pulang": "28-Jun-2026"
+    },
+    "rute": {
+      "rute_pergi": "CALL CENTER BANDUNG, BANDUNG - CIMAREME, BANDUNG (Keberangkatan : 01:20)",
+      "rute_pulang": "BUAH BATU, BANDUNG - CALL CENTER BANDUNG, BANDUNG (Keberangkatan : 10:00)"
+    },
+    "harga_tiket": "Rp 100.000",
+    "diskon": "Rp 0",
+    "total_tiket": {
+      "harga_pergi": "Rp 60.000 (2 tiket)",
+      "harga_pulang": "Rp 200.000 (2 tiket)"
+    },
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 260.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "28-Apr-2026 11:45",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT260428CV2A",
+    "tanggal_keberangkatan": {
+      "tanggal_pergi": "28-Mei-2026",
+      "tanggal_pulang": "28-Jun-2026"
+    },
+    "rute": {
+      "rute_pergi": "CALL CENTER BANDUNG, BANDUNG - CIMAREME, BANDUNG (Keberangkatan : 01:20)",
+      "rute_pulang": "BUAH BATU, BANDUNG - CALL CENTER BANDUNG, BANDUNG (Keberangkatan : 10:00)"
+    },
+    "harga_tiket": {
+      "harga_tiket_pergi": "Rp 30.000",
+      "harga_tiket_pulang": "Rp 100.000"
+    },
+    "diskon": {
+      "diskon_pergi": "Rp 0",
+      "diskon_pulang": "Rp 0"
+    },
+    "total_tiket": {
+      "total_pergi": "Rp 60.000 (2 tiket)",
+      "total_pulang": "Rp 200.000 (2 tiket)"
+    },
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 260.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "28-Apr-2026 13:38",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT260428OVX9",
+    "tanggal_keberangkatan": {
+      "tanggal_pergi": "29-Apr-2026",
+      "tanggal_pulang": "30-Apr-2026"
+    },
+    "rute": {
+      "rute_pergi": "CALL CENTER BANDUNG, BANDUNG - CIMAREME, BANDUNG (Keberangkatan : 01:20)",
+      "rute_pulang": "BUAH BATU, BANDUNG - CALL CENTER BANDUNG, BANDUNG (Keberangkatan : 10:00)"
+    },
+    "harga_tiket": {
+      "harga_tiket_pergi": "Rp 30.000",
+      "harga_tiket_pulang": "Rp 100.000"
+    },
+    "diskon": {
+      "diskon_pergi": "Rp 20.000",
+      "diskon_pulang": "Rp 20.000"
+    },
+    "total_tiket": {
+      "total_pergi": "Rp 60.000 (2 tiket)",
+      "total_pulang": "Rp 200.000 (2 tiket)"
+    },
+    "total_diskon": "Rp 80.000",
+    "total_bayar": "Rp 180.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "28-Apr-2026 13:44",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT2604286ELS",
+    "tanggal_keberangkatan": "29-Apr-2026",
+    "rute": "CALL CENTER BANDUNG, BANDUNG - CIMAREME, BANDUNG (Keberangkatan : 01:20)",
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 20.000",
+    "total_tiket": "Rp 60.000 (2 tiket)",
+    "total_diskon": "Rp 40.000",
+    "total_bayar": "Rp 20.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "28-Apr-2026 13:47",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT2604280QEH",
+    "tanggal_keberangkatan": {
+      "tanggal_pergi": "29-Apr-2026",
+      "tanggal_pulang": "30-Apr-2026"
+    },
+    "rute": {
+      "rute_pergi": "CALL CENTER BANDUNG, BANDUNG - CIMAREME, BANDUNG (Keberangkatan : 01:20)",
+      "rute_pulang": "BUAH BATU, BANDUNG - CALL CENTER BANDUNG, BANDUNG (Keberangkatan : 10:00)"
+    },
+    "harga_tiket": {
+      "harga_tiket_pergi": "Rp 30.000",
+      "harga_tiket_pulang": "Rp 100.000"
+    },
+    "diskon": {
+      "diskon_pergi": "Rp 20.000",
+      "diskon_pulang": "Rp 20.000"
+    },
+    "total_tiket": {
+      "total_pergi": "Rp 60.000 (2 tiket)",
+      "total_pulang": "Rp 200.000 (2 tiket)"
+    },
+    "total_diskon": "Rp 80.000",
+    "total_bayar": "Rp 180.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "28-Apr-2026 13:47",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BARG2604280JP2",
+    "tanggal_keberangkatan": "Pergi:28-Mei-2026",
+    "rute": "BANDUNG - Alfamart Banjar Atas ",
+    "harga_tiket": "Rp 125.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 250.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 250.000",
+    "metode_bayar": "tunaissssssssss",
+    "tanggal_pemesanan": "28-Apr-2026 13:48:21",
+    "nama_pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BARG260428OJPS",
+    "tanggal_keberangkatan": "28-Mei-2026",
+    "rute": "BANDUNG, BANDUNG - Alfamart Banjar Atas, BANJAR (Keberangkatan : 01:00)",
+    "harga_tiket": "Rp 125.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 250.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 250.000",
+    "metode_bayar": "TUNAI (ubah)",
+    "tanggal_pemesanan": "28-Apr-2026 14:00",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BARG260428UWR4",
+    "tanggal_keberangkatan": "28-Mei-2026",
+    "rute": "BANDUNG, BANDUNG - Alfamart Banjar Atas, BANJAR (Keberangkatan : 01:00)",
+    "harga_tiket": "Rp 125.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 250.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 250.000",
+    "metode_bayar": "TUNAI (ubah)",
+    "tanggal_pemesanan": "28-Apr-2026 14:10",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BARG260428P2FG",
+    "tanggal_keberangkatan": "28-Mei-2026",
+    "rute": "BANDUNG, BANDUNG - Alfamart Banjar Atas, BANJAR (Keberangkatan : 01:00)",
+    "harga_tiket": "Rp 125.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 250.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 250.000",
+    "metode_bayar": "TUNAI (ubah)",
+    "tanggal_pemesanan": "28-Apr-2026 14:21",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BARG260428VLXM",
+    "tanggal_keberangkatan": "28-Mei-2026",
+    "rute": "BANDUNG, BANDUNG - Alfamart Banjar Atas, BANJAR (Keberangkatan : 01:00)",
+    "harga_tiket": "Rp 125.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 250.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 250.000",
+    "metode_bayar": "TUNAI (ubah)",
+    "tanggal_pemesanan": "28-Apr-2026 14:23",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BARG260428OY4N",
+    "tanggal_keberangkatan": "28-Mei-2026",
+    "rute": "BANDUNG, BANDUNG - Alfamart Banjar Atas, BANJAR (Keberangkatan : 01:00)",
+    "harga_tiket": "Rp 125.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 250.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 250.000",
+    "metode_bayar": "TUNAI (ubah)",
+    "tanggal_pemesanan": "28-Apr-2026 14:25",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BARG260428DAG5",
+    "tanggal_keberangkatan": "28-Mei-2026",
+    "rute": "BANDUNG, BANDUNG - Alfamart Banjar Atas, BANJAR (Keberangkatan : 01:00)",
+    "harga_tiket": "Rp 125.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 250.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 250.000",
+    "metode_bayar": "TUNAI (ubah)",
+    "tanggal_pemesanan": "28-Apr-2026 14:26",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BARG260428OMAT",
+    "tanggal_keberangkatan": "28-Mei-2026",
+    "rute": "BANDUNG, BANDUNG - Alfamart Banjar Atas, BANJAR (Keberangkatan : 01:00)",
+    "harga_tiket": "Rp 125.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 250.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 250.000",
+    "metode_bayar": "TUNAI (ubah)",
+    "tanggal_pemesanan": "28-Apr-2026 14:30",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BARG260428IOU6",
+    "tanggal_keberangkatan": "28-Mei-2026",
+    "rute": "BANDUNG, BANDUNG - Alfamart Banjar Atas, BANJAR (Keberangkatan : 01:00)",
+    "harga_tiket": "Rp 125.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 250.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 250.000",
+    "metode_bayar": "TUNAI (ubah)",
+    "tanggal_pemesanan": "28-Apr-2026 14:32",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BARG260428JPVE",
+    "tanggal_keberangkatan": "28-Mei-2026",
+    "rute": "BANDUNG, BANDUNG - Alfamart Banjar Atas, BANJAR (Keberangkatan : 01:00)",
+    "harga_tiket": "Rp 125.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 250.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 250.000",
+    "metode_bayar": "TUNAI (ubah)",
+    "tanggal_pemesanan": "28-Apr-2026 14:33",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT260428V2X9",
+    "tanggal_keberangkatan": "29-Apr-2026",
+    "rute": "CALL CENTER BANDUNG, BANDUNG - CIMAREME, BANDUNG (Keberangkatan : 01:20)",
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 20.000",
+    "total_tiket": "Rp 60.000 (2 tiket)",
+    "total_diskon": "Rp 40.000",
+    "total_bayar": "Rp 20.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "28-Apr-2026 14:37",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT2604281RSG",
+    "tanggal_keberangkatan": {
+      "tanggal_pergi": "29-Apr-2026",
+      "tanggal_pulang": "30-Apr-2026"
+    },
+    "rute": {
+      "rute_pergi": "CALL CENTER BANDUNG, BANDUNG - CIMAREME, BANDUNG (Keberangkatan : 01:20)",
+      "rute_pulang": "BUAH BATU, BANDUNG - CALL CENTER BANDUNG, BANDUNG (Keberangkatan : 10:00)"
+    },
+    "harga_tiket": {
+      "harga_tiket_pergi": "Rp 30.000",
+      "harga_tiket_pulang": "Rp 100.000"
+    },
+    "diskon": {
+      "diskon_pergi": "Rp 20.000",
+      "diskon_pulang": "Rp 20.000"
+    },
+    "total_tiket": {
+      "total_pergi": "Rp 60.000 (2 tiket)",
+      "total_pulang": "Rp 200.000 (2 tiket)"
+    },
+    "total_diskon": "Rp 80.000",
+    "total_bayar": "Rp 180.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "28-Apr-2026 14:37",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BARG260428C8ST",
+    "tanggal_keberangkatan": "28-Mei-2026",
+    "rute": "BANDUNG, BANDUNG - Alfamart Banjar Atas, BANJAR (Keberangkatan : 01:00)",
+    "harga_tiket": "Rp 125.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 250.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 250.000",
+    "metode_bayar": "TUNAI (ubah)",
+    "tanggal_pemesanan": "28-Apr-2026 14:38",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT260428KANB",
+    "tanggal_keberangkatan": "28-Mei-2026",
+    "rute": "CALL CENTER BANDUNG, BANDUNG - CIMAREME, BANDUNG (Keberangkatan : 01:20)",
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 60.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 60.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "28-Apr-2026 16:19",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT260428DW8E",
+    "tanggal_keberangkatan": {
+      "tanggal_pergi": "28-Mei-2026",
+      "tanggal_pulang": "28-Jun-2026"
+    },
+    "rute": {
+      "rute_pergi": "CALL CENTER BANDUNG, BANDUNG - CIMAREME, BANDUNG (Keberangkatan : 01:20)",
+      "rute_pulang": "BUAH BATU, BANDUNG - CALL CENTER BANDUNG, BANDUNG (Keberangkatan : 10:00)"
+    },
+    "harga_tiket": {
+      "harga_tiket_pergi": "Rp 30.000",
+      "harga_tiket_pulang": "Rp 100.000"
+    },
+    "diskon": {
+      "diskon_pergi": "Rp 0",
+      "diskon_pulang": "Rp 0"
+    },
+    "total_tiket": {
+      "total_pergi": "Rp 60.000 (2 tiket)",
+      "total_pulang": "Rp 200.000 (2 tiket)"
+    },
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 260.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "28-Apr-2026 16:19",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BJKL260429OC1Y",
+    "tanggal_keberangkatan": "29-Mei-2026",
+    "rute": "DIPATIUKUR 89 SEBRANG UNIKOM, BANDUNG - JABABEKA CIKARANG, BEKASI (Keberangkatan : 09:00)",
+    "harga_tiket": "Rp 110.000",
+    "diskon": "Rp 10.000",
+    "total_tiket": "Rp 220.000 (2 tiket)",
+    "total_diskon": "Rp 20.000",
+    "total_bayar": "Rp 200.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "29-Apr-2026 09:53",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BJKL260429PLSY",
+    "tanggal_keberangkatan": {
+      "tanggal_pergi": "29-Mei-2026",
+      "tanggal_pulang": "29-Jun-2026"
+    },
+    "rute": {
+      "rute_pergi": "DIPATIUKUR 89 SEBRANG UNIKOM, BANDUNG - JABABEKA CIKARANG, BEKASI (Keberangkatan : 09:00)",
+      "rute_pulang": "JABABEKA CIKARANG, BEKASI - DIPATIUKUR 89 SEBRANG UNIKOM, BANDUNG (Keberangkatan : 05:00)"
+    },
+    "harga_tiket": {
+      "harga_tiket_pergi": "Rp 110.000",
+      "harga_tiket_pulang": "Rp 110.000"
+    },
+    "diskon": {
+      "diskon_pergi": "Rp 10.000",
+      "diskon_pulang": ""
+    },
+    "total_tiket": {
+      "total_pergi": "Rp 220.000 (2 tiket)",
+      "total_pulang": "Rp 220.000 (2 tiket)"
+    },
+    "total_diskon": "Rp 20.000",
+    "total_bayar": "Rp 420.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "29-Apr-2026 10:50",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BARG260429OWMB",
+    "tanggal_keberangkatan": "29-Mei-2026",
+    "rute": "BANDUNG, BANDUNG - Alfamart Banjar Atas, BANJAR (Keberangkatan : 01:00)",
+    "harga_tiket": "Rp 125.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 250.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 250.000",
+    "metode_bayar": "TUNAI (ubah)",
+    "tanggal_pemesanan": "29-Apr-2026 10:58",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BJKL260429U0KY",
+    "tanggal_keberangkatan": "29-Mei-2026",
+    "rute": "DIPATIUKUR 89 SEBRANG UNIKOM, BANDUNG - JABABEKA CIKARANG, BEKASI (Keberangkatan : 09:00)",
+    "harga_tiket": "Rp 110.000",
+    "diskon": "Rp 10.000",
+    "total_tiket": "Rp 220.000 (2 tiket)",
+    "total_diskon": "Rp 20.000",
+    "total_bayar": "Rp 200.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "29-Apr-2026 10:58",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BJKL260429O6PY",
+    "tanggal_keberangkatan": {
+      "tanggal_pergi": "29-Mei-2026",
+      "tanggal_pulang": "29-Jun-2026"
+    },
+    "rute": {
+      "rute_pergi": "DIPATIUKUR 89 SEBRANG UNIKOM, BANDUNG - JABABEKA CIKARANG, BEKASI (Keberangkatan : 09:00)",
+      "rute_pulang": "JABABEKA CIKARANG, BEKASI - DIPATIUKUR 89 SEBRANG UNIKOM, BANDUNG (Keberangkatan : 05:00)"
+    },
+    "harga_tiket": {
+      "harga_tiket_pergi": "Rp 110.000",
+      "harga_tiket_pulang": "Rp 110.000"
+    },
+    "diskon": {
+      "diskon_pergi": "Rp 10.000",
+      "diskon_pulang": ""
+    },
+    "total_tiket": {
+      "total_pergi": "Rp 220.000 (2 tiket)",
+      "total_pulang": "Rp 220.000 (2 tiket)"
+    },
+    "total_diskon": "Rp 20.000",
+    "total_bayar": "Rp 420.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "29-Apr-2026 10:59",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BARG260429OJXA",
+    "tanggal_keberangkatan": "29-Mei-2026",
+    "rute": "BANDUNG, BANDUNG - Alfamart Banjar Atas, BANJAR (Keberangkatan : 01:00)",
+    "harga_tiket": "Rp 125.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 250.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 250.000",
+    "metode_bayar": "TUNAI (ubah)",
+    "tanggal_pemesanan": "29-Apr-2026 14:57",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BJKL2604291DW4",
+    "tanggal_keberangkatan": "29-Mei-2026",
+    "rute": "DIPATIUKUR 89 SEBRANG UNIKOM, BANDUNG - JABABEKA CIKARANG, BEKASI (Keberangkatan : 09:00)",
+    "harga_tiket": "Rp 110.000",
+    "diskon": "Rp 10.000",
+    "total_tiket": "Rp 220.000 (2 tiket)",
+    "total_diskon": "Rp 20.000",
+    "total_bayar": "Rp 200.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "29-Apr-2026 14:57",
+    "pencetak": "QCTTX SHUGI"
+  },
+  null,
+  {
+    "kode_booking": "BBRT260505PD8G",
+    "tanggal_keberangkatan": "05-Jun-2026",
+    "rute": "CALL CENTER BANDUNG, BANDUNG - CIMAREME, BANDUNG (Keberangkatan : 01:20)",
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 60.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 60.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "05-Mei-2026 13:28",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT260505EANB",
+    "tanggal_keberangkatan": {
+      "tanggal_pergi": "05-Jun-2026",
+      "tanggal_pulang": "05-Jul-2026"
+    },
+    "rute": {
+      "rute_pergi": "CALL CENTER BANDUNG, BANDUNG - CIMAREME, BANDUNG (Keberangkatan : 01:20)",
+      "rute_pulang": "BUAH BATU, BANDUNG - CALL CENTER BANDUNG, BANDUNG (Keberangkatan : 10:00)"
+    },
+    "harga_tiket": {
+      "harga_tiket_pergi": "Rp 30.000",
+      "harga_tiket_pulang": "Rp 100.000"
+    },
+    "diskon": {
+      "diskon_pergi": "Rp 0",
+      "diskon_pulang": "Rp 0"
+    },
+    "total_tiket": {
+      "total_pergi": "Rp 60.000 (2 tiket)",
+      "total_pulang": "Rp 200.000 (2 tiket)"
+    },
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 260.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "05-Mei-2026 13:29",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BARG2605057EFS",
+    "tanggal_keberangkatan": "05-Jun-2026",
+    "rute": "BANDUNG, BANDUNG - Alfamart Banjar Atas, BANJAR (Keberangkatan : 01:00)",
+    "harga_tiket": "Rp 125.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 250.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 250.000",
+    "metode_bayar": "TUNAI (ubah)",
+    "tanggal_pemesanan": "05-Mei-2026 13:41",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BJKL260505UV9Y",
+    "tanggal_keberangkatan": "05-Jun-2026",
+    "rute": "DIPATIUKUR 89 SEBRANG UNIKOM, BANDUNG - JABABEKA CIKARANG, BEKASI (Keberangkatan : 09:00)",
+    "harga_tiket": "Rp 110.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 220.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 220.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "05-Mei-2026 13:42",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BJKL260505JEMB",
+    "tanggal_keberangkatan": "05-Jun-2026",
+    "rute": "DIPATIUKUR 89 SEBRANG UNIKOM, BANDUNG - JABABEKA CIKARANG, BEKASI (Keberangkatan : 09:00)",
+    "harga_tiket": "Rp 110.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 220.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 220.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "05-Mei-2026 13:49",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BJKL26050501EM",
+    "tanggal_keberangkatan": "05-Jun-2026",
+    "rute": "DIPATIUKUR 89 SEBRANG UNIKOM, BANDUNG - JABABEKA CIKARANG, BEKASI (Keberangkatan : 09:00)",
+    "harga_tiket": "Rp 110.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 220.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 220.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "05-Mei-2026 14:05",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BJKL2605058EYT",
+    "tanggal_keberangkatan": "05-Jun-2026",
+    "rute": "DIPATIUKUR 89 SEBRANG UNIKOM, BANDUNG - JABABEKA CIKARANG, BEKASI (Keberangkatan : 09:00)",
+    "harga_tiket": "Rp 110.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 220.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 220.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "05-Mei-2026 14:47",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BJKL260505IU8B",
+    "tanggal_keberangkatan": "05-Jun-2026",
+    "rute": "DIPATIUKUR 89 SEBRANG UNIKOM, BANDUNG - JABABEKA CIKARANG, BEKASI (Keberangkatan : 09:00)",
+    "harga_tiket": "Rp 110.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 220.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 220.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "05-Mei-2026 14:51",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BJKL260505IU75",
+    "tanggal_keberangkatan": "05-Jun-2026",
+    "rute": "DIPATIUKUR 89 SEBRANG UNIKOM, BANDUNG - JABABEKA CIKARANG, BEKASI (Keberangkatan : 09:00)",
+    "harga_tiket": "Rp 110.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 220.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 220.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "05-Mei-2026 14:57",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BJKL260507U1WY",
+    "tanggal_keberangkatan": {
+      "tanggal_pergi": "07-Jun-2026",
+      "tanggal_pulang": "07-Jul-2026"
+    },
+    "rute": {
+      "rute_pergi": "DIPATIUKUR 89 SEBRANG UNIKOM, BANDUNG - JABABEKA CIKARANG, BEKASI (Keberangkatan : 09:00)",
+      "rute_pulang": "JABABEKA CIKARANG, BEKASI - DIPATIUKUR 89 SEBRANG UNIKOM, BANDUNG (Keberangkatan : 05:00)"
+    },
+    "harga_tiket": {
+      "harga_tiket_pergi": "Rp 110.000",
+      "harga_tiket_pulang": "Rp 110.000"
+    },
+    "diskon": {
+      "diskon_pergi": "Rp 0",
+      "diskon_pulang": "Rp 0"
+    },
+    "total_tiket": {
+      "total_pergi": "Rp 220.000 (2 tiket)",
+      "total_pulang": "Rp 220.000 (2 tiket)"
+    },
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 440.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "07-Mei-2026 11:22",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BJKL260507P2F5",
+    "tanggal_keberangkatan": "07-Jun-2026",
+    "rute": "DIPATIUKUR 89 SEBRANG UNIKOM, BANDUNG - JABABEKA CIKARANG, BEKASI (Keberangkatan : 09:00)",
+    "harga_tiket": "Rp 110.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 220.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 220.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "07-Mei-2026 11:25",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BJKL260507KQ8R",
+    "tanggal_keberangkatan": {
+      "tanggal_pergi": "07-Jun-2026",
+      "tanggal_pulang": "07-Jul-2026"
+    },
+    "rute": {
+      "rute_pergi": "DIPATIUKUR 89 SEBRANG UNIKOM, BANDUNG - JABABEKA CIKARANG, BEKASI (Keberangkatan : 09:00)",
+      "rute_pulang": "JABABEKA CIKARANG, BEKASI - DIPATIUKUR 89 SEBRANG UNIKOM, BANDUNG (Keberangkatan : 05:00)"
+    },
+    "harga_tiket": {
+      "harga_tiket_pergi": "Rp 110.000",
+      "harga_tiket_pulang": "Rp 110.000"
+    },
+    "diskon": {
+      "diskon_pergi": "Rp 0",
+      "diskon_pulang": "Rp 0"
+    },
+    "total_tiket": {
+      "total_pergi": "Rp 220.000 (2 tiket)",
+      "total_pulang": "Rp 220.000 (2 tiket)"
+    },
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 440.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "07-Mei-2026 11:26",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT2605070CK8",
+    "tanggal_keberangkatan": "07-Jun-2026",
+    "rute": "CALL CENTER BANDUNG, BANDUNG - CIMAREME, BANDUNG (Keberangkatan : 01:20)",
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 60.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 60.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "07-Mei-2026 11:27",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT26050768YZ",
+    "tanggal_keberangkatan": {
+      "tanggal_pergi": "07-Jun-2026",
+      "tanggal_pulang": "07-Jul-2026"
+    },
+    "rute": {
+      "rute_pergi": "CALL CENTER BANDUNG, BANDUNG - CIMAREME, BANDUNG (Keberangkatan : 01:20)",
+      "rute_pulang": "BUAH BATU, BANDUNG - CALL CENTER BANDUNG, BANDUNG (Keberangkatan : 10:00)"
+    },
+    "harga_tiket": {
+      "harga_tiket_pergi": "Rp 30.000",
+      "harga_tiket_pulang": "Rp 100.000"
+    },
+    "diskon": {
+      "diskon_pergi": "Rp 0",
+      "diskon_pulang": "Rp 0"
+    },
+    "total_tiket": {
+      "total_pergi": "Rp 60.000 (2 tiket)",
+      "total_pulang": "Rp 200.000 (2 tiket)"
+    },
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 260.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "07-Mei-2026 11:27",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BARG260507KRYZ",
+    "tanggal_keberangkatan": "07-Jun-2026",
+    "rute": "BANDUNG, BANDUNG - Alfamart Banjar Atas, BANJAR (Keberangkatan : 01:00)",
+    "harga_tiket": "Rp 125.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 250.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 250.000",
+    "metode_bayar": "TUNAI (ubah)",
+    "tanggal_pemesanan": "07-Mei-2026 11:31",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BKRZ260508OV2X",
+    "tanggal_keberangkatan": "12-Mei-2026",
+    "rute": "DIPATIUKUR, BANDUNG - ALFAMART RAYA PAJAJARAN BOGOR, BOGOR (Keberangkatan : 05:00)",
+    "harga_tiket": "Rp 135.000",
+    "diskon": "Rp 1.500",
+    "total_tiket": "Rp 275.000 (2 tiket)",
+    "total_diskon": "Rp 10.000",
+    "total_bayar": "Rp 268.000",
+    "metode_bayar": "TUNAI (ubah)",
+    "tanggal_pemesanan": "08-Mei-2026 08:52",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BKRZ260508IE9G",
+    "tanggal_keberangkatan": "12-Mei-2026",
+    "rute": "DIPATIUKUR, BANDUNG - ALFAMART RAYA PAJAJARAN BOGOR, BOGOR (Keberangkatan : 05:00)",
+    "harga_tiket": "Rp 135.000",
+    "asuransi": "Rp 1.500",
+    "diskon": "Rp 5.000",
+    "total_tiket": "Rp 275.000 (2 tiket)",
+    "total_diskon": "Rp 10.000",
+    "total_bayar": "Rp 268.000",
+    "metode_bayar": "TUNAI (ubah)",
+    "tanggal_pemesanan": "08-Mei-2026 09:07",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BKRZ260508I6AN",
+    "tanggal_keberangkatan": "12-Mei-2026",
+    "rute": "DIPATIUKUR, BANDUNG - ALFAMART RAYA PAJAJARAN BOGOR, BOGOR (Keberangkatan : 05:00)",
+    "harga_tiket": "Rp 135.000",
+    "asuransi": "Rp 3.000",
+    "diskon": "Rp 5.000",
+    "total_tiket": "Rp 275.000 (2 tiket)",
+    "total_diskon": "Rp 10.000",
+    "total_bayar": "Rp 268.000",
+    "metode_bayar": "TUNAI (ubah)",
+    "tanggal_pemesanan": "08-Mei-2026 09:36",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BKRZ260508LFNZ",
+    "tanggal_keberangkatan": "12-Mei-2026",
+    "rute": "DIPATIUKUR, BANDUNG - ALFAMART RAYA PAJAJARAN BOGOR, BOGOR (Keberangkatan : 05:00)",
+    "harga_tiket": "Rp 135.000",
+    "diskon": "Rp 5.000",
+    "total_tiket": "Rp 270.000 (2 tiket)",
+    "total_diskon": "Rp 10.000",
+    "asuransi": "Rp 3.000",
+    "total_bayar": "Rp 263.000",
+    "metode_bayar": "TUNAI (ubah)",
+    "tanggal_pemesanan": "08-Mei-2026 09:42",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BKRZ260508P3MG",
+    "tanggal_keberangkatan": "12-Mei-2026",
+    "rute": "DIPATIUKUR, BANDUNG - ALFAMART RAYA PAJAJARAN BOGOR, BOGOR (Keberangkatan : 05:00)",
+    "harga_tiket": [
+      "Rp 150.000",
+      "Rp 150.000",
+      "Rp 135.000",
+      "Rp 135.000"
+    ],
+    "diskon": "Rp 5.000",
+    "total_tiket": "Rp 285.000 (2 tiket)",
+    "total_diskon": "Rp 10.000",
+    "asuransi": "Rp 3.000",
+    "total_bayar": "Rp 278.000",
+    "metode_bayar": "TUNAI (ubah)",
+    "tanggal_pemesanan": "08-Mei-2026 10:06",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BKRZ260508OPYT",
+    "tanggal_keberangkatan": "12-Mei-2026",
+    "rute": "DIPATIUKUR, BANDUNG - ALFAMART RAYA PAJAJARAN BOGOR, BOGOR (Keberangkatan : 05:00)",
+    "harga_tiket": [
+      "Rp 150.000",
+      "Rp 150.000",
+      "Rp 135.000",
+      "Rp 135.000"
+    ],
+    "diskon": "Rp 5.000",
+    "total_tiket": "Rp 285.000 (2 tiket)",
+    "total_diskon": "Rp 10.000",
+    "asuransi": "Rp 3.000",
+    "total_bayar": "Rp 278.000",
+    "metode_bayar": "TUNAI (ubah)",
+    "tanggal_pemesanan": "08-Mei-2026 10:09",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BKRZ2605086VDH",
+    "tanggal_keberangkatan": "12-Mei-2026",
+    "rute": "DIPATIUKUR, BANDUNG - ALFAMART RAYA PAJAJARAN BOGOR, BOGOR (Keberangkatan : 05:00)",
+    "harga_tiket": [
+      "Rp 150.000",
+      "Rp 150.000",
+      "Rp 135.000",
+      "Rp 135.000"
+    ],
+    "diskon": "Rp 5.000",
+    "total_tiket": "Rp 285.000 (2 tiket)",
+    "total_diskon": "Rp 10.000",
+    "asuransi": "Rp 3.000",
+    "total_bayar": "Rp 278.000",
+    "metode_bayar": "TUNAI (ubah)",
+    "tanggal_pemesanan": "08-Mei-2026 10:10",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BKRZ26050861QN",
+    "tanggal_keberangkatan": "12-Mei-2026",
+    "rute": "DIPATIUKUR, BANDUNG - ALFAMART RAYA PAJAJARAN BOGOR, BOGOR (Keberangkatan : 05:00)",
+    "harga_tiket": [
+      "Rp 150.000",
+      "Rp 135.000",
+      "Rp 135.000",
+      "Rp 135.000"
+    ],
+    "diskon": "Rp 5.000",
+    "total_tiket": "Rp 285.000 (2 tiket)",
+    "total_diskon": "Rp 10.000",
+    "asuransi": "Rp 3.000",
+    "total_bayar": "Rp 278.000",
+    "metode_bayar": "TUNAI (ubah)",
+    "tanggal_pemesanan": "08-Mei-2026 10:16",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT260508ELFY",
+    "tanggal_keberangkatan": "08-Jun-2026",
+    "rute": "CALL CENTER BANDUNG, BANDUNG - CIMAREME, BANDUNG (Keberangkatan : 01:20)",
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 60.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 60.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "08-Mei-2026 14:14",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT260508PAZ5",
+    "tanggal_keberangkatan": {
+      "tanggal_pergi": "08-Jun-2026",
+      "tanggal_pulang": "08-Jul-2026"
+    },
+    "rute": {
+      "rute_pergi": "CALL CENTER BANDUNG, BANDUNG - CIMAREME, BANDUNG (Keberangkatan : 01:20)",
+      "rute_pulang": "BUAH BATU, BANDUNG - CALL CENTER BANDUNG, BANDUNG (Keberangkatan : 10:00)"
+    },
+    "harga_tiket": {
+      "harga_tiket_pergi": "Rp 30.000",
+      "harga_tiket_pulang": "Rp 100.000"
+    },
+    "diskon": {
+      "diskon_pergi": "Rp 0",
+      "diskon_pulang": "Rp 0"
+    },
+    "total_tiket": {
+      "total_pergi": "Rp 60.000 (2 tiket)",
+      "total_pulang": "Rp 200.000 (2 tiket)"
+    },
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 260.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "08-Mei-2026 14:14",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BJKL260508J1LF",
+    "tanggal_keberangkatan": "08-Jun-2026",
+    "rute": "DIPATIUKUR 89 SEBRANG UNIKOM, BANDUNG - JABABEKA CIKARANG, BEKASI (Keberangkatan : 09:00)",
+    "harga_tiket": "Rp 110.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 220.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 220.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "08-Mei-2026 14:15",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BARG260508VEMZ",
+    "tanggal_keberangkatan": "08-Jun-2026",
+    "rute": "BANDUNG, BANDUNG - Alfamart Banjar Atas, BANJAR (Keberangkatan : 01:00)",
+    "harga_tiket": "Rp 125.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 250.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 250.000",
+    "metode_bayar": "TUNAI (ubah)",
+    "tanggal_pemesanan": "08-Mei-2026 15:16",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BDTR260511KR3H",
+    "tanggal_keberangkatan": "12-Mei-2026",
+    "rute": "DIPATIUKUR, BANDUNG - ALFAMART RAYA PAJAJARAN BOGOR, BOGOR (Keberangkatan : 05:00)",
+    "harga_tiket": [
+      "Rp 135.000",
+      "Rp 140.000",
+      "Rp 140.000",
+      "Rp 140.000"
+    ],
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 275.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "asuransi": "Rp 3.000",
+    "total_bayar": "Rp 278.000",
+    "metode_bayar": "TUNAI (ubah)",
+    "tanggal_pemesanan": "11-Mei-2026 11:30",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BDTR260511VQE9",
+    "tanggal_keberangkatan": "12-Mei-2026",
+    "rute": "DIPATIUKUR, BANDUNG - ALFAMART RAYA PAJAJARAN BOGOR, BOGOR (Keberangkatan : 05:00)",
+    "harga_tiket": [
+      "Rp 150.000",
+      "Rp 135.000",
+      "Rp 135.000",
+      "Rp 135.000"
+    ],
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 285.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "asuransi": "Rp 3.000",
+    "total_bayar": "Rp 288.000",
+    "metode_bayar": "TUNAI (ubah)",
+    "tanggal_pemesanan": "11-Mei-2026 14:58",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BDTR2605120X4A",
+    "tanggal_keberangkatan": "12-Jun-2026",
+    "rute": "DIPATIUKUR, BANDUNG - ALFAMART RAYA PAJAJARAN BOGOR, BOGOR (Keberangkatan : 05:00)",
+    "harga_tiket": [
+      "Rp 150.000",
+      "Rp 135.000",
+      "Rp 135.000",
+      "Rp 135.000"
+    ],
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 285.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "asuransi": "Rp 3.000",
+    "total_bayar": "Rp 288.000",
+    "metode_bayar": "TUNAI (ubah)",
+    "tanggal_pemesanan": "12-Mei-2026 09:04",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BDTR260512CDN5",
+    "tanggal_keberangkatan": {
+      "tanggal_pergi": "12-Jun-2026",
+      "tanggal_pulang": "12-Jul-2026"
+    },
+    "rute": {
+      "rute_pergi": "DIPATIUKUR, BANDUNG - ALFAMART RAYA PAJAJARAN BOGOR, BOGOR (Keberangkatan : 05:00)",
+      "rute_pulang": "ALFAMART RAYA PAJAJARAN BOGOR, BOGOR - DIPATIUKUR, BANDUNG (Keberangkatan : 05:15)"
+    },
+    "harga_tiket": {
+      "harga_tiket_pergi": [
+        "Rp 135.000",
+        "Rp 140.000"
+      ],
+      "harga_tiket_pulang": [
+        "Rp 135.000",
+        "Rp 135.000"
+      ]
+    },
+    "diskon": {
+      "diskon_pergi": "Rp 0",
+      "diskon_pulang": "Rp 0"
+    },
+    "total_tiket": {
+      "total_pergi": "Rp 275.000 (2 tiket)",
+      "total_pulang": "Rp 270.000 (2 tiket)"
+    },
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 551.000",
+    "metode_bayar": "TUNAI (ubah)",
+    "tanggal_pemesanan": "12-Mei-2026 09:59",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BDTR260512UQTB",
+    "tanggal_keberangkatan": {
+      "tanggal_pergi": "12-Jun-2026",
+      "tanggal_pulang": "12-Jul-2026"
+    },
+    "rute": {
+      "rute_pergi": "DIPATIUKUR, BANDUNG - ALFAMART RAYA PAJAJARAN BOGOR, BOGOR (Keberangkatan : 05:00)",
+      "rute_pulang": "ALFAMART RAYA PAJAJARAN BOGOR, BOGOR - DIPATIUKUR, BANDUNG (Keberangkatan : 05:15)"
+    },
+    "harga_tiket": {
+      "harga_tiket_pergi": [
+        "Rp 135.000",
+        "Rp 135.000"
+      ],
+      "harga_tiket_pulang": [
+        "Rp 135.000",
+        "Rp 135.000"
+      ]
+    },
+    "diskon": {
+      "diskon_pergi": "Rp 0",
+      "diskon_pulang": "Rp 0"
+    },
+    "total_tiket": {
+      "total_pergi": "Rp 270.000 (2 tiket)",
+      "total_pulang": "Rp 270.000 (2 tiket)"
+    },
+    "total_diskon": "Rp 0",
+    "asuransi": "Rp 6.000",
+    "total_bayar": "Rp 546.000",
+    "metode_bayar": "TUNAI (ubah)",
+    "tanggal_pemesanan": "12-Mei-2026 10:09",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BDTR260519OPV8",
+    "tanggal_keberangkatan": "19-Jun-2026",
+    "rute": [
+      "ALFAMART PRAMBANAN - SRONDOL (Keberangkatan : 03:45)",
+      "SRONDOL - REST AREA KM 62 (Keberangkatan : 08:30)",
+      "REST AREA KM 62 - ALFAMART RAYA PAJAJARAN BOGOR (Keberangkatan : 11:00)"
+    ],
+    "harga_tiket": [
+      {
+        "Rute": "PRA-SRL",
+        "Harga_Tiket": 2250002
+      },
+      {
+        "Rute": "SRL-PRK",
+        "Harga_Tiket": 6150002
+      },
+      {
+        "Rute": "PRK-APB",
+        "Harga_Tiket": 1550002
+      }
+    ],
+    "total_tiket": "Rp 1.004.000",
+    "total_diskon": "Rp 0",
+    "asuransi": "Rp 9.000",
+    "total_bayar": "Rp 1.004.000",
+    "metode_bayar": "TUNAI (ubah)",
+    "tanggal_pemesanan": "19-Mei-2026 14:25",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BDTR26051962XF",
+    "tanggal_keberangkatan": "19-Jun-2026",
+    "rute": "DIPATIUKUR, BANDUNG - ALFAMART RAYA PAJAJARAN BOGOR, BOGOR (Keberangkatan : 05:00)",
+    "harga_tiket": [
+      "Rp 150.000",
+      "Rp 135.000"
+    ],
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 285.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "asuransi": "Rp 3.000",
+    "total_bayar": "Rp 288.000",
+    "metode_bayar": "TUNAI (ubah)",
+    "tanggal_pemesanan": "19-Mei-2026 15:16",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBTM26052039MB",
+    "tanggal_keberangkatan": "20-Jun-2026",
+    "rute": "BUAH BATU, BANDUNG - BTM CILEGON, CILEGON (Keberangkatan : 06:00)",
+    "harga_tiket": "Rp 150.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 300.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 300.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "20-Mei-2026 15:17",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBTM260521VX9Y",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 440.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "21-Mei-2026 11:04",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBTM260521JLF5",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 440.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "21-Mei-2026 11:12",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBTM2605216PMH",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 440.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "21-Mei-2026 11:18",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBTM260521073F",
+    "tanggal_keberangkatan": "21-Jun-2026",
+    "rute": [
+      "BAYAH - RANGKASBITUNG (Keberangkatan : 01:20)",
+      "RANGKASBITUNG - SUCI (HOTEL NINDYA BIODISTRICT ) (Keberangkatan : 06:15)"
+    ],
+    "harga_tiket": [
+      {
+        "Rute": "BYH-RKB",
+        "Harga_Tiket": 1400002
+      },
+      {
+        "Rute": "RKB-HNB",
+        "Harga_Tiket": 3000002
+      }
+    ],
+    "total_tiket": "Rp 440.000",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 440.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "21-Mei-2026 11:23",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBTM260521UC7X",
+    "tanggal_keberangkatan": "21-Jun-2026",
+    "rute": [
+      "BAYAH - RANGKASBITUNG (Keberangkatan : 01:20)",
+      "RANGKASBITUNG - SUCI (HOTEL NINDYA BIODISTRICT ) (Keberangkatan : 06:15)"
+    ],
+    "harga_tiket": [
+      {
+        "Rute": "BYH-RKB",
+        "Harga_Tiket": 1400002
+      },
+      {
+        "Rute": "RKB-HNB",
+        "Harga_Tiket": 3000002
+      }
+    ],
+    "total_tiket": "Rp 440.000",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 440.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "21-Mei-2026 11:28",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBTM260521V8LN",
+    "tanggal_keberangkatan": "21-Jun-2026",
+    "rute": [
+      "BAYAH - RANGKASBITUNG (Keberangkatan : 01:20)",
+      "RANGKASBITUNG - SUCI (HOTEL NINDYA BIODISTRICT ) (Keberangkatan : 06:15)"
+    ],
+    "harga_tiket": [
+      {
+        "Rute": "BYH-RKB",
+        "Harga_Tiket": 140000
+      },
+      {
+        "Rute": "RKB-HNB",
+        "Harga_Tiket": 300000
+      }
+    ],
+    "total_tiket": "Rp 440.000",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 440.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "21-Mei-2026 11:35",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBTM260521IC2L",
+    "tanggal_keberangkatan": "21-Jun-2026",
+    "rute": [
+      "BAYAH - RANGKASBITUNG (Keberangkatan : 01:20)",
+      "RANGKASBITUNG - SUCI (HOTEL NINDYA BIODISTRICT ) (Keberangkatan : 06:15)"
+    ],
+    "harga_tiket": [
+      {
+        "Rute": "BYH-RKB",
+        "Harga_Tiket": "Rp 140.000 (2 tiket)"
+      },
+      {
+        "Rute": "RKB-HNB",
+        "Harga_Tiket": "Rp 300.000 (2 tiket)"
+      }
+    ],
+    "total_tiket": "Rp 440.000",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 440.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "21-Mei-2026 11:46",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBTM26052161AG",
+    "tanggal_keberangkatan": "21-Jun-2026",
+    "rute": "BUAH BATU, BANDUNG - BTM CILEGON, CILEGON (Keberangkatan : 06:00)",
+    "harga_tiket": "Rp 150.000",
+    "total_tiket": "Rp 300.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 300.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "21-Mei-2026 14:06",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBTM2605216KRZ",
+    "tanggal_keberangkatan": "21-Jun-2026",
+    "rute": [
+      "BAYAH - RANGKASBITUNG (Keberangkatan : 01:20)",
+      "RANGKASBITUNG - SUCI (HOTEL NINDYA BIODISTRICT ) (Keberangkatan : 06:15)"
+    ],
+    "harga_tiket": [
+      {
+        "Rute": "BYH-RKB",
+        "Harga_Tiket": "Rp 140.000 (2 tiket)"
+      },
+      {
+        "Rute": "RKB-HNB",
+        "Harga_Tiket": "Rp 300.000 (2 tiket)"
+      }
+    ],
+    "total_tiket": "Rp 440.000",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 440.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "21-Mei-2026 16:18",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBTM260522QRXB",
+    "tanggal_keberangkatan": "22-Jun-2026",
+    "rute": "BUAH BATU, BANDUNG - BTM CILEGON, CILEGON (Keberangkatan : 06:00)",
+    "harga_tiket": "Rp 150.000",
+    "total_tiket": "Rp 300.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 300.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "22-Mei-2026 08:55",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBTM260522UQ2B",
+    "tanggal_keberangkatan": "22-Jun-2026",
+    "rute": [
+      "BAYAH - RANGKASBITUNG (Keberangkatan : 01:20)",
+      "RANGKASBITUNG - SUCI (HOTEL NINDYA BIODISTRICT ) (Keberangkatan : 06:15)"
+    ],
+    "harga_tiket": [
+      {
+        "Rute": "BYH-RKB",
+        "Harga_Tiket": "Rp 140.000 (2 tiket)"
+      },
+      {
+        "Rute": "RKB-HNB",
+        "Harga_Tiket": "Rp 300.000 (2 tiket)"
+      }
+    ],
+    "total_tiket": "Rp 440.000",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 440.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "22-Mei-2026 08:55",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT260522IW4A",
+    "tanggal_keberangkatan": "22-Jun-2026",
+    "rute": "CALL CENTER BANDUNG, BANDUNG - CIMAREME, BANDUNG (Keberangkatan : 01:20)",
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 60.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 60.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "22-Mei-2026 08:56",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BJKL260522O6PR",
+    "tanggal_keberangkatan": "22-Jun-2026",
+    "rute": "DIPATIUKUR 89 SEBRANG UNIKOM, BANDUNG - JABABEKA CIKARANG, BEKASI (Keberangkatan : 09:00)",
+    "harga_tiket": "Rp 110.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 220.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 220.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "22-Mei-2026 08:58",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BARG2605220J7S",
+    "tanggal_keberangkatan": "22-Jun-2026",
+    "rute": "BANDUNG, BANDUNG - Alfamart Banjar Atas, BANJAR (Keberangkatan : 01:00)",
+    "harga_tiket": "Rp 125.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 250.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 250.000",
+    "metode_bayar": "TUNAI (ubah)",
+    "tanggal_pemesanan": "22-Mei-2026 08:59",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT2605220JVD",
+    "tanggal_keberangkatan": "22-Jun-2026",
+    "rute": "CALL CENTER BANDUNG, BANDUNG - CIMAREME, BANDUNG (Keberangkatan : 01:20)",
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 60.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 60.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "22-Mei-2026 14:49",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BARG260522OPRM",
+    "tanggal_keberangkatan": "22-Jun-2026",
+    "rute": "BANDUNG, BANDUNG - Alfamart Banjar Atas, BANJAR (Keberangkatan : 01:00)",
+    "harga_tiket": "Rp 125.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 250.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 250.000",
+    "metode_bayar": "TUNAI (ubah)",
+    "tanggal_pemesanan": "22-Mei-2026 14:50",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBRT260522X3FG",
+    "tanggal_keberangkatan": "22-Jun-2026",
+    "rute": "CALL CENTER BANDUNG, BANDUNG - CIMAREME, BANDUNG (Keberangkatan : 01:20)",
+    "harga_tiket": "Rp 30.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 60.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 60.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "22-Mei-2026 16:33",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BARG2605226JQE",
+    "tanggal_keberangkatan": "22-Jun-2026",
+    "rute": "BANDUNG, BANDUNG - Alfamart Banjar Atas, BANJAR (Keberangkatan : 01:00)",
+    "harga_tiket": "Rp 125.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 250.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 250.000",
+    "metode_bayar": "TUNAI (ubah)",
+    "tanggal_pemesanan": "22-Mei-2026 16:34",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BJKL2605226KSG",
+    "tanggal_keberangkatan": "22-Jun-2026",
+    "rute": "DIPATIUKUR 89 SEBRANG UNIKOM, BANDUNG - JABABEKA CIKARANG, BEKASI (Keberangkatan : 09:00)",
+    "harga_tiket": "Rp 110.000",
+    "diskon": "Rp 0",
+    "total_tiket": "Rp 220.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 220.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "22-Mei-2026 16:35",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBTM260522U1ZB",
+    "tanggal_keberangkatan": "22-Jun-2026",
+    "rute": "BUAH BATU, BANDUNG - BTM CILEGON, CILEGON (Keberangkatan : 06:00)",
+    "harga_tiket": "Rp 150.000",
+    "total_tiket": "Rp 300.000 (2 tiket)",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 300.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "22-Mei-2026 16:36",
+    "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBTM260522U1R9",
+    "tanggal_keberangkatan": "22-Jun-2026",
+    "rute": [
+      "BAYAH - RANGKASBITUNG (Keberangkatan : 01:20)",
+      "RANGKASBITUNG - SUCI (HOTEL NINDYA BIODISTRICT ) (Keberangkatan : 06:15)"
+    ],
+    "harga_tiket": [
+      {
+        "Rute": "BYH-RKB",
+        "Harga_Tiket": "Rp 140.000 (2 tiket)"
+      },
+      {
+        "Rute": "RKB-HNB",
+        "Harga_Tiket": "Rp 300.000 (2 tiket)"
+      }
+    ],
+    "total_tiket": "Rp 440.000",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 440.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "22-Mei-2026 16:36",
+    "pencetak": "QCTTX SHUGI"
+  }
+]

@@ -1,0 +1,35 @@
+{
+  "kode_booking": "BDTR260512UQTB",
+  "tanggal_keberangkatan": {
+    "tanggal_pergi": "12-Jun-2026",
+    "tanggal_pulang": "12-Jul-2026"
+  },
+  "rute": {
+    "rute_pergi": "DIPATIUKUR, BANDUNG - ALFAMART RAYA PAJAJARAN BOGOR, BOGOR (Keberangkatan : 05:00)",
+    "rute_pulang": "ALFAMART RAYA PAJAJARAN BOGOR, BOGOR - DIPATIUKUR, BANDUNG (Keberangkatan : 05:15)"
+  },
+  "harga_tiket": {
+    "harga_tiket_pergi": [
+      "Rp 135.000",
+      "Rp 135.000"
+    ],
+    "harga_tiket_pulang": [
+      "Rp 135.000",
+      "Rp 135.000"
+    ]
+  },
+  "diskon": {
+    "diskon_pergi": "Rp 0",
+    "diskon_pulang": "Rp 0"
+  },
+  "total_tiket": {
+    "total_pergi": "Rp 270.000 (2 tiket)",
+    "total_pulang": "Rp 270.000 (2 tiket)"
+  },
+  "total_diskon": "Rp 0",
+  "asuransi": "Rp 6.000",
+  "total_bayar": "Rp 546.000",
+  "metode_bayar": "TUNAI (ubah)",
+  "tanggal_pemesanan": "12-Mei-2026 10:09",
+  "pencetak": "QCTTX SHUGI"
+}
