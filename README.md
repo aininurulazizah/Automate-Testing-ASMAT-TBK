@@ -25,6 +25,31 @@ Proyek automasi testing untuk proses pemesanan tiket pada layanan Asmat : Daytra
     ```
     npx playwright test ./reservasi_test.spec.js --project=chromium --headed --workers=1 --grep '@Daytrans'
     ```
+5. Menjalankan test untuk kondisi case tertentu, misalnya jalankan test case reservasi dengan kondisi pulang pergi (Rountrip) :
+    ```
+    npx playwright test ./reservasi_test.spec.js --project=chromium --headed --workers=1 --grep '[kondisi]'
+    ```
+    Contoh melakukan testing reservasi pulang pergi : 
+    ```
+    npx playwright test ./reservasi_test.spec.js --project=chromium --headed --workers=1 --grep 'Round Trip'
+    ```
+    Ini akan dijalankan di semua mitra yang memiliki kondisi yang case tersebut.
+7. Menjalankan test spesifik (kondisi tertentu pada mitra tertentu) :
+    ```
+    npx playwright test ./reservasi_test.spec.js --project=chromium --headed --workers=1 --grep '[nama test case spesifik]'
+    ```
+    Contoh melakukan testing connecting reservation pada BTM :
+    ```
+    npx playwright test ./reservasi_test.spec.js --project=chromium --headed --workers=1 --grep '@btm - Test Case 3 - Connecting Reservation'
+    ```
+8. Menjalankan test dengan lebih dari satu kata kunci (bisa mitra/test case) :
+    ```
+    npx playwright test ./reservasi_test.spec.js --project=chromium --headed --workers=1 --grep '[kata kunci 1]|[kata kunci 2]|[kata kunci n]'
+    ```
+    Contoh melakukan testing pada mitra Daytrans, Baraya, dan BTM :
+    ```
+    npx playwright test ./reservasi_test.spec.js --project=chromium --headed --workers=1 --grep '@daytrans|@baraya|@btm'
+    ```
 
    Note : 
     `--project-chromium` jika ingin menggunakan webdriver tertentu, disini menggunakan chrome.
