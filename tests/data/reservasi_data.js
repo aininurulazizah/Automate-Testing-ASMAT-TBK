@@ -52,11 +52,9 @@ export const testData = {
         }
     },
 
-    Baraya: { 
-        TanggalBerangkat: {tanggal: '20 Jun 2026', isWeekend: true},
-        TanggalPulang: {tanggal: '30 Jun 2026', isWeekend: false},       
-        // TanggalBerangkat: getTanggal(1), //Ambil tanggal satu bulan dari sekarang
-        // TanggalPulang: getTanggal(2), //Ambil tanggal dua bulan dari sekarang
+    Baraya: {   
+        TanggalBerangkat: getTanggal(1), //Ambil tanggal satu bulan dari sekarang
+        TanggalPulang: getTanggal(2), //Ambil tanggal dua bulan dari sekarang
         Keberangkatan: "CALL CENTER BANDUNG",
         Tujuan: "CIMAREME",
         KeberangkatanPulang: "BUAH BATU",
