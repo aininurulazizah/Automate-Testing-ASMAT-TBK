@@ -149,7 +149,7 @@ sites.forEach((site) => {
       });
 
       const test_case_name = test.info().title;
-      const booking_detail = await web.ambilDetailBooking(ticket, is_diskon, 'one way trip');
+      const booking_detail = await web.ambilDetailBooking(ticket, is_diskon, false, 'one way trip');
       const booking_detail_path = saveBookingDetails(booking_detail, test_case_name);
 
       await test.info().attach('booking_detail', {
@@ -230,7 +230,7 @@ sites.forEach((site) => {
         });
 
         await test.step('Validasi total pembayaran tiket', async () => {
-          await web.validasiTotalTiket(harga_tiket, harga_tiket_plg, site.data.JumlahPenumpang * 2); //Expected Result : Cek total bayar
+          await web.validasiTotalTiket(harga_tiket, harga_tiket_plg, site.data.JumlahPenumpang); //Expected Result : Cek total bayar
         });
 
         let ticket;
@@ -259,7 +259,7 @@ sites.forEach((site) => {
         });
 
         const test_case_name = test.info().title;
-        const booking_detail = await web.ambilDetailBooking(ticket, is_diskon, 'round trip');
+        const booking_detail = await web.ambilDetailBooking(ticket, is_diskon, is_diskon_plg, 'round trip');
         const booking_detail_path = saveBookingDetails(booking_detail, test_case_name);
 
         await test.info().attach('booking_detail', {

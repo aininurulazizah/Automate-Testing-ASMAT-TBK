@@ -216,7 +216,7 @@ export class Baraya {
         return TicketPage;
     }
 
-    async ambilDetailBooking(ticket, is_diskon, case_flag) {
+    async ambilDetailBooking(ticket, is_diskon, is_diskon_plg, case_flag) {
         let kode_booking;
         let booking_detail;
 
@@ -280,7 +280,7 @@ export class Baraya {
             const jam_pulang = await this.page.locator('span.resvisidatalabel:text-is("Jam Keberangkatan") + span').innerText();
             const harga_tiket_pulang = await detail_harga_card.locator('span#sectiondatapemesan:has-text("Ringkasan Pembelian Tiket") + hr + span span.resvdisidatafield').innerText();
 
-            const diskon_pulang = is_diskon
+            const diskon_pulang = is_diskon_plg
             ? await detail_harga_card.locator('span#sectiondatapemesan:has-text("Ringkasan Pembelian Tiket") + hr + span + hr + span span.resvdisidatafield').innerText()
             : "Rp 0";
 
