@@ -107,7 +107,7 @@ sites.forEach((site) => {
       });
 
       await test.step('Pilih kursi yang sudah di-book dan batalkan', async () => {
-        await web.pilihKursiBooked();
+        await web.batalkanAllKursi();
       });
 
     })

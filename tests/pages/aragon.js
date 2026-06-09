@@ -22,6 +22,10 @@ export class Aragon {
         this.total_bayar_label = page.locator('span.resvisidatalabel:has-text("Total Bayar") + span');
         this.button_action_goshow = page.locator('span#btngoshow');
 
+        // Cancel Tiket
+        this.cancel_all_btn = page.locator('span#btncancelall');
+        this.cancel_popup = page.locator('div#popupcontainer');
+
         // Laporan
         this.field_tahun = page.locator('input#tahun');
         this.button_enter_periode = page.locator('a:text-is("GO!")');
@@ -156,6 +160,59 @@ export class Aragon {
         for(let i = 0; i < value; i++){
             await this.list_kursi_tersedia.nth(i).click();
         }
+    }
+
+    async batalkanAllKursi() {
+        await this.page.waitForTimeout(2000);
+    
+        let list_kursi_booked = this.page.locator('div.renderkursikonfirm');
+
+        this.page.on('dialog', async dialog => {
+            await dialog.accept();
+        });
+    
+        while ((await list_kursi_booked.count()) > 0) {
+
+            const all_checkbox = await this.cancel_popup.locator('table#tableheaderlisttiket input[type="checkbox"]');
+            const cancel_btn = await this.cancel_popup.locator('a[onclick="prosesMultiBatal();"]');
+    
+            await list_kursi_booked.first().click();
+
+            await this.page.waitForTimeout(1000);
+
+            await this.cancel_all_btn.waitFor({ state: 'visible', timeout: 30000 });
+            await this.cancel_all_btn.click();
+
+            await this.page.waitForTimeout(1000);
+
+            await all_checkbox.waitFor({ state: 'visible', timeout: 30000 });
+            await all_checkbox.click();
+
+            await this.page.waitForTimeout(1000);
+
+            await cancel_btn.waitFor({ state: 'visible', timeout: 30000 });
+            await cancel_btn.click();
+    
+            const ok_btn = this.page.locator('span#popupnotifbuttonok');
+            const x_btn = this.page.locator('span#popupbuttonclose');
+    
+            await ok_btn.waitFor({ state: 'visible', timeout: 30000 });
+            await ok_btn.click();
+
+            // await this.page.pause();
+    
+            if (await x_btn.isVisible()) {
+                await x_btn.click();
+            }
+
+            // await this.page.pause();
+
+            await this.page.waitForLoadState('networkidle');
+    
+            list_kursi_booked = await this.page.locator('div.renderkursikonfirm');
+            await this.page.waitForTimeout(2000);
+        }
+
     }
 
     async isiDataPemesan(value) {

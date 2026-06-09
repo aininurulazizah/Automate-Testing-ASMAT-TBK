@@ -191,7 +191,7 @@ export class Baraya {
         }
     }
 
-    async pilihKursiBooked() {
+    async batalkanAllKursi() {
         await this.page.waitForTimeout(2000);
     
         let list_kursi_booked = this.page.locator('div.renderkursikonfirm');
