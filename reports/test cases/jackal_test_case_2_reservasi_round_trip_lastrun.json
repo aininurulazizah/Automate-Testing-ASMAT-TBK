@@ -1,28 +1,8 @@
 {
-  "kode_booking": "BJKL260507KQ8R",
-  "tanggal_keberangkatan": {
-    "tanggal_pergi": "07-Jun-2026",
-    "tanggal_pulang": "07-Jul-2026"
-  },
-  "rute": {
-    "rute_pergi": "DIPATIUKUR 89 SEBRANG UNIKOM, BANDUNG - JABABEKA CIKARANG, BEKASI (Keberangkatan : 09:00)",
-    "rute_pulang": "JABABEKA CIKARANG, BEKASI - DIPATIUKUR 89 SEBRANG UNIKOM, BANDUNG (Keberangkatan : 05:00)"
-  },
-  "harga_tiket": {
-    "harga_tiket_pergi": "Rp 110.000",
-    "harga_tiket_pulang": "Rp 110.000"
-  },
-  "diskon": {
-    "diskon_pergi": "Rp 0",
-    "diskon_pulang": "Rp 0"
-  },
-  "total_tiket": {
-    "total_pergi": "Rp 220.000 (2 tiket)",
-    "total_pulang": "Rp 220.000 (2 tiket)"
-  },
+  "kode_booking": "BJKL260609UP28",
   "total_diskon": "Rp 0",
-  "total_bayar": "Rp 440.000",
+  "total_bayar": "Rp 390.000",
   "metode_bayar": "TUNAI",
-  "tanggal_pemesanan": "07-Mei-2026 11:26",
+  "tanggal_pemesanan": "09-Jun-2026 15:36",
   "pencetak": "QCTTX SHUGI"
 }

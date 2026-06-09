@@ -198,14 +198,10 @@ export class Aragon {
     
             await ok_btn.waitFor({ state: 'visible', timeout: 30000 });
             await ok_btn.click();
-
-            // await this.page.pause();
     
             if (await x_btn.isVisible()) {
                 await x_btn.click();
             }
-
-            // await this.page.pause();
 
             await this.page.waitForLoadState('networkidle');
     
