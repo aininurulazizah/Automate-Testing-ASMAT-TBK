@@ -1,13 +1,13 @@
 {
-  "kode_booking": "BBRT260604CRYH",
-  "tanggal_keberangkatan": "20-Jun-2026",
+  "kode_booking": "BBRT2606090Q2Y",
+  "tanggal_keberangkatan": "09-Jul-2026",
   "rute": "CALL CENTER BANDUNG, BANDUNG - CIMAREME, BANDUNG (Keberangkatan : 01:20)",
   "harga_tiket": "Rp 30.000",
-  "diskon": "Rp 7.575",
+  "diskon": "Rp 0",
   "total_tiket": "Rp 60.000 (2 tiket)",
-  "total_diskon": "Rp 15.150",
-  "total_bayar": "Rp 44.850",
+  "total_diskon": "Rp 0",
+  "total_bayar": "Rp 60.000",
   "metode_bayar": "TUNAI",
-  "tanggal_pemesanan": "04-Jun-2026 15:18",
+  "tanggal_pemesanan": "09-Jun-2026 09:38",
   "pencetak": "QCTTX SHUGI"
 }

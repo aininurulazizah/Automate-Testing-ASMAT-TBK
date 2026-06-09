@@ -1,4 +1,4 @@
-import { requiredEnv } from "../utils/env";
+import { requiredEnv } from "../utils/env.js";
 
 export const Credential = {
 

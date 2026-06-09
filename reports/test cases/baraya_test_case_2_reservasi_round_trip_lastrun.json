@@ -1,8 +1,8 @@
 {
-  "kode_booking": "BBRT2606047NT5",
+  "kode_booking": "BBRT260609OELY",
   "tanggal_keberangkatan": {
-    "tanggal_pergi": "04-Jul-2026",
-    "tanggal_pulang": "04-Agu-2026"
+    "tanggal_pergi": "09-Jul-2026",
+    "tanggal_pulang": "09-Agu-2026"
   },
   "rute": {
     "rute_pergi": "CALL CENTER BANDUNG, BANDUNG - CIMAREME, BANDUNG (Keberangkatan : 01:20)",
@@ -23,6 +23,6 @@
   "total_diskon": "Rp 0",
   "total_bayar": "Rp 260.000",
   "metode_bayar": "TUNAI",
-  "tanggal_pemesanan": "04-Jun-2026 15:06",
+  "tanggal_pemesanan": "09-Jun-2026 09:38",
   "pencetak": "QCTTX SHUGI"
 }
