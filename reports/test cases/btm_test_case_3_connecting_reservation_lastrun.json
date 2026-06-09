@@ -1,6 +1,6 @@
 {
-  "kode_booking": "BBTM260522U1R9",
-  "tanggal_keberangkatan": "22-Jun-2026",
+  "kode_booking": "BBTM2606096JAG",
+  "tanggal_keberangkatan": "09-Jul-2026",
   "rute": [
     "BAYAH - RANGKASBITUNG (Keberangkatan : 01:20)",
     "RANGKASBITUNG - SUCI (HOTEL NINDYA BIODISTRICT ) (Keberangkatan : 06:15)"
@@ -19,6 +19,6 @@
   "total_diskon": "Rp 0",
   "total_bayar": "Rp 440.000",
   "metode_bayar": "TUNAI",
-  "tanggal_pemesanan": "22-Mei-2026 16:36",
+  "tanggal_pemesanan": "09-Jun-2026 16:00",
   "pencetak": "QCTTX SHUGI"
 }

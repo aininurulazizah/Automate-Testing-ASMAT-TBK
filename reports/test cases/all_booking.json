@@ -3416,5 +3416,29 @@
     "metode_bayar": "TUNAI",
     "tanggal_pemesanan": "09-Jun-2026 15:37",
     "pencetak": "QCTTX SHUGI"
+  },
+  {
+    "kode_booking": "BBTM2606096JAG",
+    "tanggal_keberangkatan": "09-Jul-2026",
+    "rute": [
+      "BAYAH - RANGKASBITUNG (Keberangkatan : 01:20)",
+      "RANGKASBITUNG - SUCI (HOTEL NINDYA BIODISTRICT ) (Keberangkatan : 06:15)"
+    ],
+    "harga_tiket": [
+      {
+        "Rute": "BYH-RKB",
+        "Harga_Tiket": "Rp 140.000 (2 tiket)"
+      },
+      {
+        "Rute": "RKB-HNB",
+        "Harga_Tiket": "Rp 300.000 (2 tiket)"
+      }
+    ],
+    "total_tiket": "Rp 440.000",
+    "total_diskon": "Rp 0",
+    "total_bayar": "Rp 440.000",
+    "metode_bayar": "TUNAI",
+    "tanggal_pemesanan": "09-Jun-2026 16:00",
+    "pencetak": "QCTTX SHUGI"
   }
 ]
